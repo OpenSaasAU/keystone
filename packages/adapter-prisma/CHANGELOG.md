@@ -1,5 +1,20 @@
 # @keystonejs/adapter-prisma
 
+## 3.4.0
+
+### Minor Changes
+
+- [#5102](https://github.com/keystonejs/keystone/pull/5102) [`714bdadce`](https://github.com/keystonejs/keystone/commit/714bdadce8c87a15cf3a296b44a31b9b9ca95e9d) Thanks [@mitchellhamilton](https://github.com/mitchellhamilton)! - Added `none-skip-client-generation` migrationMode
+
+### Patch Changes
+
+- [#5059](https://github.com/keystonejs/keystone/pull/5059) [`b3c4a756f`](https://github.com/keystonejs/keystone/commit/b3c4a756fd2028d1e29967392d37098419e54ec3) Thanks [@mitchellhamilton](https://github.com/mitchellhamilton)! - Replaced usage of prisma cli when in `migrationMode: 'prototype'` with programmatic calls to `@prisma/migrate` to improve performance
+
+* [#5059](https://github.com/keystonejs/keystone/pull/5059) [`b3c4a756f`](https://github.com/keystonejs/keystone/commit/b3c4a756fd2028d1e29967392d37098419e54ec3) Thanks [@mitchellhamilton](https://github.com/mitchellhamilton)! - Removed faulty optimisation that caused migrations to not be run if the prisma client directory and the prisma schema already existed
+
+* Updated dependencies [[`a4002b045`](https://github.com/keystonejs/keystone/commit/a4002b045b3e783971c382f9373159c04845beeb)]:
+  - @keystone-next/keystone-legacy@20.0.1
+
 ## 3.3.0
 
 ### Minor Changes

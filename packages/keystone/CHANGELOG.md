@@ -1,5 +1,11 @@
 # @keystonejs/keystone
 
+## 20.0.1
+
+### Patch Changes
+
+- [#4931](https://github.com/keystonejs/keystone/pull/4931) [`a4002b045`](https://github.com/keystonejs/keystone/commit/a4002b045b3e783971c382f9373159c04845beeb) Thanks [@timleslie](https://github.com/timleslie)! - Updated schema generation to no longer consider `access.auth`, as it is no longer used in Keystone Next.
+
 ## 20.0.0
 
 ### Major Changes

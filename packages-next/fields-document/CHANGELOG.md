@@ -1,5 +1,19 @@
 # @keystone-next/fields-document
 
+## 3.0.2
+
+### Patch Changes
+
+- [#5089](https://github.com/keystonejs/keystone/pull/5089) [`a4e34e9eb`](https://github.com/keystonejs/keystone/commit/a4e34e9ebb6f746f54ccd898d0aeb4dc5c5d9271) Thanks [@timleslie](https://github.com/timleslie)! - Updated `slate` dependencies.
+
+- Updated dependencies [[`b3c4a756f`](https://github.com/keystonejs/keystone/commit/b3c4a756fd2028d1e29967392d37098419e54ec3), [`17c86e0c3`](https://github.com/keystonejs/keystone/commit/17c86e0c3eda7ba08d1bb8edf5eb8ddc9a819e5a), [`714bdadce`](https://github.com/keystonejs/keystone/commit/714bdadce8c87a15cf3a296b44a31b9b9ca95e9d), [`b84abebb6`](https://github.com/keystonejs/keystone/commit/b84abebb6c817172d04f338befa45b3573af55d6), [`56e5fe10b`](https://github.com/keystonejs/keystone/commit/56e5fe10bc89877be7d7e3013e53012b4d82b648), [`56e5fe10b`](https://github.com/keystonejs/keystone/commit/56e5fe10bc89877be7d7e3013e53012b4d82b648), [`b3c4a756f`](https://github.com/keystonejs/keystone/commit/b3c4a756fd2028d1e29967392d37098419e54ec3), [`40d4fff5d`](https://github.com/keystonejs/keystone/commit/40d4fff5d63850cbd513c80bcb5e551e5782dc4b)]:
+  - @keystone-next/adapter-prisma-legacy@3.4.0
+  - @keystone-next/fields-legacy@23.0.1
+  - @keystone-ui/fields@2.0.2
+  - @keystone-next/types@14.1.0
+  - @keystone-next/admin-ui@12.0.0
+  - @keystone-next/fields@5.2.2
+
 ## 3.0.1
 
 ### Patch Changes

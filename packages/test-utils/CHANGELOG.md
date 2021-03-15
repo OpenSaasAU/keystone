@@ -1,5 +1,26 @@
 # @keystonejs/test-utils
 
+## 14.0.0
+
+### Major Changes
+
+- [#5087](https://github.com/keystonejs/keystone/pull/5087) [`56e5fe10b`](https://github.com/keystonejs/keystone/commit/56e5fe10bc89877be7d7e3013e53012b4d82b648) Thanks [@mitchellhamilton](https://github.com/mitchellhamilton)! - Updated `createKeystone` and `createSystem` to accept a migration mode rather than script
+
+### Minor Changes
+
+- [#5098](https://github.com/keystonejs/keystone/pull/5098) [`e2edaaff8`](https://github.com/keystonejs/keystone/commit/e2edaaff8e5f71800e9f00fa18082a6752407e2d) Thanks [@timleslie](https://github.com/timleslie)! - Added a function `testConfig` to be used when setting up a system under test.
+
+### Patch Changes
+
+- [#5100](https://github.com/keystonejs/keystone/pull/5100) [`fbc6d6d68`](https://github.com/keystonejs/keystone/commit/fbc6d6d6842c498b984b2dc77b0aa2c16a4babf0) Thanks [@mitchellhamilton](https://github.com/mitchellhamilton)! - Improved performance when running Prisma tests by switching the hashing algorithm from sha256 to md5 used to generate the schema name and memoizing the hashing
+
+* [#5114](https://github.com/keystonejs/keystone/pull/5114) [`2d39de79d`](https://github.com/keystonejs/keystone/commit/2d39de79d6848ced51e6be97d40568c725433e11) Thanks [@timleslie](https://github.com/timleslie)! - Improved type definition for `networkedGraphqlRequest`.
+
+* Updated dependencies [[`bfeb927be`](https://github.com/keystonejs/keystone/commit/bfeb927be5c80fac2dadd800295fd4789c53f1ce), [`b3c4a756f`](https://github.com/keystonejs/keystone/commit/b3c4a756fd2028d1e29967392d37098419e54ec3), [`b7ce464a2`](https://github.com/keystonejs/keystone/commit/b7ce464a261321fe3344898fa4f4a91e6fa8dbb1), [`714bdadce`](https://github.com/keystonejs/keystone/commit/714bdadce8c87a15cf3a296b44a31b9b9ca95e9d), [`56e5fe10b`](https://github.com/keystonejs/keystone/commit/56e5fe10bc89877be7d7e3013e53012b4d82b648), [`b3c4a756f`](https://github.com/keystonejs/keystone/commit/b3c4a756fd2028d1e29967392d37098419e54ec3), [`a4002b045`](https://github.com/keystonejs/keystone/commit/a4002b045b3e783971c382f9373159c04845beeb), [`40d4fff5d`](https://github.com/keystonejs/keystone/commit/40d4fff5d63850cbd513c80bcb5e551e5782dc4b)]:
+  - @keystone-next/keystone@13.0.0
+  - @keystone-next/adapter-prisma-legacy@3.4.0
+  - @keystone-next/keystone-legacy@20.0.1
+
 ## 13.0.3
 
 ### Patch Changes

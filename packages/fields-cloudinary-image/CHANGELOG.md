@@ -1,5 +1,14 @@
 # @keystonejs/fields-cloudinary-image
 
+## 3.0.2
+
+### Patch Changes
+
+- [#5089](https://github.com/keystonejs/keystone/pull/5089) [`a4e34e9eb`](https://github.com/keystonejs/keystone/commit/a4e34e9ebb6f746f54ccd898d0aeb4dc5c5d9271) Thanks [@timleslie](https://github.com/timleslie)! - Removed unused `slate` dependencies.
+
+- Updated dependencies [[`17c86e0c3`](https://github.com/keystonejs/keystone/commit/17c86e0c3eda7ba08d1bb8edf5eb8ddc9a819e5a)]:
+  - @keystone-next/fields-legacy@23.0.1
+
 ## 3.0.1
 
 ### Patch Changes

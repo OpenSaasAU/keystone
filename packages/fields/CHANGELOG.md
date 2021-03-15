@@ -1,5 +1,15 @@
 # @keystonejs/fields
 
+## 23.0.1
+
+### Patch Changes
+
+- [#4717](https://github.com/keystonejs/keystone/pull/4717) [`17c86e0c3`](https://github.com/keystonejs/keystone/commit/17c86e0c3eda7ba08d1bb8edf5eb8ddc9a819e5a) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependency react-select to v4
+
+- Updated dependencies [[`b3c4a756f`](https://github.com/keystonejs/keystone/commit/b3c4a756fd2028d1e29967392d37098419e54ec3), [`17c86e0c3`](https://github.com/keystonejs/keystone/commit/17c86e0c3eda7ba08d1bb8edf5eb8ddc9a819e5a), [`714bdadce`](https://github.com/keystonejs/keystone/commit/714bdadce8c87a15cf3a296b44a31b9b9ca95e9d), [`b3c4a756f`](https://github.com/keystonejs/keystone/commit/b3c4a756fd2028d1e29967392d37098419e54ec3)]:
+  - @keystone-next/adapter-prisma-legacy@3.4.0
+  - @keystone-next/app-admin-ui-legacy@7.4.3
+
 ## 23.0.0
 
 ### Major Changes
