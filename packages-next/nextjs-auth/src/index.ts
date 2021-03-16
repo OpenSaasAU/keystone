@@ -1,4 +1,5 @@
 import url from 'url';
+//import * as Path from 'path';
 import {
   AdminFileToWrite,
   BaseGeneratedListTypes,
@@ -99,14 +100,14 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
     const pathname = url.parse(req.url!).pathname!;
 
     if (isValidSession) {
-      if (pathname === '/api/auth/login' || (initFirstItem && pathname === '/init')) {
+      if (pathname === '/api/auth/signin' || (initFirstItem && pathname === '/init')) {
         return { kind: 'redirect', to: '/' };
       }
       return;
     }
 
-    if (!session && pathname !== '/api/auth/login') {
-      return { kind: 'redirect', to: `/api/auth/login?from=${encodeURIComponent(req.url!)}` };
+    if (!session && !pathname.includes('/api/auth/')) {
+      return { kind: 'redirect', to: `/api/auth/signin?from=${encodeURIComponent(req.url!)}` };
     }
   };
 
@@ -118,12 +119,13 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
    *
    * The signin page is always included, and the init page is included when initFirstItem is set
    */
+   //const pkgDir = Path.dirname(require.resolve('@keystone-next/nextjs-auth/package.json'));
    const getAdditionalFiles = () => {
     let filesToWrite: AdminFileToWrite[] = [
       {
         mode: 'write',
         outputPath: 'pages/api/auth/[...nextauth].js',
-        src: authTemplate(),
+        src: authTemplate({ gqlNames, identityField, secretField, }),
       }
     ];
     return filesToWrite;
@@ -134,7 +136,7 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
    *
    * Must be added to the ui.publicPages config
    */
-  const publicPages = ['/api/auth/login'];
+  const publicPages = ['/api/auth/signin','/api/auth/signin/auth0', '/api/auth/callack','/api/auth/callback/auth0'];
 
 
   /**
