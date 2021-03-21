@@ -12,6 +12,7 @@ import { password, timestamp } from '@keystone-next/fields';
 import { AuthConfig, AuthGqlNames } from './types';
 import { getSchemaExtension } from './schema';
 import { authTemplate } from './templates/auth';
+import { getSession } from 'next-auth/client';
 
 /**
  * createAuth function
@@ -244,6 +245,7 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
         isAccessAllowed: async (context: KeystoneContext) => {
           // Allow access to the adminMeta data from the /init path to correctly render that page
           // even if the user isn't logged in (which should always be the case if they're seeing /init)
+          const session = context.session;
           const headers = context.req?.headers;
           const host = headers ? headers['x-forwarded-host'] || headers['host'] : null;
           const url = headers?.referer ? new URL(headers.referer) : undefined;
@@ -251,6 +253,15 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
             url?.pathname === '/init' &&
             url?.host === host &&
             (await context.sudo().lists[listKey].count({})) === 0;
+          const req = context.req  
+          const nextSession = getSession({ req });
+          
+          if (!session && nextSession) {
+            //obviously need to do a check and link the correct user instead of hard coding...
+              const sessionToken = await context.startSession({ listKey, itemId: 1 });
+              return { sessionToken, item: 1 };
+          }
+
           return (
             accessingInitPage ||
             (keystoneConfig.ui?.isAccessAllowed

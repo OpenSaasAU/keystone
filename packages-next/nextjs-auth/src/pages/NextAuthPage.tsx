@@ -21,9 +21,15 @@ export default function NextAuthPage(props: NextAuthPageProps){
         ],
         callbacks: {
             async signIn(user, account, profile) {
-
                 console.log("Signin... User: ", user, "Account: ", account, "Profile: ", profile)
-                return true
+                // TODO Check if the user is allowed access...
+                const isUser = true;
+                if (isUser){
+                    return true
+                } else {
+                    return false
+                }
+                
             },
             async redirect(url, baseUrl) {
                 console.log("Redirect... URL: ", url, "baseUrl: ", baseUrl)
