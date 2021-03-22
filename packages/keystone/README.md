@@ -111,16 +111,15 @@ _**Default:**_ `['public']`
 
 ## Methods
 
-| Method                | Description                                                                  |
-| --------------------- | ---------------------------------------------------------------------------- |
-| `connect`             | Manually connect to Adapter.                                                 |
-| `createAuthStrategy`  | Creates a new authentication middleware instance.                            |
-| `createList`          | Add a list to the `Keystone` schema.                                         |
-| `disconnect`          | Disconnect from the adapter.                                                 |
-| `extendGraphQLSchema` | Extend keystones generated schema with custom types, queries, and mutations. |
-| `prepare`             | Manually prepare `Keystone` middlewares.                                     |
-| `createContext`       | Create a `context` object that can be used with `executeGraphQL()`.          |
-| `executeGraphQL`      | Execute a server-side GraphQL operation within the given context.            |
+| Method               | Description                                                         |
+| -------------------- | ------------------------------------------------------------------- |
+| `connect`            | Manually connect to Adapter.                                        |
+| `createAuthStrategy` | Creates a new authentication middleware instance.                   |
+| `createList`         | Add a list to the `Keystone` schema.                                |
+| `disconnect`         | Disconnect from the adapter.                                        |
+| `prepare`            | Manually prepare `Keystone` middlewares.                            |
+| `createContext`      | Create a `context` object that can be used with `executeGraphQL()`. |
+| `executeGraphQL`     | Execute a server-side GraphQL operation within the given context.   |
 
 <!--
 ## Super secret methods
@@ -130,7 +129,6 @@ Please note: We use these internally but provide no support or assurance if used
 
 | Method                | Description                                                                  |
 | --------------------- | ---------------------------------------------------------------------------- |
-| `dumpSchema`          | Dump schema to a string.                                                     |
 | `getTypeDefs`         | Remove from user documentation?                                              |
 | `getResolvers`        | Remove from user documentation?                                              |
 | `getAdminMeta`        | Remove from user documentation?                                              |
@@ -178,30 +176,6 @@ keystone.createList('Posts', {...});
 ### `disconnect()`
 
 Disconnect the adapter.
-
-### `extendGraphQLSchema(config)`
-
-Extends keystones generated schema with custom types, queries, and mutations.
-
-```javascript
-keystone.extendGraphQLSchema({
-  types: [{ type: 'type MyType { original: Int, double: Float }' }],
-  queries: [
-    {
-      schema: 'double(x: Int): MyType',
-      resolver: (_, { x }) => ({ original: x, double: 2.0 * x }),
-    },
-  ],
-  mutations: [
-    {
-      schema: 'triple(x: Int): Int',
-      resolver: (_, { x }) => 3 * x,
-    },
-  ],
-});
-```
-
-See the [Custom schema guide](/docs/guides/custom-schema.md) for more information on utilizing custom schema.
 
 #### Config
 

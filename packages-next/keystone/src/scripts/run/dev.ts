@@ -8,7 +8,6 @@ import { createExpressServer } from '../../lib/createExpressServer';
 import { saveSchemaAndTypes } from '../../lib/saveSchemaAndTypes';
 import { CONFIG_PATH } from '../utils';
 import type { StaticPaths } from '..';
-import { MigrationMode } from '@keystone-next/types';
 
 // TODO: Don't generate or start an Admin UI if it isn't configured!!
 const devLoadingHTMLFilepath = path.join(
@@ -18,10 +17,7 @@ const devLoadingHTMLFilepath = path.join(
   'dev-loading.html'
 );
 
-export const dev = async (
-  { dotKeystonePath, projectAdminPath }: StaticPaths,
-  migrationMode: MigrationMode = 'dev'
-) => {
+export const dev = async ({ dotKeystonePath, projectAdminPath }: StaticPaths) => {
   console.log('🤞 Starting Keystone');
 
   const server = express();
@@ -29,11 +25,7 @@ export const dev = async (
 
   const config = initConfig(requireSource(CONFIG_PATH).default);
   const initKeystone = async () => {
-    const { keystone, graphQLSchema, createContext } = createSystem(
-      config,
-      dotKeystonePath,
-      migrationMode
-    );
+    const { keystone, graphQLSchema, createContext } = createSystem(config, dotKeystonePath, 'dev');
 
     console.log('✨ Generating graphQL schema');
     await saveSchemaAndTypes(graphQLSchema, keystone, dotKeystonePath);

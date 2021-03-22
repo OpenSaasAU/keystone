@@ -7,12 +7,12 @@ import { MongooseAdapter } from '@keystone-next/adapter-mongoose-legacy';
 import { KnexAdapter } from '@keystone-next/adapter-knex-legacy';
 // @ts-ignore
 import { PrismaAdapter } from '@keystone-next/adapter-prisma-legacy';
-import type { KeystoneConfig, BaseKeystone, MigrationMode } from '@keystone-next/types';
+import type { KeystoneConfig, BaseKeystone, MigrationAction } from '@keystone-next/types';
 
 export function createKeystone(
   config: KeystoneConfig,
   dotKeystonePath: string,
-  migrationMode: MigrationMode,
+  migrationAction: MigrationAction,
   prismaClient?: any
 ) {
   // Note: For backwards compatibility we may want to expose
@@ -31,9 +31,25 @@ export function createKeystone(
   } else if (db.adapter === 'prisma_postgresql') {
     adapter = new PrismaAdapter({
       getPrismaPath: () => path.join(dotKeystonePath, 'prisma'),
-      migrationMode,
+      migrationMode:
+        migrationAction === 'dev' ? (db.useMigrations ? 'dev' : 'prototype') : migrationAction,
       prismaClient,
       ...db,
+      provider: 'postgresql',
+    });
+  } else if (db.adapter === 'prisma_sqlite') {
+    if (!config.experimental?.prismaSqlite) {
+      throw new Error(
+        'SQLite support is still experimental. You must set { experimental: { prismaSqlite: true } } in your config to use this feature.'
+      );
+    }
+    adapter = new PrismaAdapter({
+      getPrismaPath: () => path.join(dotKeystonePath, 'prisma'),
+      prismaClient,
+      migrationMode:
+        migrationAction === 'dev' ? (db.useMigrations ? 'dev' : 'prototype') : migrationAction,
+      ...db,
+      provider: 'sqlite',
     });
   }
   // @ts-ignore The @types/keystonejs__keystone package has the wrong type for KeystoneOptions

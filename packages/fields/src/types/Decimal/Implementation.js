@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
 import { Decimal as _Decimal } from 'decimal.js';
-import { Implementation } from '../../Implementation';
 import { MongooseFieldAdapter } from '@keystone-next/adapter-mongoose-legacy';
 import { KnexFieldAdapter } from '@keystone-next/adapter-knex-legacy';
 import { PrismaFieldAdapter } from '@keystone-next/adapter-prisma-legacy';
+import { Implementation } from '../../Implementation';
 
 export class Decimal extends Implementation {
   constructor(path, { symbol }) {
@@ -142,6 +142,11 @@ export class KnexDecimalInterface extends KnexFieldAdapter {
 export class PrismaDecimalInterface extends PrismaFieldAdapter {
   constructor() {
     super(...arguments);
+    if (this.listAdapter.parentAdapter.provider === 'sqlite') {
+      throw new Error(
+        `PrismaAdapter provider "sqlite" does not support field type "${this.field.constructor.name}"`
+      );
+    }
     const { precision, scale } = this.config;
     this.isUnique = !!this.config.isUnique;
     this.isIndexed = !!this.config.isIndexed && !this.config.isUnique;

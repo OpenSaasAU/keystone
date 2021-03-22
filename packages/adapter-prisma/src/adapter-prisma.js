@@ -1,7 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-import { execSync } from 'child_process';
-import cuid from 'cuid';
 import { getGenerator, formatSchema } from '@prisma/sdk';
 import {
   BaseKeystoneAdapter,
@@ -9,8 +7,13 @@ import {
   BaseFieldAdapter,
 } from '@keystone-next/keystone-legacy';
 import { defaultObj, mapKeys, identity, flatten } from '@keystone-next/utils-legacy';
-// eslint-disable-next-line import/no-unresolved
-import { runPrototypeMigrations } from './migrations';
+import {
+  runPrototypeMigrations,
+  devMigrations,
+  deployMigrations,
+  resetDatabaseWithMigrations,
+  // eslint-disable-next-line import/no-unresolved
+} from './migrations';
 
 class PrismaAdapter extends BaseKeystoneAdapter {
   constructor(config = {}) {
@@ -20,7 +23,7 @@ class PrismaAdapter extends BaseKeystoneAdapter {
     this.listAdapterClass = PrismaListAdapter;
     this.name = 'prisma';
     this.provider = this.config.provider || 'postgresql';
-    this.migrationMode = this.config.migrationMode || 'dev';
+    this.migrationMode = this.config.migrationMode || 'prototype';
 
     this.getPrismaPath = this.config.getPrismaPath || (() => '.prisma');
     this.getDbSchemaName = this.config.getDbSchemaName || (() => 'public');
@@ -47,20 +50,15 @@ class PrismaAdapter extends BaseKeystoneAdapter {
     // TODO: Should we default to 'public' or null?
     if (this.provider === 'postgresql') {
       return this.dbSchemaName ? `${this.url}?schema=${this.dbSchemaName}` : this.url;
+    } else if (this.provider === 'sqlite') {
+      return this.url;
     }
-  }
-
-  _runPrismaCmd(cmd) {
-    return execSync(`yarn prisma ${cmd} --schema "${this.schemaPath}"`, {
-      env: { ...process.env, DATABASE_URL: this._url() },
-      encoding: 'utf-8',
-    });
   }
 
   async deploy(rels) {
     // Apply any migrations which haven't already been applied
     await this._prepareSchema(rels);
-    this._runPrismaCmd(`migrate deploy --preview-feature`);
+    await deployMigrations(this._url(), path.resolve(this.schemaPath));
   }
 
   async _getPrismaClient({ rels }) {
@@ -105,16 +103,15 @@ class PrismaAdapter extends BaseKeystoneAdapter {
     if (this.migrationMode === 'prototype') {
       // Sync the database directly, without generating any migration
       await runPrototypeMigrations(this._url(), prismaSchema, path.resolve(this.schemaPath));
-    } else if (this.migrationMode === 'createOnly') {
-      // Generate a migration, but do not apply it
-      this._runPrismaCmd(`migrate dev --create-only --name keystone-${cuid()} --preview-feature`);
     } else if (this.migrationMode === 'dev') {
       // Generate and apply a migration if required.
-      this._runPrismaCmd(`migrate dev --name keystone-${cuid()} --preview-feature`);
+      await devMigrations(this._url(), prismaSchema, path.resolve(this.schemaPath));
     } else if (this.migrationMode === 'none') {
       // Explicitly disable running any migrations
     } else {
-      throw new Error(`migrationMode must be one of 'dev', 'prototype', 'createOnly', or 'none`);
+      throw new Error(
+        `migrationMode must be one of 'dev', 'prototype', 'none-skip-client-generation', or 'none`
+      );
     }
   }
 
@@ -188,9 +185,27 @@ class PrismaAdapter extends BaseKeystoneAdapter {
         ),
       ];
 
+      const indexes = flatten(
+        listAdapter.fieldAdapters
+          .map(({ field }) => field)
+          .filter(f => f.isRelationship)
+          .map(f => {
+            const r = rels.find(r => r.left === f || r.right === f);
+            const isLeft = r.left === f;
+            if (
+              (r.cardinality === 'N:1' && isLeft) ||
+              (r.cardinality === '1:N' && !isLeft) ||
+              (r.cardinality === '1:1' && isLeft)
+            ) {
+              return [`@@index([${f.path}Id])`];
+            }
+            return [];
+          })
+      );
+
       return `
         model ${listAdapter.key} {
-          ${[...scalarFields, ...relFields].join('\n  ')}
+          ${[...scalarFields, ...relFields, ...indexes].join('\n  ')}
         }`;
     });
 
@@ -249,13 +264,18 @@ class PrismaAdapter extends BaseKeystoneAdapter {
             `ALTER SEQUENCE \"${this.dbSchemaName}\".\"${relname}\" RESTART WITH 1;`
           );
         }
+      } else if (this.provider === 'sqlite') {
+        const tables = await this.prisma.$queryRaw(
+          "SELECT name FROM sqlite_master WHERE type='table';"
+        );
+        for (const { name } of tables) {
+          await this.prisma.$queryRaw(`DELETE FROM "${name}";`);
+        }
       } else {
-        // If we're in prototype mode then we need to rebuild the tables after a reset
-        this._runPrismaCmd(`migrate reset --force --preview-feature`);
-        await runPrototypeMigrations(this._url(), this.prismaSchema, path.resolve(this.schemaPath));
+        throw new Error('Only "postgresql" and "sqlite" providers are supported');
       }
     } else {
-      this._runPrismaCmd(`migrate reset --force --preview-feature`);
+      resetDatabaseWithMigrations(this._url(), path.resolve(this.schemaPath));
     }
   }
 
@@ -419,11 +439,12 @@ class PrismaListAdapter extends BaseListAdapter {
     if (search !== undefined && search !== '' && searchField) {
       if (searchField.fieldName === 'Text') {
         // FIXME: Think about regex
+        const mode = this.parentAdapter.provider === 'sqlite' ? undefined : 'insensitive';
         if (!ret.where) {
-          ret.where = { [searchFieldName]: { contains: search, mode: 'insensitive' } };
+          ret.where = { [searchFieldName]: { contains: search, mode } };
         } else {
           ret.where = {
-            AND: [ret.where, { [searchFieldName]: { contains: search, mode: 'insensitive' } }],
+            AND: [ret.where, { [searchFieldName]: { contains: search, mode } }],
           };
         }
         // const f = escapeRegExp;

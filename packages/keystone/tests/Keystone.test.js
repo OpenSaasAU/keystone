@@ -63,29 +63,6 @@ test('Check require', () => {
   expect(Keystone).not.toBeNull();
 });
 
-test('unique typeDefs', () => {
-  const config = {
-    adapter: new MockAdapter(),
-    cookieSecret: 'secretForTesting',
-  };
-  const keystone = new Keystone(config);
-
-  keystone.createList('User', {
-    fields: {
-      images: { type: MockFieldType },
-    },
-  });
-
-  keystone.createList('Post', {
-    fields: {
-      hero: { type: MockFieldType },
-    },
-  });
-  const schema = keystone.dumpSchema();
-  expect(schema.match(/scalar Foo/g) || []).toHaveLength(1);
-  expect(schema.match(/getFoo: Boolean/g) || []).toHaveLength(1);
-});
-
 describe('Keystone.createList()', () => {
   test('basic', () => {
     const config = {
@@ -175,78 +152,6 @@ describe('Keystone.createList()', () => {
     expect(keystone.lists['User'].fields.length).toEqual(3); // id, name, email
     expect(keystone.lists['Post'].fields.length).toEqual(4); // id, title, content, extra
     expect(keystone.lists['Comment'].fields.length).toEqual(3); // id, heading, content
-  });
-});
-
-describe('Keystone.extendGraphQLSchema()', () => {
-  test('types', () => {
-    const config = {
-      adapter: new MockAdapter(),
-      cookieSecret: 'secretForTesting',
-    };
-    const keystone = new Keystone(config);
-    keystone.createList('User', {
-      fields: {
-        name: { type: MockFieldType },
-        email: { type: MockFieldType },
-      },
-    });
-
-    keystone.extendGraphQLSchema({ types: [{ type: 'type FooBar { foo: Int, bar: Float }' }] });
-    const schema = keystone.dumpSchema();
-    expect(schema.match(/type FooBar {\s*foo: Int\s*bar: Float\s*}/g) || []).toHaveLength(1);
-  });
-
-  test('queries', () => {
-    const config = {
-      adapter: new MockAdapter(),
-      cookieSecret: 'secretForTesting',
-    };
-    const keystone = new Keystone(config);
-    keystone.createList('User', {
-      fields: {
-        name: { type: MockFieldType },
-        email: { type: MockFieldType },
-      },
-    });
-
-    keystone.extendGraphQLSchema({
-      queries: [
-        {
-          schema: 'double(x: Int): Int',
-          resolver: (_, { x }) => 2 * x,
-        },
-      ],
-    });
-    const schema = keystone.dumpSchema();
-    expect(schema.match(/double\(x: Int\): Int/g) || []).toHaveLength(1);
-    expect(keystone._customProvider._extendedQueries).toHaveLength(1);
-  });
-
-  test('mutations', () => {
-    const config = {
-      adapter: new MockAdapter(),
-      cookieSecret: 'secretForTesting',
-    };
-    const keystone = new Keystone(config);
-    keystone.createList('User', {
-      fields: {
-        name: { type: MockFieldType },
-        email: { type: MockFieldType },
-      },
-    });
-
-    keystone.extendGraphQLSchema({
-      mutations: [
-        {
-          schema: 'double(x: Int): Int',
-          resolver: (_, { x }) => 2 * x,
-        },
-      ],
-    });
-    const schema = keystone.dumpSchema();
-    expect(schema.match(/double\(x: Int\): Int/g) || []).toHaveLength(1);
-    expect(keystone._customProvider._extendedMutations).toHaveLength(1);
   });
 });
 

@@ -1,9 +1,9 @@
 import cuid from 'cuid';
-import { Implementation } from '../../Implementation';
 import { MongooseFieldAdapter } from '@keystone-next/adapter-mongoose-legacy';
 import { KnexFieldAdapter } from '@keystone-next/adapter-knex-legacy';
 import { PrismaFieldAdapter } from '@keystone-next/adapter-prisma-legacy';
 import mongoose from 'mongoose';
+import { Implementation } from '../../Implementation';
 
 // Disabling the getter of mongoose >= 5.1.0
 // https://mongoosejs.com/docs/migrating_to_5.html#id-getter
@@ -179,6 +179,11 @@ export class KnexFileInterface extends CommonFileInterface(KnexFieldAdapter) {
 export class PrismaFileInterface extends CommonFileInterface(PrismaFieldAdapter) {
   constructor() {
     super(...arguments);
+    if (this.listAdapter.parentAdapter.provider === 'sqlite') {
+      throw new Error(
+        `PrismaAdapter provider "sqlite" does not support field type "${this.field.constructor.name}"`
+      );
+    }
 
     // Error rather than ignoring invalid config
     // We totally can index these values, it's just not trivial. See issue #1297
