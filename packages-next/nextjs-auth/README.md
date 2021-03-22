@@ -1,7 +1,13 @@
-# @keystone-next/auth
+# @keystone-next/nextjs-auth
 
-Part of Keystone's [new interfaces project](https://www.keystonejs.com/blog/roadmap-update). This is a preview release, and not yet documented.
+Does not work properly yet! Allows login but does not check if the user is in the keystone db or is allowed access in anyway. Purely being used as a POC/net-auth playground. and just setup for auth0 at this stage...
 
-You can find example projects and usage [on GitHub](https://github.com/keystonejs/keystone/tree/master/examples-next)
+You will need to following setup:
+```
+process.env.AUTH0_CLIENT_ID
+process.env.AUTH0_CLIENT_SECRET
+process.env.AUTH0_DOMAIN
+process.env.NEXTAUTH_URL
+```
 
-For updates, [follow @keystonejs on Twitter](https://twitter.com/keystonejs) and check out [our Blog](https://www.keystonejs.com/blog)
+This is just copied from the keystone-next/auth package and changed up a bit to work with next-auth
