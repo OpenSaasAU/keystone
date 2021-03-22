@@ -99,16 +99,26 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
     session,
   }) => {
     const pathname = url.parse(req.url!).pathname!;
-
     if (isValidSession) {
       if (pathname === '/api/auth/signin' || (initFirstItem && pathname === '/init')) {
         return { kind: 'redirect', to: '/' };
       }
       return;
-    }
+    } 
 
-    if (!session && !pathname.includes('/api/auth/')) {
-      return { kind: 'redirect', to: `/api/auth/signin?from=${encodeURIComponent(req.url!)}` };
+    if (!session) {
+      if (!pathname.includes('/api/auth/')) {
+        const nextSession = await getSession({ req });
+          console.log("NextSession - Middleware", nextSession);
+          if (nextSession) {
+            //next suth is returning a user allow through middleware
+            return
+          } else {
+            return { kind: 'redirect', to: `/api/auth/signin?from=${encodeURIComponent(req.url!)}` };
+          }
+      }
+
+
     }
   };
 
@@ -137,7 +147,7 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
    *
    * Must be added to the ui.publicPages config
    */
-  const publicPages = ['/api/auth/signin','/api/auth/signin/auth0', '/api/auth/callack','/api/auth/callback/auth0'];
+  const publicPages = ['/api/auth/signin','/api/auth/signin/auth0', '/api/auth/callack','/api/auth/callback/auth0','/api/auth/session'];
 
 
   /**
@@ -245,7 +255,6 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
         isAccessAllowed: async (context: KeystoneContext) => {
           // Allow access to the adminMeta data from the /init path to correctly render that page
           // even if the user isn't logged in (which should always be the case if they're seeing /init)
-          const session = context.session;
           const headers = context.req?.headers;
           const host = headers ? headers['x-forwarded-host'] || headers['host'] : null;
           const url = headers?.referer ? new URL(headers.referer) : undefined;
@@ -253,21 +262,33 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
             url?.pathname === '/init' &&
             url?.host === host &&
             (await context.sudo().lists[listKey].count({})) === 0;
-          const req = context.req  
-          const nextSession = getSession({ req });
-          
-          if (!session && nextSession) {
-            //obviously need to do a check and link the correct user instead of hard coding...
-              const sessionToken = await context.startSession({ listKey, itemId: 1 });
-              return { sessionToken, item: 1 };
-          }
 
-          return (
-            accessingInitPage ||
-            (keystoneConfig.ui?.isAccessAllowed
-              ? keystoneConfig.ui.isAccessAllowed(context)
-              : context.session !== undefined)
-          );
+          if (context.session === undefined) {
+            const req = context.req;
+            if (!req) {
+              // No Request available to check NextAuthSession
+            } else {
+              console.log('Session - Should be undefined', JSON.stringify(context.session, null, 2));
+              const nextSession = await getSession({ req });
+                if (nextSession) {
+                  //obviously need to do a check and link the correct user instead of hard coding - hardcoding for POC...
+                  const sessionToken = await context.startSession({ listKey, itemId: 1 });
+                  console.log("returning... ", sessionToken !== undefined)
+                  return sessionToken !== undefined;
+                } else {
+                  console.log("False Return");
+                  return false;
+                }
+            }
+          } else {
+            console.log("Final Return");
+            return (
+              accessingInitPage ||
+              (keystoneConfig.ui?.isAccessAllowed
+                ? keystoneConfig.ui.isAccessAllowed(context)
+                : context.session !== undefined)
+            );
+          } 
         },
       };
     }

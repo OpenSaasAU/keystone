@@ -35,12 +35,11 @@ export default function NextAuthPage(props: NextAuthPageProps){
                 console.log("Redirect... URL: ", url, "baseUrl: ", baseUrl)
                 return baseUrl
             },
-            async session(session, user) {
-                console.log("Session... Session: ", session, "User: ", user)
-                return session
+            async session(session: any, token: any) {
+                session.subject = token.sub
+                return Promise.resolve(session)
             },
             async jwt(token, user, account, profile, isNewUser) {
-                console.log(" JWT... token: ", token, "User: ", user, "Account: ", account, "Profile: ", profile, "isNew: ", isNewUser)
                 return token
             }
         }
