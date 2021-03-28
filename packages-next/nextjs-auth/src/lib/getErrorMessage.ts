@@ -1,7 +1,7 @@
 import {
   AuthTokenRedemptionErrorCode,
   AuthTokenRequestErrorCode,
-  PasswordAuthErrorCode,
+  NextAuthErrorCode,
 } from '../types';
 
 export function getPasswordAuthError({
@@ -15,19 +15,17 @@ export function getPasswordAuthError({
   secretField: string;
   itemSingular: string;
   itemPlural: string;
-  code: PasswordAuthErrorCode;
+  code: NextAuthErrorCode;
 }): string {
   switch (code) {
     case 'FAILURE':
       return 'Authentication failed.';
     case 'IDENTITY_NOT_FOUND':
       return `The ${identityField} value provided didn't identify any ${itemPlural}.`;
-    case 'SECRET_NOT_SET':
+    case 'SUBJECT_NOT_FOUND':
       return `The ${itemSingular} identified has no ${secretField} set so can not be authenticated.`;
     case 'MULTIPLE_IDENTITY_MATCHES':
       return `The ${identityField} value provided identified more than one ${itemSingular}.`;
-    case 'SECRET_MISMATCH':
-      return `The ${secretField} provided is incorrect.`;
   }
 }
 

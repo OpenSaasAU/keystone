@@ -3,7 +3,6 @@ import type { GraphQLSchemaExtension, KeystoneContext } from '@keystone-next/typ
 import { AuthGqlNames } from '../types';
 import { getSession } from 'next-auth/client';
 
-import { validateSecret } from '../lib/validateSecret';
 import { getPasswordAuthError } from '../lib/getErrorMessage';
 import { validateNextAuth } from '../lib/validateNextAuth';
 

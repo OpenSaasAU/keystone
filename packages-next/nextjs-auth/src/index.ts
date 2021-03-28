@@ -13,7 +13,6 @@ import { AuthConfig, AuthGqlNames } from './types';
 import { getSchemaExtension } from './schema';
 import { authTemplate } from './templates/auth';
 import { signinTemplate } from './templates/signin';
-import { getSession } from 'next-auth/client';
 
 /**
  * createAuth function

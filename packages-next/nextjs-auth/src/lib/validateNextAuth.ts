@@ -26,7 +26,7 @@ export async function validateNextAuth(
   if (item){
     return {success: true, item};
   } else {
-    return { success: false, code: protectIdentities ? 'FAILURE' : 'SECRET_MISMATCH' };
+    return { success: false, code: protectIdentities ? 'FAILURE' : 'SUBJECT_NOT_FOUND' };
   }
  
 }

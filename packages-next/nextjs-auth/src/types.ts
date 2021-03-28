@@ -70,8 +70,7 @@ export type PasswordAuthErrorCode =
 export type NextAuthErrorCode =
   | AuthTokenRequestErrorCode
   | 'FAILURE' // Generic
-  | 'SUBJECT_NOT_FOUND'
-  | 'SECRET_MISMATCH';
+  | 'SUBJECT_NOT_FOUND';
 
 export type AuthTokenRedemptionErrorCode =
   | AuthTokenRequestErrorCode
