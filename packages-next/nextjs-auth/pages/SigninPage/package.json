@@ -1,0 +1,4 @@
+{
+  "main": "dist/nextjs-auth.cjs.js",
+  "module": "dist/nextjs-auth.esm.js"
+}

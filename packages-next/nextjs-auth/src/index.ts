@@ -12,6 +12,7 @@ import { password, timestamp } from '@keystone-next/fields';
 import { AuthConfig, AuthGqlNames } from './types';
 import { getSchemaExtension } from './schema';
 import { authTemplate } from './templates/auth';
+import { signinTemplate } from './templates/signin';
 import { getSession } from 'next-auth/client';
 
 /**
@@ -106,13 +107,13 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
       return;
     } 
 
-    if (!session) {
+    if (!session && pathname !== '/signin' ) {
       if (!pathname.includes('/api/auth/')) {
         const nextSession = await getSession({ req });
           console.log("NextSession - Middleware", nextSession);
           if (nextSession) {
-            //next suth is returning a user allow through middleware
-            return
+            //next auth send to signin to create keystone session.
+            return { kind: 'redirect', to: '/signin'}
           } else {
             return { kind: 'redirect', to: `/api/auth/signin?from=${encodeURIComponent(req.url!)}` };
           }
@@ -137,7 +138,12 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
         mode: 'write',
         outputPath: 'pages/api/auth/[...nextauth].js',
         src: authTemplate({ gqlNames, identityField, secretField, }),
-      }
+      },
+      {
+        mode: 'write',
+        outputPath: 'pages/signin.js',
+        src: signinTemplate({ gqlNames, identityField, secretField }),
+      },
     ];
     return filesToWrite;
   };
@@ -147,7 +153,7 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
    *
    * Must be added to the ui.publicPages config
    */
-  const publicPages = ['/api/auth/signin','/api/auth/signin/auth0', '/api/auth/callack','/api/auth/callback/auth0','/api/auth/session'];
+  const publicPages = ['/api/auth/signin','/api/auth/signin/auth0', '/api/auth/callack','/api/auth/callback/auth0','/api/auth/session','/signin'];
 
 
   /**
@@ -262,33 +268,12 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
             url?.pathname === '/init' &&
             url?.host === host &&
             (await context.sudo().lists[listKey].count({})) === 0;
-
-          if (context.session === undefined) {
-            const req = context.req;
-            if (!req) {
-              // No Request available to check NextAuthSession
-            } else {
-              console.log('Session - Should be undefined', JSON.stringify(context.session, null, 2));
-              const nextSession = await getSession({ req });
-                if (nextSession) {
-                  //obviously need to do a check and link the correct user instead of hard coding - hardcoding for POC...
-                  const sessionToken = await context.startSession({ listKey, itemId: 1 });
-                  console.log("returning... ", sessionToken !== undefined)
-                  return sessionToken !== undefined;
-                } else {
-                  console.log("False Return");
-                  return false;
-                }
-            }
-          } else {
-            console.log("Final Return");
-            return (
-              accessingInitPage ||
-              (keystoneConfig.ui?.isAccessAllowed
-                ? keystoneConfig.ui.isAccessAllowed(context)
-                : context.session !== undefined)
-            );
-          } 
+          return (
+            accessingInitPage ||
+            (keystoneConfig.ui?.isAccessAllowed
+              ? keystoneConfig.ui.isAccessAllowed(context)
+              : context.session !== undefined)
+          );
         },
       };
     }

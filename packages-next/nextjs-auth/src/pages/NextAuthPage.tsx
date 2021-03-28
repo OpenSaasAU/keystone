@@ -33,7 +33,7 @@ export default function NextAuthPage(props: NextAuthPageProps){
             },
             async redirect(url, baseUrl) {
                 console.log("Redirect... URL: ", url, "baseUrl: ", baseUrl)
-                return baseUrl
+                return '/signin'
             },
             async session(session: any, token: any) {
                 session.subject = token.sub

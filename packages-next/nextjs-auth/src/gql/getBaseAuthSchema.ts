@@ -1,6 +1,7 @@
 import type { GraphQLSchemaExtension, KeystoneContext } from '@keystone-next/types';
 
 import { AuthGqlNames } from '../types';
+import { getSession } from 'next-auth/client';
 
 import { validateSecret } from '../lib/validateSecret';
 import { getPasswordAuthError } from '../lib/getErrorMessage';
@@ -27,7 +28,7 @@ export function getBaseAuthSchema<I extends string, S extends string>({
       }
       # Password auth
       type Mutation {
-        ${gqlNames.authenticateItemWithPassword}(${identityField}: String!, ${secretField}: String!): ${gqlNames.ItemAuthenticationWithPasswordResult}!
+        ${gqlNames.authenticateItemWithPassword}(${identityField}: String, ${secretField}: String): ${gqlNames.ItemAuthenticationWithPasswordResult}!
       }
       union ${gqlNames.ItemAuthenticationWithPasswordResult} = ${gqlNames.ItemAuthenticationWithPasswordSuccess} | ${gqlNames.ItemAuthenticationWithPasswordFailure}
       type ${gqlNames.ItemAuthenticationWithPasswordSuccess} {
@@ -56,33 +57,12 @@ export function getBaseAuthSchema<I extends string, S extends string>({
           if (!context.startSession) {
             throw new Error('No session implementation available on context');
           }
-
-          const list = context.keystone.lists[listKey];
-          const itemAPI = context.sudo().lists[listKey];
-          const result = await validateSecret(
-            list,
-            identityField,
-            args[identityField],
-            secretField,
-            protectIdentities,
-            args[secretField],
-            itemAPI
-          );
-
-          if (!result.success) {
-            const message = getPasswordAuthError({
-              identityField,
-              secretField,
-              itemSingular: list.adminUILabels.singular,
-              itemPlural: list.adminUILabels.plural,
-              code: result.code,
-            });
-            return { code: result.code, message };
-          }
-
+          const req = context.req;
+          const nextSession = await getSession({ req });
+          console.log("NextSession - gql", nextSession);
           // Update system state
-          const sessionToken = await context.startSession({ listKey, itemId: result.item.id });
-          return { sessionToken, item: result.item };
+          const sessionToken = await context.startSession({ listKey, itemId: 1 });
+          return { sessionToken, item: {id: 1} };
         },
       },
       Query: {
