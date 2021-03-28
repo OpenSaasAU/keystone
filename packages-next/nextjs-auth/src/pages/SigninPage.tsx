@@ -9,6 +9,7 @@ import { useMutation, gql } from '@keystone-next/admin-ui/apollo';
 import { useRawKeystone, useReinitContext } from '@keystone-next/admin-ui/context';
 import { useRouter } from '@keystone-next/admin-ui/router';
 import { Button } from '@keystone-ui/button';
+import { signIn, useSession } from 'next-auth/client'
 
 type SigninPageProps = {
     identityField: string;
@@ -47,13 +48,16 @@ export const SigninPage = ({
   const reinitContext = useReinitContext();
   const router = useRouter();
   const rawKeystone = useRawKeystone();
-  const mode = 'signin'
+  const mode = 'signin';
 
   useEffect(() => {
     if (rawKeystone.authenticatedItem.state === 'authenticated') {
       router.push((router.query.from as string | undefined) || '/');
     }
   }, [rawKeystone.authenticatedItem, router.query.from]);
+
+  const [ session, sessionLoading ] = useSession()
+  console.log(session, sessionLoading);
 
   const runMutate = async function result () {
     try {
@@ -71,38 +75,20 @@ export const SigninPage = ({
     
   }
   useEffect(() => {
-    runMutate();
-    reinitContext();
-    console.log("3", error, loading, data);
-    router.push((router.query.from as string | undefined) || '/');
-  })
+    if (session) {
+      runMutate();
+      reinitContext();
+      console.log("3", error, loading, data);
+      router.push((router.query.from as string | undefined) || '/');
+    } else {
+      signIn('auth0');
+    }
+  }, [session])
 
     return (
-      <Stack
-        gap="xlarge"
-        as="form"
-        onSubmit={async (event: FormEvent<HTMLFormElement>) => {
-          event.preventDefault();
-
-          if (mode === 'signin') {
-            try {
-              let result = await mutate({
-                variables: {
-                },
-              });
-              if (result.data.authenticate?.__typename !== successTypename) {
-                return;
-              }
-            } catch (err) {
-              return;
-            }
-            reinitContext();
-            router.push((router.query.from as string | undefined) || '/');
-          }
-        }}
-      >
+      <Stack>
       <H1>Sign In</H1>
-      {loading && (
+      {loading || sessionLoading && (
         <Notice title="Loading" tone="positive">
         Loading
       </Notice>
@@ -118,16 +104,7 @@ export const SigninPage = ({
         </Notice>
       )}
       <Button
-              weight="bold"
-              tone="active"
-              isLoading={
-                loading ||
-                // this is for while the page is loading but the mutation has finished successfully
-                data?.authenticate?.__typename === successTypename
-              }
-              type="submit"
-            >
-              Sign In
+              onClick={() => signIn('auth0')}>Sign in...
             </Button>
     </Stack>
   )

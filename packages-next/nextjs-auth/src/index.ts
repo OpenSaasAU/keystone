@@ -101,7 +101,7 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
   }) => {
     const pathname = url.parse(req.url!).pathname!;
     if (isValidSession) {
-      if (pathname === '/api/auth/signin' || (initFirstItem && pathname === '/init')) {
+      if (pathname === '/api/auth/signin' || pathname === '/signin' || (initFirstItem && pathname === '/init')) {
         return { kind: 'redirect', to: '/' };
       }
       return;
@@ -109,14 +109,7 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
 
     if (!session && pathname !== '/signin' ) {
       if (!pathname.includes('/api/auth/')) {
-        const nextSession = await getSession({ req });
-          console.log("NextSession - Middleware", nextSession);
-          if (nextSession) {
-            //next auth send to signin to create keystone session.
-            return { kind: 'redirect', to: '/signin'}
-          } else {
-            return { kind: 'redirect', to: `/api/auth/signin?from=${encodeURIComponent(req.url!)}` };
-          }
+        return { kind: 'redirect', to: `/signin?from=${encodeURIComponent(req.url!)}` };
       }
 
 
@@ -153,7 +146,7 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
    *
    * Must be added to the ui.publicPages config
    */
-  const publicPages = ['/api/auth/signin','/api/auth/signin/auth0', '/api/auth/callack','/api/auth/callback/auth0','/api/auth/session','/signin'];
+  const publicPages = ['/api/auth/csrf','/api/auth/signin','/api/auth/signin/auth0', '/api/auth/callack','/api/auth/callback/auth0','/api/auth/session','/api/auth/providers','/signin'];
 
 
   /**
@@ -269,7 +262,7 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
             url?.host === host &&
             (await context.sudo().lists[listKey].count({})) === 0;
           return (
-            accessingInitPage ||
+            accessingInitPage || 
             (keystoneConfig.ui?.isAccessAllowed
               ? keystoneConfig.ui.isAccessAllowed(context)
               : context.session !== undefined)
