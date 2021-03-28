@@ -5,6 +5,7 @@ import { getSession } from 'next-auth/client';
 
 import { validateSecret } from '../lib/validateSecret';
 import { getPasswordAuthError } from '../lib/getErrorMessage';
+import { validateNextAuth } from '../lib/validateNextAuth';
 
 export function getBaseAuthSchema<I extends string, S extends string>({
   listKey,
@@ -60,9 +61,32 @@ export function getBaseAuthSchema<I extends string, S extends string>({
           const req = context.req;
           const nextSession = await getSession({ req });
           console.log("NextSession - gql", nextSession);
+          const list = context.keystone.lists[listKey];
+          const itemAPI = context.sudo().lists[listKey];
+          const identity = nextSession.subject;
+
+          const result = await validateNextAuth(
+            list,
+            identityField,
+            identity,
+            secretField,
+            protectIdentities,
+            args[secretField],
+            itemAPI
+          );
+          if (!result.success) {
+            const message = getPasswordAuthError({
+              identityField,
+              secretField,
+              itemSingular: list.adminUILabels.singular,
+              itemPlural: list.adminUILabels.plural,
+              code: result.code,
+            });
+            return { code: result.code, message };
+          }
           // Update system state
-          const sessionToken = await context.startSession({ listKey, itemId: 1 });
-          return { sessionToken, item: {id: 1} };
+          const sessionToken = await context.startSession({ listKey, itemId: result.item.id  });
+          return { sessionToken, item: result.item };
         },
       },
       Query: {

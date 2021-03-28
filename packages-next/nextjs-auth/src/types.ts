@@ -67,6 +67,12 @@ export type PasswordAuthErrorCode =
   | 'SECRET_NOT_SET'
   | 'SECRET_MISMATCH';
 
+export type NextAuthErrorCode =
+  | AuthTokenRequestErrorCode
+  | 'FAILURE' // Generic
+  | 'SUBJECT_NOT_FOUND'
+  | 'SECRET_MISMATCH';
+
 export type AuthTokenRedemptionErrorCode =
   | AuthTokenRequestErrorCode
   | 'FAILURE' // Generic
