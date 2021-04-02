@@ -1,75 +1,27 @@
-import fs from 'fs';
-import path from 'path';
-import { getGenerator, formatSchema } from '@prisma/sdk';
-import {
-  BaseKeystoneAdapter,
-  BaseListAdapter,
-  BaseFieldAdapter,
-} from '@keystone-next/keystone-legacy';
+import pWaterfall from 'p-waterfall';
 import { defaultObj, mapKeys, identity, flatten } from '@keystone-next/utils-legacy';
-import {
-  runPrototypeMigrations,
-  devMigrations,
-  deployMigrations,
-  resetDatabaseWithMigrations,
-  // eslint-disable-next-line import/no-unresolved
-} from './migrations';
 
-class PrismaAdapter extends BaseKeystoneAdapter {
+class PrismaAdapter {
   constructor(config = {}) {
-    super(...arguments);
-    this._prismaClient = config.prismaClient;
-
-    this.listAdapterClass = PrismaListAdapter;
+    this.config = { ...config };
+    this.listAdapters = {};
     this.name = 'prisma';
     this.provider = this.config.provider || 'postgresql';
-    this.migrationMode = this.config.migrationMode || 'prototype';
-
-    this.getPrismaPath = this.config.getPrismaPath || (() => '.prisma');
-    this.getDbSchemaName = this.config.getDbSchemaName || (() => 'public');
     this.enableLogging = this.config.enableLogging || false;
     this.url = this.config.url || process.env.DATABASE_URL;
   }
 
-  async _prepareSchema(rels) {
-    const clientDir = 'generated-client';
-    const prismaSchema = await this._generatePrismaSchema({ rels, clientDir });
-    // See if there is a prisma client available for this hash
-    const prismaPath = this.getPrismaPath({ prismaSchema });
-    this.schemaPath = path.join(prismaPath, 'schema.prisma');
-    this.clientPath = path.resolve(`${prismaPath}/${clientDir}`);
-    this.dbSchemaName = this.getDbSchemaName({ prismaSchema });
-    this.prismaSchema = prismaSchema;
-    return { prismaSchema };
+  newListAdapter(key, adapterConfig) {
+    this.listAdapters[key] = new PrismaListAdapter(key, this, adapterConfig);
+    return this.listAdapters[key];
   }
 
-  _url() {
-    // By default we put `schema=public` onto all `DATABASE_URL` values.
-    // If this isn't what a user wants, they can update `getSchemaName` to return either
-    // a different dbSchemaName, or null if they just want to use the DATABASE_URL as it is.
-    // TODO: Should we default to 'public' or null?
-    if (this.provider === 'postgresql') {
-      return this.dbSchemaName ? `${this.url}?schema=${this.dbSchemaName}` : this.url;
-    } else if (this.provider === 'sqlite') {
-      return this.url;
-    }
+  getListAdapterByKey(key) {
+    return this.listAdapters[key];
   }
 
-  async deploy(rels) {
-    // Apply any migrations which haven't already been applied
-    await this._prepareSchema(rels);
-    await deployMigrations(this._url(), path.resolve(this.schemaPath));
-  }
-
-  async _getPrismaClient({ rels }) {
-    if (this._prismaClient) {
-      return this._prismaClient;
-    }
-    await this._generateClient(rels);
-    return require(this.clientPath).PrismaClient;
-  }
-
-  async _connect({ rels }) {
+  async connect({ rels }) {
+    // Connect to the database
     // the adapter was already connected since we have a prisma client
     // it may have been disconnected since it was connected though
     // so connect but don't regenerate the prisma client
@@ -77,59 +29,23 @@ class PrismaAdapter extends BaseKeystoneAdapter {
       await this.prisma.$connect();
       return;
     }
-    const PrismaClient = await this._getPrismaClient({ rels });
-    this.prisma = new PrismaClient({
+    if (!this.config.prismaClient) {
+      throw new Error('You must pass the prismaClient option to connect to a database');
+    }
+    this.prisma = new this.config.prismaClient({
       log: this.enableLogging && ['query'],
-      datasources: { [this.provider]: { url: this._url() } },
+      datasources: { [this.provider]: { url: this.url } },
     });
+
+    // Set up all list adapter models
+    Object.values(this.listAdapters).forEach(listAdapter => {
+      listAdapter._setupModel({ rels, prisma: this.prisma });
+    });
+
     await this.prisma.$connect();
   }
 
-  async _generateClient(rels) {
-    // Generate a formatted schema
-    // note that we currently still need to call _prepareSchema even during
-    // a `keystone-next start` because it has various side effects
-    const { prismaSchema } = await this._prepareSchema(rels);
-
-    if (this.migrationMode !== 'none-skip-client-generation') {
-      this._writePrismaSchema({ prismaSchema });
-
-      // Generate prisma client and run prisma migrations
-      await Promise.all([this._generatePrismaClient(), this._runMigrations({ prismaSchema })]);
-    }
-  }
-
-  async _runMigrations({ prismaSchema }) {
-    if (this.migrationMode === 'prototype') {
-      // Sync the database directly, without generating any migration
-      await runPrototypeMigrations(this._url(), prismaSchema, path.resolve(this.schemaPath));
-    } else if (this.migrationMode === 'dev') {
-      // Generate and apply a migration if required.
-      await devMigrations(this._url(), prismaSchema, path.resolve(this.schemaPath));
-    } else if (this.migrationMode === 'none') {
-      // Explicitly disable running any migrations
-    } else {
-      throw new Error(
-        `migrationMode must be one of 'dev', 'prototype', 'none-skip-client-generation', or 'none`
-      );
-    }
-  }
-
-  async _writePrismaSchema({ prismaSchema }) {
-    // Make output dir (you know, just in case!)
-    fs.mkdirSync(this.clientPath, { recursive: true });
-
-    // Write prisma file
-    fs.writeSync(fs.openSync(this.schemaPath, 'w'), prismaSchema);
-  }
-
-  async _generatePrismaClient() {
-    const generator = await getGenerator({ schemaPath: this.schemaPath });
-    await generator.generate();
-    generator.stop();
-  }
-
-  async _generatePrismaSchema({ rels, clientDir }) {
+  _generatePrismaSchema({ rels, clientDir }) {
     const models = Object.values(this.listAdapters).map(listAdapter => {
       const scalarFields = flatten(
         listAdapter.fieldAdapters.filter(f => !f.field.isRelationship).map(f => f.getPrismaSchema())
@@ -229,84 +145,83 @@ class PrismaAdapter extends BaseKeystoneAdapter {
         provider = "prisma-client-js"
         output = "${clientDir}"
       }`;
-    return await formatSchema({ schema: header + models.join('\n') + '\n' + enums.join('\n') });
-  }
-
-  async postConnect({ rels }) {
-    Object.values(this.listAdapters).forEach(listAdapter => {
-      listAdapter._postConnect({ rels, prisma: this.prisma });
-    });
-
-    if (this.config.dropDatabase && process.env.NODE_ENV !== 'production') {
-      await this.dropDatabase();
-    }
-    return [];
-  }
-
-  // This will drop all the tables in the backing database. Use wisely.
-  async dropDatabase() {
-    if (this.migrationMode === 'prototype') {
-      if (this.provider === 'postgresql') {
-        // Special fast path to drop data from a postgres database.
-        // This is an optimization which is particularly crucial in a unit testing context.
-        // This code path takes milliseconds, vs ~7 seconds for a migrate reset + db push
-        for (const { tablename } of await this.prisma.$queryRaw(
-          `SELECT tablename FROM pg_tables WHERE schemaname='${this.dbSchemaName}'`
-        )) {
-          await this.prisma.$queryRaw(
-            `TRUNCATE TABLE \"${this.dbSchemaName}\".\"${tablename}\" CASCADE;`
-          );
-        }
-        for (const { relname } of await this.prisma.$queryRaw(
-          `SELECT c.relname FROM pg_class AS c JOIN pg_namespace AS n ON c.relnamespace = n.oid WHERE c.relkind='S' AND n.nspname='${this.dbSchemaName}';`
-        )) {
-          await this.prisma.$queryRaw(
-            `ALTER SEQUENCE \"${this.dbSchemaName}\".\"${relname}\" RESTART WITH 1;`
-          );
-        }
-      } else if (this.provider === 'sqlite') {
-        const tables = await this.prisma.$queryRaw(
-          "SELECT name FROM sqlite_master WHERE type='table';"
-        );
-        for (const { name } of tables) {
-          await this.prisma.$queryRaw(`DELETE FROM "${name}";`);
-        }
-      } else {
-        throw new Error('Only "postgresql" and "sqlite" providers are supported');
-      }
-    } else {
-      resetDatabaseWithMigrations(this._url(), path.resolve(this.schemaPath));
-    }
+    return header + models.join('\n') + '\n' + enums.join('\n');
   }
 
   disconnect() {
     return this.prisma.$disconnect();
-    // Everything below here is being cleaned up in an attempt to help out the garbage collector
-    // delete this.prisma;
-    // Object.values(this.listAdapters).forEach(listAdapter => {
-    //   delete listAdapter.prisma;
-    // });
-    // delete require.cache[require.resolve(this.clientPath)];
-  }
-
-  getDefaultPrimaryKeyConfig() {
-    // Required here due to circular refs
-    const { AutoIncrement } = require('@keystone-next/fields-auto-increment-legacy');
-    return AutoIncrement.primaryKeyDefaults[this.name].getConfig();
-  }
-
-  async checkDatabaseVersion() {
-    // FIXME: Decide what/how we want to check things here
   }
 }
 
-class PrismaListAdapter extends BaseListAdapter {
-  constructor(key, parentAdapter) {
-    super(...arguments);
+class PrismaListAdapter {
+  constructor(key, parentAdapter, config) {
+    this.key = key;
+    this.parentAdapter = parentAdapter;
+    this.fieldAdapters = [];
+    this.fieldAdaptersByPath = {};
+    this.config = config;
+
+    this.preSaveHooks = [];
+    this.postReadHooks = [
+      item => {
+        // FIXME: This can hopefully be removed once graphql 14.1.0 is released.
+        // https://github.com/graphql/graphql-js/pull/1520
+        if (item && item.id) item.id = item.id.toString();
+        return item;
+      },
+    ];
     this.getListAdapterByKey = parentAdapter.getListAdapterByKey.bind(parentAdapter);
   }
 
-  _postConnect({ rels, prisma }) {
+  newFieldAdapter(fieldAdapterClass, name, path, field, getListByKey, config) {
+    const adapter = new fieldAdapterClass(name, path, field, this, getListByKey, config);
+    adapter.setupHooks({
+      addPreSaveHook: this.addPreSaveHook.bind(this),
+      addPostReadHook: this.addPostReadHook.bind(this),
+    });
+    this.fieldAdapters.push(adapter);
+    this.fieldAdaptersByPath[adapter.path] = adapter;
+    return adapter;
+  }
+
+  addPreSaveHook(hook) {
+    this.preSaveHooks.push(hook);
+  }
+
+  addPostReadHook(hook) {
+    this.postReadHooks.push(hook);
+  }
+
+  onPreSave(item) {
+    // We waterfall so the final item is a composed version of the input passing
+    // through each consecutive hook
+    return pWaterfall(this.preSaveHooks, item);
+  }
+
+  async onPostRead(item) {
+    // We waterfall so the final item is a composed version of the input passing
+    // through each consecutive hook
+    return pWaterfall(this.postReadHooks, await item);
+  }
+
+  async create(data) {
+    return this.onPostRead(this._create(await this.onPreSave(data)));
+  }
+
+  async delete(id) {
+    return this._delete(id);
+  }
+
+  async update(id, data) {
+    return this.onPostRead(this._update(id, await this.onPreSave(data)));
+  }
+
+  async itemsQuery(args, { meta = false, from = {} } = {}) {
+    const results = await this._itemsQuery(args, { meta, from });
+    return meta ? results : Promise.all(results.map(item => this.onPostRead(item)));
+  }
+
+  _setupModel({ rels, prisma }) {
     // https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-schema/models#queries-crud
     // "By default the name of the property is the lowercase form of the model name,
     // e.g. user for a User model or post for a Post model."
@@ -537,10 +452,18 @@ class PrismaListAdapter extends BaseListAdapter {
   }
 }
 
-class PrismaFieldAdapter extends BaseFieldAdapter {
-  constructor() {
-    super(...arguments);
+class PrismaFieldAdapter {
+  constructor(fieldName, path, field, listAdapter, getListByKey, config = {}) {
+    this.fieldName = fieldName;
+    this.path = path;
+    this.field = field;
+    this.listAdapter = listAdapter;
+    this.config = config;
+    this.getListByKey = getListByKey;
+    this.dbPath = path;
   }
+
+  setupHooks() {}
 
   _schemaField({ type, extra = '' }) {
     const { isRequired, isUnique } = this.config;

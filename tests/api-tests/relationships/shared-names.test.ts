@@ -6,20 +6,19 @@ import {
   setupFromConfig,
   testConfig,
 } from '@keystone-next/test-utils-legacy';
-// @ts-ignore
 import { createItems, updateItems } from '@keystone-next/server-side-graphql-client-legacy';
 import { KeystoneContext } from '@keystone-next/types';
 
 type IdType = any;
 
 const createInitialData = async (context: KeystoneContext) => {
-  const roles: { id: IdType; name: string }[] = await createItems({
+  const roles = (await createItems({
     context,
     listKey: 'Role',
     items: [{ data: { name: 'RoleA' } }, { data: { name: 'RoleB' } }, { data: { name: 'RoleC' } }],
     returnFields: 'id name',
-  });
-  const companies: { id: IdType; name: string }[] = await createItems({
+  })) as { id: IdType; name: string }[];
+  const companies = (await createItems({
     context,
     listKey: 'Company',
     items: [
@@ -28,8 +27,8 @@ const createInitialData = async (context: KeystoneContext) => {
       { data: { name: 'CompanyC' } },
     ],
     returnFields: 'id name',
-  });
-  const employees: { id: IdType; name: string }[] = await createItems({
+  })) as { id: IdType; name: string }[];
+  const employees = (await createItems({
     context,
     listKey: 'Employee',
     items: [
@@ -56,7 +55,7 @@ const createInitialData = async (context: KeystoneContext) => {
       },
     ],
     returnFields: 'id name',
-  });
+  })) as { id: IdType; name: string }[];
   await createItems({
     context,
     listKey: 'Location',
@@ -164,14 +163,13 @@ multiAdapterRunners().map(({ runner, adapterName }) =>
       'Query',
       runner(setupKeystone, async ({ context }) => {
         await createInitialData(context);
-        const { data, errors } = await context.executeGraphQL({
+        const data = await context.graphql.run({
           query: `{
                   allEmployees(where: {
                     company: { employees_some: { role: { name: "RoleA" } } }
                   }) { id name }
                 }`,
         });
-        expect(errors).toBe(undefined);
         expect(data.allEmployees).toHaveLength(1);
         expect(data.allEmployees[0].name).toEqual('EmployeeA');
       })

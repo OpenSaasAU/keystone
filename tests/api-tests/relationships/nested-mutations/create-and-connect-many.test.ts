@@ -3,7 +3,6 @@ import { gen, sampleOne } from 'testcheck';
 import { text, relationship } from '@keystone-next/fields';
 import { createSchema, list } from '@keystone-next/keystone/schema';
 import { multiAdapterRunners, setupFromConfig } from '@keystone-next/test-utils-legacy';
-// @ts-ignore
 import { createItem } from '@keystone-next/server-side-graphql-client-legacy';
 
 const alphanumGenerator = gen.alphaNumString.notEmpty();
@@ -111,10 +110,7 @@ multiAdapterRunners().map(({ runner, adapterName }) =>
           expect(errors).toBe(undefined);
 
           // Sanity check that the items are actually created
-          const {
-            data: { allNotes },
-            errors: errors2,
-          } = await context.executeGraphQL({
+          const { allNotes } = await context.graphql.run({
             query: `
               query {
                 allNotes(where: { id_in: [${data.createUser.notes
@@ -125,7 +121,6 @@ multiAdapterRunners().map(({ runner, adapterName }) =>
                 }
               }`,
           });
-          expect(errors2).toBe(undefined);
           expect(allNotes).toHaveLength(data.createUser.notes.length);
         })
       );

@@ -15,11 +15,6 @@ class CloudinaryImage extends File.implementation {
     return [`${this.path}: ${this.graphQLOutputType}`];
   }
 
-  extendAdminMeta(meta) {
-    // Overwrite so we have only the original meta
-    return meta;
-  }
-
   getFileUploadType() {
     return 'Upload';
   }
@@ -79,6 +74,13 @@ class CloudinaryImage extends File.implementation {
         if (!itemValues) {
           return null;
         }
+        if (this.adapter.listAdapter.parentAdapter.provider === 'sqlite') {
+          // we store document data as a string on sqlite because Prisma doesn't support Json on sqlite
+          // https://github.com/prisma/prisma/issues/3786
+          try {
+            itemValues = JSON.parse(itemValues);
+          } catch (err) {}
+        }
 
         return {
           publicUrl: this.fileAdapter.publicUrl(itemValues),
@@ -95,13 +97,6 @@ class CloudinaryImage extends File.implementation {
   }
 }
 
-const MongoCloudinaryImageInterface = File.adapters.mongoose;
-const KnexCloudinaryImageInterface = File.adapters.knex;
 const PrismaCloudinaryImageInterface = File.adapters.prisma;
 
-export {
-  CloudinaryImage,
-  MongoCloudinaryImageInterface,
-  KnexCloudinaryImageInterface,
-  PrismaCloudinaryImageInterface,
-};
+export { CloudinaryImage, PrismaCloudinaryImageInterface };

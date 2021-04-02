@@ -7,7 +7,6 @@ import {
   setupFromConfig,
   testConfig,
 } from '@keystone-next/test-utils-legacy';
-// @ts-ignore
 import { createItem } from '@keystone-next/server-side-graphql-client-legacy';
 
 const alphanumGenerator = gen.alphaNumString.notEmpty();
@@ -93,7 +92,7 @@ multiAdapterRunners().map(({ runner, adapterName }) =>
           });
 
           // Update the item and link the relationship field
-          const { data, errors } = await context.executeGraphQL({
+          const data = await context.graphql.run({
             query: `
               mutation {
                 updateUser(
@@ -118,7 +117,6 @@ multiAdapterRunners().map(({ runner, adapterName }) =>
               notes: [{ id: createNote.id, content: noteContent }],
             },
           });
-          expect(errors).toBe(undefined);
         })
       );
 
@@ -128,7 +126,7 @@ multiAdapterRunners().map(({ runner, adapterName }) =>
           const FAKE_ID = '5b84f38256d3c2df59a0d9bf';
 
           // Create an item that does the linking
-          const { data, errors } = await context.executeGraphQL({
+          const data = await context.graphql.run({
             query: `
               mutation {
                 createUser(data: {
@@ -143,7 +141,6 @@ multiAdapterRunners().map(({ runner, adapterName }) =>
                 }
               }`,
           });
-          expect(errors).toBe(undefined);
           expect(data.createUser).toMatchObject({ id: expect.any(String), notes: [] });
           expect(data.createUser).not.toHaveProperty('errors');
         })
@@ -160,7 +157,7 @@ multiAdapterRunners().map(({ runner, adapterName }) =>
           const createUser = await createItem({ context, listKey: 'User', item: {} });
 
           // Create an item that does the linking
-          const { data, errors } = await context.executeGraphQL({
+          const data = await context.graphql.run({
             query: `
               mutation {
                 updateUser(
@@ -178,7 +175,6 @@ multiAdapterRunners().map(({ runner, adapterName }) =>
                 }
               }`,
           });
-          expect(errors).toBe(undefined);
           expect(data.updateUser).toMatchObject({ id: expect.any(String), notes: [] });
           expect(data.updateUser).not.toHaveProperty('errors');
         })
@@ -214,7 +210,7 @@ multiAdapterRunners().map(({ runner, adapterName }) =>
           });
 
           // Update the item and link the relationship field
-          const { data, errors } = await context.executeGraphQL({
+          const data = await context.graphql.run({
             query: `
               mutation {
                 updateUser(
@@ -238,7 +234,6 @@ multiAdapterRunners().map(({ runner, adapterName }) =>
               notes: [{ id: expect.any(String), content: noteContent2 }],
             },
           });
-          expect(errors).toBe(undefined);
         })
       );
     });
@@ -268,7 +263,7 @@ multiAdapterRunners().map(({ runner, adapterName }) =>
             });
 
             // Update the item and link the relationship field
-            const { errors } = await context.exitSudo().executeGraphQL({
+            await context.exitSudo().graphql.run({
               query: `
                 mutation {
                   updateUserToNotesNoRead(
@@ -283,9 +278,7 @@ multiAdapterRunners().map(({ runner, adapterName }) =>
                 }`,
             });
 
-            expect(errors).toBe(undefined);
-
-            const result = await context.executeGraphQL({
+            const data = await context.graphql.run({
               query: `
                 query getUserNodes($userId: ID!){
                   UserToNotesNoRead(where: { id: $userId }) {
@@ -294,10 +287,8 @@ multiAdapterRunners().map(({ runner, adapterName }) =>
                   }
                 }`,
               variables: { userId: createUser.id },
-              context, // : context.createContext().sudo(),
             });
-            expect(result.errors).toBe(undefined);
-            expect(result.data.UserToNotesNoRead.notes).toHaveLength(0);
+            expect(data.UserToNotesNoRead.notes).toHaveLength(0);
           })
         );
       });

@@ -10,10 +10,8 @@ const {
   flatten,
   zipObj,
   createLazyDeferred,
-  arrayToObject,
 } = require('@keystone-next/utils-legacy');
 const { parseListAccess } = require('@keystone-next/access-control-legacy');
-const { graphqlLogger } = require('../Keystone/logger');
 const {
   preventInvalidUnderscorePrefix,
   keyToLabel,
@@ -48,7 +46,7 @@ module.exports = class List {
       queryLimits = {},
       cacheHint,
     },
-    { getListByKey, adapter, defaultAccess, registerType, createAuxList, isAuxList, schemaNames }
+    { getListByKey, adapter, defaultAccess, registerType, createAuxList, isAuxList }
   ) {
     this.key = key;
     this._fields = fields;
@@ -115,7 +113,7 @@ module.exports = class List {
 
     this.adapterName = adapter.name;
     this.adapter = adapter.newListAdapter(this.key, adapterConfig);
-    this._schemaNames = schemaNames;
+    this._schemaNames = ['public'];
 
     this.access = parseListAccess({
       schemaNames: this._schemaNames,
@@ -166,18 +164,7 @@ module.exports = class List {
 
     // Add an 'id' field if none supplied
     if (!sanitisedFieldsConfig.id) {
-      if (typeof this.adapter.parentAdapter.getDefaultPrimaryKeyConfig !== 'function') {
-        throw new Error(
-          `No 'id' field given for the '${this.key}' list and the list adapter ` +
-            `in used (${this.adapter.key}) doesn't supply a default primary key config ` +
-            `(no 'getDefaultPrimaryKeyConfig()' function)`
-        );
-      }
-      // Rebuild the object so id is "first"
-      sanitisedFieldsConfig = {
-        id: this.adapter.parentAdapter.getDefaultPrimaryKeyConfig(),
-        ...sanitisedFieldsConfig,
-      };
+      throw new Error(`No 'id' field given for the '${this.key}' list.`);
     }
 
     // Helpful errors for misconfigured lists
@@ -223,34 +210,11 @@ module.exports = class List {
         })
     );
     this.fields = Object.values(this.fieldsByPath);
-    this.views = mapKeys(sanitisedFieldsConfig, ({ type }, path) =>
-      this.fieldsByPath[path].extendAdminViews({ ...type.views })
-    );
     this.hookManager = new HookManager({
       fields: this.fields,
       hooks: this._hooks,
       listKey: this.key,
     });
-  }
-
-  getAdminMeta({ schemaName }) {
-    const schemaAccess = this.access[schemaName];
-    return {
-      key: this.key,
-      // Reduce to truthy values (functions can't be passed over the webpack
-      // boundary)
-      access: mapKeys(schemaAccess, val => !!val),
-      label: this.adminUILabels.label,
-      singular: this.adminUILabels.singular,
-      plural: this.adminUILabels.plural,
-      path: this.adminUILabels.path,
-      gqlNames: this.gqlNames,
-      fields: this.fields
-        .filter(field => field.access[schemaName].read)
-        .map(field => field.getAdminMeta({ schemaName })),
-      adminDoc: this.adminDoc,
-      adminConfig: this.adminConfig,
-    };
   }
 
   getFieldsWithAccess({ schemaName, access }) {
@@ -352,11 +316,6 @@ module.exports = class List {
       }
     );
     if (!access) {
-      graphqlLogger.debug(
-        { operation, access, gqlName, ...extraInternalData },
-        'Access statically or implicitly denied'
-      );
-      graphqlLogger.info({ operation, gqlName, ...extraInternalData }, 'Access Denied');
       // If the client handles errors correctly, it should be able to
       // receive partial data (for the fields the user has access to),
       // and then an `errors` array of AccessDeniedError's
@@ -366,9 +325,7 @@ module.exports = class List {
   }
 
   async getAccessControlledItem(id, access, { context, operation, gqlName, info }) {
-    const _throwAccessDenied = msg => {
-      graphqlLogger.debug({ id, operation, access, gqlName }, msg);
-      graphqlLogger.info({ id, operation, gqlName }, 'Access Denied');
+    const _throwAccessDenied = () => {
       // If the client handles errors correctly, it should be able to
       // receive partial data (for the fields the user has access to),
       // and then an `errors` array of AccessDeniedError's
@@ -386,7 +343,7 @@ module.exports = class List {
       // the user has access to. So we have to do a check here to see if the
       // ID they're requesting matches that ID.
       // Nice side-effect: We can throw without having to ever query the DB.
-      _throwAccessDenied('Item excluded this id from filters');
+      _throwAccessDenied();
     } else {
       // NOTE: The fields will be filtered by the ACL checking in gqlFieldResolvers()
       // We only want 1 item, don't make the DB do extra work
@@ -407,7 +364,7 @@ module.exports = class List {
       // that return null do not exist). Similar to how S3 returns 403's
       // always instead of ever returning 404's.
       // Our version is to always throw if not found.
-      _throwAccessDenied('Zero items found');
+      _throwAccessDenied();
     }
     // Found the item, and it passed the filter test
     return item;
@@ -505,7 +462,6 @@ module.exports = class List {
     info
   ) {
     const operation = 'read';
-    graphqlLogger.debug({ id, operation, type: opToType[operation], gqlName }, 'Start query');
 
     const access = await this.checkListAccess(context, undefined, operation, {
       gqlName,
@@ -519,7 +475,6 @@ module.exports = class List {
       info,
     });
 
-    graphqlLogger.debug({ id, operation, type: opToType[operation], gqlName }, 'End query');
     return result;
   }
 
@@ -815,14 +770,13 @@ module.exports = class List {
     const extraData = { gqlName, itemIds: ids };
 
     const access = await this.checkListAccess(context, data, operation, extraData);
-
     const existingItems = await this.getAccessControlledItems(ids, access);
-    const existingItemsById = arrayToObject(existingItems, 'id');
 
+    // Only update those items which pass access control
     const itemsToUpdate = zipObj({
-      existingItem: ids.map(id => existingItemsById[id]),
-      id: ids, // itemId is taken from here in checkFieldAccess
-      data: data.map(d => d.data),
+      existingItem: existingItems,
+      id: existingItems.map(({ id }) => id), // itemId is taken from here in checkFieldAccess
+      data: existingItems.map(({ id }) => data.find(d => d.id === id).data),
     });
 
     // FIXME: We should do all of these in parallel and return *all* the field access violations

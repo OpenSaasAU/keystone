@@ -4,7 +4,6 @@ import { gen, sampleOne } from 'testcheck';
 import { text, relationship } from '@keystone-next/fields';
 import { createSchema, list } from '@keystone-next/keystone/schema';
 import { multiAdapterRunners, setupFromConfig } from '@keystone-next/test-utils-legacy';
-// @ts-ignore
 import { createItem, createItems } from '@keystone-next/server-side-graphql-client-legacy';
 
 const alphanumGenerator = gen.alphaNumString.notEmpty();
@@ -12,11 +11,7 @@ const alphanumGenerator = gen.alphaNumString.notEmpty();
 type IdType = any;
 
 const createInitialData = async (context: KeystoneContext) => {
-  type T = {
-    data: { createCompanies: { id: IdType }[]; createLocations: { id: IdType }[] };
-    errors: unknown;
-  };
-  const { data, errors }: T = await context.executeGraphQL({
+  const data = (await context.graphql.run({
     query: `
       mutation {
         createCompanies(data: [
@@ -31,8 +26,7 @@ const createInitialData = async (context: KeystoneContext) => {
           { data: { name: "${sampleOne(alphanumGenerator)}" } }
         ]) { id }
       }`,
-  });
-  expect(errors).toBe(undefined);
+  })) as { createCompanies: { id: IdType }[]; createLocations: { id: IdType }[] };
   const owners = await createItems({
     context,
     listKey: 'Owner',
@@ -146,12 +140,11 @@ multiAdapterRunners().map(({ runner, adapterName }) =>
             await createInitialData(context);
             const owner = await createCompanyAndLocation(context);
             const name1 = owner.companies[0].location.custodians[0].name;
-            const { data, errors } = await context.executeGraphQL({
+            const data = await context.graphql.run({
               query: `{
                   allOwners(where: { companies_some: { location: { custodians_some: { name: "${name1}" } } } }) { id companies { location { custodians { name } } } }
                 }`,
             });
-            expect(errors).toBe(undefined);
             expect(data.allOwners.length).toEqual(1);
             expect(data.allOwners[0].id).toEqual(owner.id);
           })
@@ -162,12 +155,11 @@ multiAdapterRunners().map(({ runner, adapterName }) =>
             await createInitialData(context);
             const owner = await createCompanyAndLocation(context);
             const name1 = owner.name;
-            const { data, errors } = await context.executeGraphQL({
+            const data = await context.graphql.run({
               query: `{
                   allCustodians(where: { locations_some: { company: { owners_some: { name: "${name1}" } } } }) { id locations { company { owners { name } } } }
                 }`,
             });
-            expect(errors).toBe(undefined);
             expect(data.allCustodians.length).toEqual(2);
           })
         );
@@ -177,12 +169,11 @@ multiAdapterRunners().map(({ runner, adapterName }) =>
             await createInitialData(context);
             const owner = await createCompanyAndLocation(context);
             const name1 = owner.name;
-            const { data, errors } = await context.executeGraphQL({
+            const data = await context.graphql.run({
               query: `{
                   allOwners(where: { companies_some: { location: { custodians_some: { locations_some: { company: { owners_some: { name: "${name1}" } } } } } } }) { id companies { location { custodians { name } } } }
                 }`,
             });
-            expect(errors).toBe(undefined);
             expect(data.allOwners.length).toEqual(1);
             expect(data.allOwners[0].id).toEqual(owner.id);
           })
@@ -194,12 +185,11 @@ multiAdapterRunners().map(({ runner, adapterName }) =>
             const owner = await createCompanyAndLocation(context);
             const name1 = owner.companies[0].location.custodians[0].name;
 
-            const { data, errors } = await context.executeGraphQL({
+            const data = await context.graphql.run({
               query: `{
                   allCustodians(where: { locations_some: { company: { owners_some: { companies_some: { location: { custodians_some: { name: "${name1}" } } } } } } }) { id locations { company { owners { name } } } }
                 }`,
             });
-            expect(errors).toBe(undefined);
             expect(data.allCustodians.length).toEqual(2);
           })
         );
