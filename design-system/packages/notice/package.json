@@ -5,10 +5,10 @@
   "main": "dist/notice.cjs.js",
   "module": "dist/notice.esm.js",
   "devDependencies": {
-    "@types/react": "^17.0.3"
+    "@types/react": "^17.0.53"
   },
   "dependencies": {
-    "@babel/runtime": "^7.13.10",
+    "@babel/runtime": "^7.13.17",
     "@keystone-ui/button": "^3.0.1",
     "@keystone-ui/core": "^2.0.2",
     "@keystone-ui/icons": "^2.0.1",

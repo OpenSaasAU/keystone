@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@keystone-next/types": "^15.0.1",
-    "graphql": "^15.5.0"
+    "graphql": "^15.5.3"
   },
   "devDependencies": {
     "@keystone-next/fields-legacy": "*",

@@ -14,17 +14,17 @@
     "apollo-server-express": "^2.22.2",
     "cuid": "^2.1.8",
     "ensure-error": "^3.0.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "graphql-type-json": "^0.3.2",
     "graphql-upload": "^11.0.0",
     "pluralize": "^8.0.0",
     "serialize-error": "^8.0.1",
-    "stack-utils": "^2.0.3"
+    "stack-utils": "^2.0.6"
   },
   "devDependencies": {
     "@keystone-next/fields-legacy": "^24.0.0",
     "@keystone-next/test-utils-legacy": "*",
-    "graphql": "^15.5.0"
+    "graphql": "^15.5.3"
   },
   "repository": "https://github.com/keystonejs/keystone/tree/master/packages/keystone"
 }
