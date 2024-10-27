@@ -115,8 +115,6 @@ function getSudoGraphQLSchema (config: __ResolvedKeystoneConfig) {
 
   const lists = initialiseLists(transformedConfig)
   return createGraphQLSchema(transformedConfig, lists, true)
-  // TODO: adminMeta not useful for sudo, remove in breaking change
-  // return createGraphQLSchema(transformedConfig, lists, null, true);
 }
 
 function injectNewDefaults (prismaClient: unknown, lists: Record<string, InitialisedList>) {
@@ -233,15 +231,6 @@ export function createSystem (config_: KeystoneConfig) {
       })
 
       return {
-        // TODO: replace with server.onStart, remove in breaking change
-        async connect () {
-          await (prismaClient as any).$connect()
-          await config.db.onConnect?.(context)
-        },
-        // TODO: only used by tests, remove in breaking change
-        async disconnect () {
-          await (prismaClient as any).$disconnect()
-        },
         context,
       }
     },

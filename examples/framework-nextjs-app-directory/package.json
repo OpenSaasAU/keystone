@@ -14,7 +14,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@opensaas/keystone-core": "^0.0.1",
+    "@opensaas/keystone-core": "workspace:^",
     "@opensaas/keystone-document-renderer": "^0.0.1",
     "@opensaas/keystone-fields-document": "^0.0.1",
     "@preconstruct/next": "^4.0.0",
@@ -27,7 +27,7 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@opensaas/keystone-cli": "^0.0.1",
+    "@opensaas/keystone-cli": "workspace:^",
     "@types/node": "^20.14.10",
     "react": "^18.3.1",
     "@types/react-dom": "^18.3.0",

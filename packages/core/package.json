@@ -1,11 +1,10 @@
 {
   "name": "@opensaas/keystone-core",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "repository": "https://github.com/opensaas/keystone/tree/main/packages/core",
   "license": "MIT",
   "main": "dist/opensaas-keystone-core.cjs.js",
   "module": "dist/opensaas-keystone-core.esm.js",
-  "types": "dist/opensaas-keystone-core.d.ts",
   "exports": {
     ".": {
       "module": "./dist/opensaas-keystone-core.esm.js",
@@ -41,7 +40,7 @@
     "conf": "^10.2.0",
     "dataloader": "^2.1.0",
     "decimal.js": "^10.4.1",
-    "graphql": "^16.8.1",
+    "graphql": "^16.9.0",
     "inflection": "^3.0.0",
     "pluralize": "^8.0.0"
   },

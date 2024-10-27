@@ -2,7 +2,7 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import { type ChildProcess } from 'node:child_process'
 
-import { printSchema } from 'graphql'
+import { printSchema } from '@opensaas/keystone-core/lib'
 import { getGenerators, formatSchema } from '@prisma/internals'
 import { ExitError } from './scripts/utils'
 import { printPrismaSchema } from './lib/prisma-schema-printer'

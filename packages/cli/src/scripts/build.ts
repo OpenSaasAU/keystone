@@ -1,5 +1,4 @@
 import esbuild from 'esbuild'
-import nextBuild from 'next/dist/build'
 import {
   generateArtifacts,
   generatePrismaClient,
@@ -33,19 +32,4 @@ export async function build (
   }
 
   if (system.config.ui?.isDisabled || !ui) return
-
-  console.log('✨ Generating Admin UI code')
-  const paths = system.getPaths(cwd)
-
-  console.log('✨ Building Admin UI')
-  await nextBuild(
-    paths.admin,
-    undefined,
-    undefined,
-    undefined,
-    undefined,
-    undefined,
-    undefined,
-    'default'
-  )
 }

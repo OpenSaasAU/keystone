@@ -11,10 +11,6 @@ import { getMutationsForList } from './core/mutations'
 
 function getGraphQLSchema (
   lists: Record<string, InitialisedList>,
-  extraFields: {
-    query: Record<string, graphql.Field<unknown, any, graphql.OutputType, string>>
-    mutation: Record<string, graphql.Field<unknown, any, graphql.OutputType, string>>
-  },
   sudo: boolean
 ) {
   const query = graphql.object()({
@@ -22,7 +18,6 @@ function getGraphQLSchema (
     fields: Object.assign(
       {},
       ...Object.values(lists).map(list => getQueriesForList(list)),
-      extraFields.query
     ),
   })
 
@@ -36,7 +31,6 @@ function getGraphQLSchema (
         updateManyByList[list.listKey] = updateManyInput
         return mutations
       }),
-      extraFields.mutation
     ),
   })
 
@@ -55,14 +49,14 @@ function collectTypes (
   lists: Record<string, InitialisedList>,
   updateManyByList: Record<string, graphql.InputObjectType<any>>
 ) {
-  const collectedTypes: GraphQLNamedType[] = []
+  const collectedTypes: Set<GraphQLNamedType> = new Set()
   for (const list of Object.values(lists)) {
     const { isEnabled } = list.graphql
     if (!isEnabled.type) continue
     // adding all of these types explicitly isn't strictly necessary but we do it to create a certain order in the schema
-    collectedTypes.push(list.graphql.types.output.graphQLType)
+    collectedTypes.add(list.graphql.types.output.graphQLType)
     if (isEnabled.query || isEnabled.update || isEnabled.delete) {
-      collectedTypes.push(list.graphql.types.uniqueWhere.graphQLType)
+      collectedTypes.add(list.graphql.types.uniqueWhere.graphQLType)
     }
     if (isEnabled.query) {
       for (const field of Object.values(list.fields)) {
@@ -72,26 +66,26 @@ function collectTypes (
           field.unreferencedConcreteInterfaceImplementations
         ) {
           // this _IS_ actually necessary since they aren't implicitly referenced by other types, unlike the types above
-          collectedTypes.push(...field.unreferencedConcreteInterfaceImplementations.map(x => x.graphQLType))
+          field.unreferencedConcreteInterfaceImplementations.map(x => x.graphQLType).forEach(collectedTypes.add, collectedTypes)
         }
       }
-      collectedTypes.push(list.graphql.types.where.graphQLType)
-      collectedTypes.push(list.graphql.types.orderBy.graphQLType)
+      collectedTypes.add(list.graphql.types.where.graphQLType)
+      collectedTypes.add(list.graphql.types.orderBy.graphQLType)
     }
     if (isEnabled.update) {
       if (list.graphql.types.update.kind === 'input') {
-        collectedTypes.push(list.graphql.types.update.graphQLType)
+        collectedTypes.add(list.graphql.types.update.graphQLType)
       }
-      collectedTypes.push(updateManyByList[list.listKey].graphQLType)
+      collectedTypes.add(updateManyByList[list.listKey].graphQLType)
     }
     if (isEnabled.create) {
       if (list.graphql.types.create.kind === 'input') {
-        collectedTypes.push(list.graphql.types.create.graphQLType)
+        collectedTypes.add(list.graphql.types.create.graphQLType)
       }
     }
   }
   // this is not necessary, just about ordering
-  collectedTypes.push(graphql.JSON.graphQLType)
+  collectedTypes.add(graphql.JSON.graphQLType)
   return collectedTypes
 }
 
@@ -102,20 +96,6 @@ export function createGraphQLSchema (
 ) {
   const graphQLSchema = getGraphQLSchema(
     lists,
-    {
-      mutation: config.session
-        ? {
-            endSession: graphql.field({
-              type: graphql.nonNull(graphql.Boolean),
-              async resolve (rootVal, args, context) {
-                await context.sessionStrategy?.end({ context })
-                return true
-              },
-            }),
-          }
-        : {},
-      query: {},
-    },
     sudo
   )
 
