@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "@opensaas/keystone-core": "^0.0.1",
-    "@opensaas/keystone-document-renderer": "^1.1.2",
-    "@opensaas/keystone-fields-document": "^9.1.0",
+    "@opensaas/keystone-document-renderer": "^0.0.1",
+    "@opensaas/keystone-fields-document": "^0.0.1",
     "@preconstruct/next": "^4.0.0",
     "@prisma/client": "5.19.0",
     "next": "^14.2.0",

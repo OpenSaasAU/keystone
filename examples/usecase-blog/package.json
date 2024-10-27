@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@opensaas/keystone-core": "^0.0.1",
-    "@opensaas/keystone-fields-document": "^9.1.0",
+    "@opensaas/keystone-fields-document": "^0.0.1",
     "@prisma/client": "5.19.0"
   },
   "devDependencies": {

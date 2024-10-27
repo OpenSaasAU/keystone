@@ -1,8 +1,3 @@
-import type { Server } from 'http'
-import type { ListenOptions } from 'net'
-import type { ApolloServerOptions } from '@apollo/server'
-import type { CorsOptions } from 'cors'
-import type express from 'express'
 import type { GraphQLSchema } from 'graphql'
 import type { Options as BodyParserOptions } from 'body-parser'
 
@@ -122,20 +117,7 @@ export type KeystoneConfig<TypeInfo extends BaseKeystoneTypeInfo = BaseKeystoneT
     path?: string
     // The CORS configuration to use on the GraphQL API endpoint.
     // Default: { origin: 'https://studio.apollographql.com', credentials: true }
-    cors?: CorsOptions
     bodyParser?: BodyParserOptions
-    /**
-    * - `true` - Add `ApolloServerPluginLandingPageGraphQLPlayground` to the Apollo Server plugins
-    * - `false` - Add `ApolloServerPluginLandingPageDisabled` to the Apollo Server plugins
-    * - `'apollo'` - Do not add any plugins to the Apollo config, this will use [Apollo Sandbox](https://www.apollographql.com/docs/apollo-server/testing/build-run-queries/#apollo-sandbox)
-    * @default process.env.NODE_ENV !== 'production'
-    */
-    playground?: boolean | 'apollo'
-    /**
-    *  Additional options to pass into the ApolloServer constructor.
-    *  @see https://www.apollographql.com/docs/apollo-server/api/apollo-server/#constructor
-    */
-    apolloConfig?: Partial<ApolloServerOptions<KeystoneContext<TypeInfo>>>
     /**
     * When an error is returned from the GraphQL API, Apollo can include a stacktrace
     * indicating where the error occurred. When Keystone is processing mutations, it
@@ -185,34 +167,6 @@ export type KeystoneConfig<TypeInfo extends BaseKeystoneTypeInfo = BaseKeystoneT
   }
 
   lists: Record<string, ListConfig<any>>
-  server?: {
-    /** Configuration options for the cors middleware. Set to `true` to use Keystone's defaults */
-    cors?: boolean | CorsOptions
-
-    /** Maximum upload file size allowed (in bytes) */
-    maxFileSize?: number
-
-    /** extend the Express application used by Keystone */
-    extendExpressApp?: (
-      app: express.Express,
-      context: KeystoneContext<TypeInfo>
-    ) => MaybePromise<void>
-
-    /** extend the node:http server used by Keystone */
-    extendHttpServer?: (
-      server: Server,
-      context: KeystoneContext<TypeInfo>,
-    ) => MaybePromise<void>
-  } & (
-    | {
-        /** Port number to start the server on. Defaults to process.env.PORT || 3000 */
-        port?: number
-      }
-    | {
-        /** node http.Server options */
-        options?: ListenOptions
-      }
-  )
 
   session?: SessionStrategy<TypeInfo['session'], TypeInfo>
   /** An object containing configuration about keystone's various external storages.
@@ -263,10 +217,6 @@ export type __ResolvedKeystoneConfig<TypeInfo extends BaseKeystoneTypeInfo = Bas
     [listKey: string]: {
       listKey: string
     } & KeystoneConfig<TypeInfo>['lists'][string]
-  }
-  server: Omit<Required<NonNullable<KeystoneConfig<TypeInfo>['server']>>, 'cors' | 'port'> & {
-    cors: CorsOptions | null
-    options: ListenOptions
   }
   session: KeystoneConfig<TypeInfo>['session']
   storage: NonNullable<KeystoneConfig<TypeInfo>['storage']>

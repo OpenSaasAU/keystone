@@ -1,9 +1,7 @@
-import { type CacheHint } from '@apollo/cache-control-types'
 import { GraphQLString, isInputObjectType } from 'graphql'
 import {
   type BaseItem,
   type BaseListTypeInfo,
-  type CacheHintArgs,
   type FindManyArgs,
   type GraphQLTypesForList,
   type ListGraphQLTypes,
@@ -67,7 +65,6 @@ export type InitialisedField = {
       create: boolean
       update: boolean
     }
-    cacheHint: CacheHint | undefined
   }
   ui: {
     label: string | null
@@ -135,7 +132,6 @@ export type InitialisedList = {
   }
 
   isSingleton: boolean
-  cacheHint: ((args: CacheHintArgs) => CacheHint) | undefined
 }
 
 type IsListEnabled = {
@@ -420,7 +416,7 @@ function getListsWithInitialisedFields (
                   outputTypeField(
                     outputField,
                     field.dbField,
-                    field.graphql?.cacheHint,
+                    undefined,
                     field.access.read,
                     listKey,
                     fieldPath,
@@ -702,7 +698,6 @@ function getListsWithInitialisedFields (
         access: parseFieldAccessControl(f.access),
         hooks: parseFieldHooks(fieldKey, f.hooks ?? {}),
         graphql: {
-          cacheHint: f.graphql?.cacheHint,
           isEnabled: isEnabledField,
           isNonNull: {
             read: f.graphql?.isNonNull?.read ?? false,
@@ -794,12 +789,6 @@ function getListsWithInitialisedFields (
       },
       hooks: parseListHooks(listConfig.hooks ?? {}),
       listKey,
-      cacheHint: (() => {
-        const cacheHint = listConfig.graphql?.cacheHint
-        if (typeof cacheHint === 'function') return cacheHint
-        if (cacheHint !== undefined) return () => cacheHint
-        return undefined
-      })(),
       isSingleton: listConfig.isSingleton ?? false,
     }
   }

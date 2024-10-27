@@ -1,4 +1,3 @@
-import type { CacheHint } from '@apollo/cache-control-types'
 import type { MaybePromise } from '../utils'
 import type { BaseListTypeInfo } from '../type-info'
 import type { KeystoneContext } from '../context'
@@ -195,7 +194,6 @@ export type ListGraphQLConfig = {
    * The maximum value for the take parameter when querying this list
    */
   maxTake?: number
-  cacheHint?: ((args: CacheHintArgs) => CacheHint) | CacheHint
   // Setting any of these values will remove the corresponding operations from the GraphQL schema.
   // Queries:
   //   'query':  Does item()/items() exist?

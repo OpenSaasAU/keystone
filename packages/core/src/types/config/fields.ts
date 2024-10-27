@@ -1,4 +1,3 @@
-import type { CacheHint } from '@apollo/cache-control-types'
 import type { FieldTypeFunc } from '../next-fields'
 import type { BaseListTypeInfo } from '../type-info'
 import type { KeystoneContext, MaybePromise } from '..'
@@ -32,7 +31,6 @@ export type CommonFieldConfig<ListTypeInfo extends BaseListTypeInfo> = {
     listView?: { fieldMode?: MaybeSessionFunction<'read' | 'hidden', ListTypeInfo> }
   }
   graphql?: {
-    cacheHint?: CacheHint
     isNonNull?: {
       // should this field be non-nullable on the {List} GraphQL type?
       read?: boolean
