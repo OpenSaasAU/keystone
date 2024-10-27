@@ -1,6 +1,6 @@
 {
   "name": "@opensaas/keystone-admin-ui",
-  "version": "6.3.0",
+  "version": "0.0.1",
   "repository": "https://github.com/keystonejs/keystone/tree/main/packages/admin-ui",
   "license": "MIT",
   "main": "dist/keystone-6-admin-ui.cjs.js",
@@ -30,10 +30,6 @@
       "module": "./admin-ui/components/dist/opensaas-keystone-admin-ui-admin-ui-components.esm.js",
       "default": "./admin-ui/components/dist/opensaas-keystone-admin-ui-admin-ui-components.cjs.js"
     },
-    "./fields/types/file/views": {
-      "module": "./fields/types/file/views/dist/opensaas-keystone-admin-ui-fields-types-file-views.esm.js",
-      "default": "./fields/types/file/views/dist/opensaas-keystone-admin-ui-fields-types-file-views.cjs.js"
-    },
     "./fields/types/json/views": {
       "module": "./fields/types/json/views/dist/opensaas-keystone-admin-ui-fields-types-json-views.esm.js",
       "default": "./fields/types/json/views/dist/opensaas-keystone-admin-ui-fields-types-json-views.cjs.js"
@@ -45,10 +41,6 @@
     "./fields/types/float/views": {
       "module": "./fields/types/float/views/dist/opensaas-keystone-admin-ui-fields-types-float-views.esm.js",
       "default": "./fields/types/float/views/dist/opensaas-keystone-admin-ui-fields-types-float-views.cjs.js"
-    },
-    "./fields/types/image/views": {
-      "module": "./fields/types/image/views/dist/opensaas-keystone-admin-ui-fields-types-image-views.esm.js",
-      "default": "./fields/types/image/views/dist/opensaas-keystone-admin-ui-fields-types-image-views.cjs.js"
     },
     "./fields/types/bigInt/views": {
       "module": "./fields/types/bigInt/views/dist/opensaas-keystone-admin-ui-fields-types-bigInt-views.esm.js",
@@ -97,10 +89,6 @@
     "./fields/types/relationship/views/RelationshipSelect": {
       "module": "./fields/types/relationship/views/RelationshipSelect/dist/opensaas-keystone-admin-ui-fields-types-relationship-views-RelationshipSelect.esm.js",
       "default": "./fields/types/relationship/views/RelationshipSelect/dist/opensaas-keystone-admin-ui-fields-types-relationship-views-RelationshipSelect.cjs.js"
-    },
-    "./___internal-do-not-use-will-break-in-patch/artifacts": {
-      "module": "./___internal-do-not-use-will-break-in-patch/artifacts/dist/opensaas-keystone-admin-ui-___internal-do-not-use-will-break-in-patch-artifacts.esm.js",
-      "default": "./___internal-do-not-use-will-break-in-patch/artifacts/dist/opensaas-keystone-admin-ui-___internal-do-not-use-will-break-in-patch-artifacts.cjs.js"
     },
     "./___internal-do-not-use-will-break-in-patch/admin-ui/id-field-view": {
       "module": "./___internal-do-not-use-will-break-in-patch/admin-ui/id-field-view/dist/opensaas-keystone-admin-ui-___internal-do-not-use-will-break-in-patch-admin-ui-id-field-view.esm.js",
@@ -220,7 +208,6 @@
   },
   "preconstruct": {
     "entrypoints": [
-      "___internal-do-not-use-will-break-in-patch/artifacts.ts",
       "___internal-do-not-use-will-break-in-patch/admin-ui/pages/*/index.tsx",
       "___internal-do-not-use-will-break-in-patch/admin-ui/id-field-view.tsx",
       "admin-ui/components/index.ts",

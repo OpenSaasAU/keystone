@@ -1,7 +1,4 @@
-import type { ReadStream } from 'fs'
 import * as graphqlTsSchema from '@graphql-ts/schema'
-// @ts-expect-error
-import GraphQLUpload from 'graphql-upload/GraphQLUpload.js'
 import { GraphQLError, GraphQLScalarType } from 'graphql'
 import { Decimal as DecimalValue } from 'decimal.js'
 import type { GraphQLFieldExtensions, GraphQLResolveInfo } from 'graphql'
@@ -131,15 +128,6 @@ export const JSON = graphqlTsSchema.graphql.scalar<JSONValue>(
     // the defaults for serialize, parseValue and parseLiteral do what makes sense for JSON
   })
 )
-
-type FileUpload = {
-  filename: string
-  mimetype: string
-  encoding: string
-  createReadStream(): ReadStream
-}
-
-export const Upload = graphqlTsSchema.graphql.scalar<Promise<FileUpload>>(GraphQLUpload)
 
 // - Decimal.js throws on invalid inputs
 // - Decimal.js can represent +Infinity and -Infinity, these aren't values in Postgres' decimal,

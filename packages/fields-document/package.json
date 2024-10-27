@@ -1,7 +1,7 @@
 {
   "name": "@opensaas/keystone-fields-document",
   "description": "KeystoneJS Document Field Type",
-  "version": "9.1.0",
+  "version": "0.0.1",
   "license": "MIT",
   "main": "dist/opensaas-keystone-fields-document.cjs.js",
   "module": "dist/opensaas-keystone-fields-document.esm.js",

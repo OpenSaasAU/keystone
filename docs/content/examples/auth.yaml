@@ -1,5 +1,0 @@
-url: https://github.com/keystonejs/keystone/tree/main/examples/auth
-title: Authentication
-kind: standalone
-description: >
-  Adds password-based authentication to the Task Manager starter project.

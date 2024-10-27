@@ -1,7 +1,7 @@
 {
   "name": "@opensaas/keystone-document-renderer",
   "description": "KeystoneJS Document Renderer",
-  "version": "1.1.2",
+  "version": "0.0.1",
   "license": "MIT",
   "main": "dist/opensaas-keystone-document-renderer.cjs.js",
   "module": "dist/opensaas-keystone-document-renderer.esm.js",

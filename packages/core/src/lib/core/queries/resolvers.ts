@@ -1,4 +1,3 @@
-import { maybeCacheControlFromInfo } from '@apollo/cache-control-types'
 import { type GraphQLResolveInfo } from 'graphql'
 import {
   type BaseItem,
@@ -140,15 +139,6 @@ export async function findMany (
     skip,
     cursor: cursor ?? undefined,
   })
-
-  if (list.cacheHint) {
-    maybeCacheControlFromInfo(info)
-      ?.setCacheHint(list.cacheHint({
-        results,
-        operationName: info.operation.name?.value,
-        meta: false
-      }))
-  }
   return results
 }
 
@@ -232,14 +222,5 @@ export async function count (
     where: extraFilter === undefined ? filter : { AND: [filter, extraFilter] },
   })
 
-  if (list.cacheHint) {
-    maybeCacheControlFromInfo(info)?.setCacheHint(
-      list.cacheHint({
-        results: count,
-        operationName: info.operation.name?.value,
-        meta: true,
-      }) as any
-    )
-  }
   return count
 }

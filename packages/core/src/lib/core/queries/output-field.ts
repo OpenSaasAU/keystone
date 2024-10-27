@@ -1,4 +1,3 @@
-import { type CacheHint, maybeCacheControlFromInfo } from '@apollo/cache-control-types'
 import { type GraphQLResolveInfo } from 'graphql'
 import DataLoader from 'dataloader'
 import type {
@@ -154,7 +153,7 @@ function getValueForDBField (
 export function outputTypeField (
   output: NextFieldType['output'],
   dbField: ResolvedDBField,
-  cacheHint: CacheHint | undefined,
+  cacheHint: undefined,
   access: IndividualFieldAccessControl<FieldReadItemAccessArgs<BaseListTypeInfo>>,
   listKey: string,
   fieldKey: string,
@@ -172,11 +171,6 @@ export function outputTypeField (
       const id = rootVal.id as IdType
       const fieldAccess = await getOperationFieldAccess(rootVal, list, fieldKey, context, 'read')
       if (!fieldAccess) return null
-
-      // only static cache hints are supported at the field level until a use-case makes it clear what parameters a dynamic hint would take
-      if (cacheHint && info) {
-        maybeCacheControlFromInfo(info)?.setCacheHint(cacheHint)
-      }
 
       const value = getValueForDBField(rootVal, dbField, id, fieldKey, context, lists, info)
       if (output.resolve) {

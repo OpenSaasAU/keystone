@@ -37,9 +37,6 @@ export type KeystoneContext<TypeInfo extends BaseKeystoneTypeInfo = BaseKeystone
       }
     }
   ) => Promise<T>
-
-  files: FilesContext
-  images: ImagesContext
   sessionStrategy?: SessionStrategy<TypeInfo['session'], TypeInfo>
   session?: TypeInfo['session']
 

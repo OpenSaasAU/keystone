@@ -1,6 +1,4 @@
 import bcryptjs from 'bcryptjs'
-// @ts-expect-error
-import dumbPasswords from 'dumb-passwords'
 import { userInputError } from '../../../lib/core/graphql-errors'
 import {
   type BaseListTypeInfo,
@@ -9,7 +7,6 @@ import {
   fieldType,
 } from '../../../types'
 import { graphql } from '../../..'
-import { type PasswordFieldMeta } from './views'
 import { makeValidateHook } from '../../non-null-graphql'
 import { mergeFieldHooks } from '../../resolve-hooks'
 
@@ -123,9 +120,6 @@ export function password <ListTypeInfo extends BaseListTypeInfo> (config: Passwo
         if (match && !match.regex.test(value)) {
           addValidationError(match.explanation ?? `value must match ${match.regex}`)
         }
-        if (rejectCommon && dumbPasswords.check(value)) {
-          addValidationError(`value is too common and is not allowed`)
-        }
       }
     } : undefined)
 
@@ -172,7 +166,7 @@ export function password <ListTypeInfo extends BaseListTypeInfo> (config: Passwo
       },
       __ksTelemetryFieldTypeName: '@keystone-6/password',
       views: '@opensaas/keystone-core/fields/types/password/views',
-      getAdminMeta: (): PasswordFieldMeta => ({
+      getAdminMeta: () => ({
         isNullable: mode === 'optional',
         validation: {
           isRequired,
