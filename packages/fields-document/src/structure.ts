@@ -4,8 +4,8 @@ import {
   type CommonFieldConfig,
   jsonFieldTypePolyfilledForSQLite,
   type JSONValue,
-} from '@keystone-6/core/types'
-import { graphql } from '@keystone-6/core'
+} from '@opensaas/keystone-core/types'
+import { graphql } from '@opensaas/keystone-core'
 import { getInitialPropsValue } from './DocumentEditor/component-blocks/initial-values'
 import { getOutputGraphQLField } from './structure-graphql-output'
 import { type ComponentSchemaForGraphQL } from './DocumentEditor/component-blocks/api'

@@ -1,4 +1,4 @@
-import { getGqlNames } from '@keystone-6/core/types'
+import { getGqlNames } from '@opensaas/keystone-core/types'
 
 import {
   assertObjectType,
@@ -9,7 +9,7 @@ import {
   parse,
   validate,
 } from 'graphql'
-import { graphql } from '@keystone-6/core'
+import { graphql } from '@opensaas/keystone-core'
 import type {
   AuthGqlNames,
   AuthTokenTypeConfig,

@@ -1,4 +1,4 @@
-import { bigInt } from '@keystone-6/core/fields'
+import { bigInt } from '@opensaas/keystone-core/fields'
 
 export const name = 'BigInt'
 export const typeFunction = bigInt

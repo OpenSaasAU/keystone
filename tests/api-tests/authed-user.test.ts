@@ -1,7 +1,7 @@
-import { list } from '@keystone-6/core'
-import { allowAll } from '@keystone-6/core/access'
-import { text, password } from '@keystone-6/core/fields'
-import { statelessSessions } from '@keystone-6/core/session'
+import { list } from '@opensaas/keystone-core'
+import { allowAll } from '@opensaas/keystone-core/access'
+import { text, password } from '@opensaas/keystone-core/fields'
+import { statelessSessions } from '@opensaas/keystone-core/session'
 import { createAuth } from '@keystone-6/auth'
 
 import { setupTestRunner } from './test-runner'

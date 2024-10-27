@@ -1,6 +1,6 @@
 import 'dotenv/config'
 
-import { config } from '@keystone-6/core'
+import { config } from '@opensaas/keystone-core'
 import { type TypeInfo } from '.keystone/types'
 import { lists } from './schema'
 import {

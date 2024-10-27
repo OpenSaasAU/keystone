@@ -5,12 +5,12 @@
 // If you want to learn more about how lists are configured, please read
 // - https://keystonejs.com/docs/config/lists
 
-import { list } from '@keystone-6/core'
-import { allowAll } from '@keystone-6/core/access'
+import { list } from '@opensaas/keystone-core'
+import { allowAll } from '@opensaas/keystone-core/access'
 
 // see https://keystonejs.com/docs/fields/overview for the full list of fields
 //   this is a few common fields for an example
-import { text, select } from '@keystone-6/core/fields'
+import { text, select } from '@opensaas/keystone-core/fields'
 
 // if you want to make your own fields, see https://keystonejs.com/docs/guides/custom-fields
 

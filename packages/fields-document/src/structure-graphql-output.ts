@@ -1,5 +1,5 @@
-import { graphql } from '@keystone-6/core'
-import { type FieldData } from '@keystone-6/core/types'
+import { graphql } from '@opensaas/keystone-core'
+import { type FieldData } from '@opensaas/keystone-core/types'
 import { type ComponentSchemaForGraphQL } from './DocumentEditor/component-blocks/api-shared'
 import { assertNever } from './DocumentEditor/component-blocks/utils'
 

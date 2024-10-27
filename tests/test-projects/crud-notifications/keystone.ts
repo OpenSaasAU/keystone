@@ -1,4 +1,4 @@
-import { config } from '@keystone-6/core'
+import { config } from '@opensaas/keystone-core'
 import { fixPrismaPath } from '../../sandbox/utils'
 import { lists } from './schema'
 

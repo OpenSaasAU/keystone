@@ -1,8 +1,8 @@
-import { list } from '@keystone-6/core'
+import { list } from '@opensaas/keystone-core'
 import type { GraphQLSchema } from 'graphql'
 import { mergeSchemas } from '@graphql-tools/schema'
-import { select, relationship, text, timestamp } from '@keystone-6/core/fields'
-import { allowAll } from '@keystone-6/core/access'
+import { select, relationship, text, timestamp } from '@opensaas/keystone-core/fields'
+import { allowAll } from '@opensaas/keystone-core/access'
 import { pubSub } from './websocket'
 
 import type { Lists } from '.keystone/types'

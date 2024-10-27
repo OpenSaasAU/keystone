@@ -1,4 +1,4 @@
-import { getContext } from '@keystone-6/core/context'
+import { getContext } from '@opensaas/keystone-core/context'
 import { getServerSession } from 'next-auth/next'
 import type { DefaultJWT } from 'next-auth/jwt'
 import type { DefaultSession, DefaultUser } from 'next-auth'

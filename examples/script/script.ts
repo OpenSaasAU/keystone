@@ -1,4 +1,4 @@
-import { getContext } from '@keystone-6/core/context'
+import { getContext } from '@opensaas/keystone-core/context'
 import config from './keystone'
 
 // WARNING: this is only needed for our monorepo examples, dont do this

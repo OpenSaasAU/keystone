@@ -4,8 +4,8 @@ import {
   type FieldTypeFunc,
   type CommonFieldConfig,
   orderDirectionEnum,
-} from '@keystone-6/core/types'
-import { graphql } from '@keystone-6/core'
+} from '@opensaas/keystone-core/types'
+import { graphql } from '@opensaas/keystone-core'
 
 type TextFieldConfig<ListTypeInfo extends BaseListTypeInfo> = CommonFieldConfig<ListTypeInfo> & {
   isIndexed?: boolean | 'unique'

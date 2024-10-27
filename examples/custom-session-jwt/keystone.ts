@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import { config } from '@keystone-6/core'
+import { config } from '@opensaas/keystone-core'
 import { lists, type Session } from './schema'
 import type { Context, TypeInfo } from '.keystone/types'
 

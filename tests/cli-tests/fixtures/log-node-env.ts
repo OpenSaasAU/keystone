@@ -1,6 +1,6 @@
-import { list, config } from '@keystone-6/core'
-import { text } from '@keystone-6/core/fields'
-import { allowAll } from '@keystone-6/core/access'
+import { list, config } from '@opensaas/keystone-core'
+import { text } from '@opensaas/keystone-core/fields'
+import { allowAll } from '@opensaas/keystone-core/access'
 
 console.log('CLI-TESTS-NODE-ENV: ' + process.env.NODE_ENV)
 console.log('CLI-TESTS-NODE-ENV-EVAL: ' + eval('process.env' + '.NODE_ENV'))

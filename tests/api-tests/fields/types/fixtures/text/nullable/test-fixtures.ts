@@ -1,4 +1,4 @@
-import { text } from '@keystone-6/core/fields'
+import { text } from '@opensaas/keystone-core/fields'
 
 export const name = 'Text with isNullable: true'
 export const typeFunction = (config: any) =>

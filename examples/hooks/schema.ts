@@ -1,6 +1,6 @@
-import { list, group } from '@keystone-6/core'
-import { allowAll, denyAll } from '@keystone-6/core/access'
-import { checkbox, text, timestamp } from '@keystone-6/core/fields'
+import { list, group } from '@opensaas/keystone-core'
+import { allowAll, denyAll } from '@opensaas/keystone-core/access'
+import { checkbox, text, timestamp } from '@opensaas/keystone-core/fields'
 
 import type { Lists } from '.keystone/types'
 

@@ -186,7 +186,7 @@ export function idFieldType (config: IdFieldConfig): FieldTypeFunc<BaseListTypeI
           return value.toString()
         },
       }),
-      views: '@keystone-6/core/___internal-do-not-use-will-break-in-patch/admin-ui/id-field-view',
+      views: '@opensaas/keystone-core/___internal-do-not-use-will-break-in-patch/admin-ui/id-field-view',
       getAdminMeta: () => ({ kind, type: type_ }),
       ui: {
         createView: {

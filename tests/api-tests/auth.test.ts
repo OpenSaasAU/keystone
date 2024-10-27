@@ -1,9 +1,9 @@
-import { text, password } from '@keystone-6/core/fields'
-import { list } from '@keystone-6/core'
-import { statelessSessions } from '@keystone-6/core/session'
+import { text, password } from '@opensaas/keystone-core/fields'
+import { list } from '@opensaas/keystone-core'
+import { statelessSessions } from '@opensaas/keystone-core/session'
 import { createAuth } from '@keystone-6/auth'
 import { setupTestRunner } from '@keystone-6/api-tests/test-runner'
-import { allowAll } from '@keystone-6/core/access'
+import { allowAll } from '@opensaas/keystone-core/access'
 import { expectInternalServerError, expectValidationError, seed } from './utils'
 
 const initialData = {

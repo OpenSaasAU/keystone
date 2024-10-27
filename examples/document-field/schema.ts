@@ -1,7 +1,7 @@
-import { list } from '@keystone-6/core'
-import { select, relationship, text, timestamp } from '@keystone-6/core/fields'
+import { list } from '@opensaas/keystone-core'
+import { select, relationship, text, timestamp } from '@opensaas/keystone-core/fields'
 import { document } from '@keystone-6/fields-document'
-import { allowAll } from '@keystone-6/core/access'
+import { allowAll } from '@opensaas/keystone-core/access'
 
 import type { Lists } from '.keystone/types'
 

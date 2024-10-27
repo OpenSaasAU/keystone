@@ -1,5 +1,5 @@
-import { config } from '@keystone-6/core'
-import { statelessSessions } from '@keystone-6/core/session'
+import { config } from '@opensaas/keystone-core'
+import { statelessSessions } from '@opensaas/keystone-core/session'
 import { createAuth } from '@keystone-6/auth'
 import { type Session, lists } from './schema'
 import { type TypeInfo } from '.keystone/types'

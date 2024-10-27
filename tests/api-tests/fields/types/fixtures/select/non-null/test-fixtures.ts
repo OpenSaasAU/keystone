@@ -1,4 +1,4 @@
-import { select } from '@keystone-6/core/fields'
+import { select } from '@opensaas/keystone-core/fields'
 import { fieldConfig } from '../test-fixtures'
 
 export {

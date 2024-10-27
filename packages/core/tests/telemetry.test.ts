@@ -8,16 +8,16 @@ import { runTelemetry, disableTelemetry } from '../src/lib/telemetry'
 const mockProjectRoot = path.resolve(__dirname, '..', '..', '..')
 const mockProjectDir = path.join(mockProjectRoot, './tests/test-projects/basic')
 const mockPackageVersions = {
-  '@keystone-6/core': '14.1.0',
+  '@opensaas/keystone-core': '14.1.0',
   '@keystone-6/auth': '9.0.1',
   '@keystone-6/fields-document': '18.0.2',
   '@keystone-6/cloudinary': '0.0.1',
 }
 
 jest.mock(
-  '@keystone-6/core/package.json',
+  '@opensaas/keystone-core/package.json',
   () => {
-    return { version: mockPackageVersions['@keystone-6/core'] }
+    return { version: mockPackageVersions['@opensaas/keystone-core'] }
   },
   { virtual: true }
 )

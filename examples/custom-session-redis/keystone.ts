@@ -1,5 +1,5 @@
-import { config } from '@keystone-6/core'
-import { storedSessions } from '@keystone-6/core/session'
+import { config } from '@opensaas/keystone-core'
+import { storedSessions } from '@opensaas/keystone-core/session'
 import { createAuth } from '@keystone-6/auth'
 import { createClient } from '@redis/client'
 import { lists, type Session } from './schema'

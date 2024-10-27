@@ -1,6 +1,6 @@
-import { text, relationship, integer } from '@keystone-6/core/fields'
-import { list } from '@keystone-6/core'
-import { allowAll } from '@keystone-6/core/access'
+import { text, relationship, integer } from '@opensaas/keystone-core/fields'
+import { list } from '@opensaas/keystone-core'
+import { allowAll } from '@opensaas/keystone-core/access'
 
 import { setupTestSuite } from '../test-runner'
 

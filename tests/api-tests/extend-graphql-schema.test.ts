@@ -1,6 +1,6 @@
-import { list, graphql } from '@keystone-6/core'
-import { allowAll } from '@keystone-6/core/access'
-import { text } from '@keystone-6/core/fields'
+import { list, graphql } from '@opensaas/keystone-core'
+import { allowAll } from '@opensaas/keystone-core/access'
+import { text } from '@opensaas/keystone-core/fields'
 
 import { setupTestRunner } from './test-runner'
 import { expectInternalServerError } from './utils'

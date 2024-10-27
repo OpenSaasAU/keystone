@@ -1,4 +1,4 @@
-import { getContext } from '@keystone-6/core/context'
+import { getContext } from '@opensaas/keystone-core/context'
 import config from '../../keystone'
 import { type Context } from '.keystone/types'
 import * as PrismaModule from 'myprisma'

@@ -113,7 +113,7 @@ export function float <ListTypeInfo extends BaseListTypeInfo> (config: FloatFiel
         type: graphql.Float,
       }),
       __ksTelemetryFieldTypeName: '@keystone-6/float',
-      views: '@keystone-6/core/fields/types/float/views',
+      views: '@opensaas/keystone-core/fields/types/float/views',
       getAdminMeta () {
         return {
           validation: {

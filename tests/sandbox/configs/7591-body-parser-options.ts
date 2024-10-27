@@ -1,7 +1,7 @@
 import http from 'http'
-import { list, config } from '@keystone-6/core'
-import { text } from '@keystone-6/core/fields'
-import { allowAll } from '@keystone-6/core/access'
+import { list, config } from '@opensaas/keystone-core'
+import { text } from '@opensaas/keystone-core/fields'
+import { allowAll } from '@opensaas/keystone-core/access'
 import { dbConfig } from '../utils'
 
 function makeQuery (size = 0) {

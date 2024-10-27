@@ -1,4 +1,4 @@
-import { calendarDay } from '@keystone-6/core/fields'
+import { calendarDay } from '@opensaas/keystone-core/fields'
 import { dbProvider } from '../../utils'
 import { filterTests, orderableFilterTests, uniqueEqualityFilterTest } from './utils'
 

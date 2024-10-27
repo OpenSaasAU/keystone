@@ -2,11 +2,11 @@ import {
   type BaseKeystoneTypeInfo,
   type KeystoneConfig,
   type KeystoneContext
-} from '@keystone-6/core/types'
+} from '@opensaas/keystone-core/types'
 import {
   createSystem,
   getArtifacts,
-} from '@keystone-6/core/___internal-do-not-use-will-break-in-patch/artifacts'
+} from '@opensaas/keystone-core/___internal-do-not-use-will-break-in-patch/artifacts'
 
 import { type setupTestRunner } from './test-runner'
 

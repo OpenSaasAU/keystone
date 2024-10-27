@@ -1891,84 +1891,7 @@ importers:
         specifier: ^5.5.0
         version: 5.6.3
 
-  packages/auth:
-    dependencies:
-      '@babel/runtime':
-        specifier: ^7.24.7
-        version: 7.25.7
-      '@keystone-ui/button':
-        specifier: workspace:^
-        version: link:../../design-system/packages/button
-      '@keystone-ui/core':
-        specifier: workspace:^
-        version: link:../../design-system/packages/core
-      '@keystone-ui/fields':
-        specifier: workspace:^
-        version: link:../../design-system/packages/fields
-      '@keystone-ui/loading':
-        specifier: workspace:^
-        version: link:../../design-system/packages/loading
-      '@keystone-ui/notice':
-        specifier: workspace:^
-        version: link:../../design-system/packages/notice
-      cross-fetch:
-        specifier: ^4.0.0
-        version: 4.0.0
-      fast-deep-equal:
-        specifier: ^3.1.3
-        version: 3.1.3
-      graphql:
-        specifier: ^16.8.1
-        version: 16.9.0
-    devDependencies:
-      '@keystone-6/core':
-        specifier: workspace:^
-        version: link:../core
-      react:
-        specifier: ^18.3.1
-        version: 18.3.1
-
-  packages/cloudinary:
-    dependencies:
-      '@babel/runtime':
-        specifier: ^7.24.7
-        version: 7.25.7
-      '@keystone-ui/button':
-        specifier: workspace:^
-        version: link:../../design-system/packages/button
-      '@keystone-ui/core':
-        specifier: workspace:^
-        version: link:../../design-system/packages/core
-      '@keystone-ui/fields':
-        specifier: workspace:^
-        version: link:../../design-system/packages/fields
-      '@keystone-ui/pill':
-        specifier: workspace:^
-        version: link:../../design-system/packages/pill
-      cloudinary:
-        specifier: ^2.0.0
-        version: 2.5.1
-      react:
-        specifier: ^18.3.1
-        version: 18.3.1
-    devDependencies:
-      '@keystone-6/core':
-        specifier: ^6.1.0
-        version: link:../core
-      '@types/express':
-        specifier: ^4.17.14
-        version: 4.17.21
-      '@types/react':
-        specifier: ^18.3.3
-        version: 18.3.11
-      graphql:
-        specifier: ^16.8.1
-        version: 16.9.0
-      graphql-upload:
-        specifier: ^15.0.2
-        version: 15.0.2(@types/express@4.17.21)(graphql@16.9.0)
-
-  packages/core:
+  packages/admin-ui:
     dependencies:
       '@apollo/cache-control-types':
         specifier: ^1.0.3
@@ -2009,6 +1932,9 @@ importers:
       '@hapi/iron':
         specifier: ^7.0.0
         version: 7.0.1
+      '@keystone-6/admin-ui':
+        specifier: workspace:^
+        version: 'link:'
       '@keystone-ui/button':
         specifier: workspace:^
         version: link:../../design-system/packages/button
@@ -2052,14 +1978,14 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0
       '@prisma/client':
-        specifier: 5.21.1
-        version: 5.21.1(prisma@5.21.1)
+        specifier: 5.20.0
+        version: 5.20.0(prisma@5.20.0)
       '@prisma/internals':
-        specifier: 5.21.1
-        version: 5.21.1
+        specifier: 5.20.0
+        version: 5.20.0
       '@prisma/migrate':
-        specifier: 5.21.1
-        version: 5.21.1(@prisma/generator-helper@5.21.1)(@prisma/internals@5.21.1)
+        specifier: 5.20.0
+        version: 5.20.0(@prisma/generator-helper@5.21.1)(@prisma/internals@5.20.0)
       '@sindresorhus/slugify':
         specifier: ^1.1.2
         version: 1.1.2
@@ -2088,8 +2014,8 @@ importers:
         specifier: ^10.2.0
         version: 10.2.0
       cookie:
-        specifier: ^1.0.0
-        version: 1.0.1
+        specifier: ^0.6.0
+        version: 0.6.0
       cors:
         specifier: ^2.8.5
         version: 2.8.5
@@ -2145,8 +2071,8 @@ importers:
         specifier: ^8.0.0
         version: 8.0.0
       prisma:
-        specifier: 5.21.1
-        version: 5.21.1
+        specifier: 5.20.0
+        version: 5.20.0
       prompts:
         specifier: ^2.4.2
         version: 2.4.2
@@ -2165,7 +2091,7 @@ importers:
     devDependencies:
       '@keystone-6/core':
         specifier: workspace:^
-        version: 'link:'
+        version: link:../core
       '@types/apollo-upload-client':
         specifier: 17.0.5
         version: 17.0.5(@types/react@18.3.11)(graphql-ws@5.16.0(graphql@16.9.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -2205,6 +2131,307 @@ importers:
       '@types/uuid':
         specifier: ^10.0.0
         version: 10.0.0
+
+  packages/auth:
+    dependencies:
+      '@babel/runtime':
+        specifier: ^7.24.7
+        version: 7.25.7
+      '@keystone-ui/button':
+        specifier: workspace:^
+        version: link:../../design-system/packages/button
+      '@keystone-ui/core':
+        specifier: workspace:^
+        version: link:../../design-system/packages/core
+      '@keystone-ui/fields':
+        specifier: workspace:^
+        version: link:../../design-system/packages/fields
+      '@keystone-ui/loading':
+        specifier: workspace:^
+        version: link:../../design-system/packages/loading
+      '@keystone-ui/notice':
+        specifier: workspace:^
+        version: link:../../design-system/packages/notice
+      cross-fetch:
+        specifier: ^4.0.0
+        version: 4.0.0
+      fast-deep-equal:
+        specifier: ^3.1.3
+        version: 3.1.3
+      graphql:
+        specifier: ^16.8.1
+        version: 16.9.0
+    devDependencies:
+      '@keystone-6/core':
+        specifier: workspace:^
+        version: link:../core
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+
+  packages/cli:
+    dependencies:
+      '@apollo/cache-control-types':
+        specifier: ^1.0.3
+        version: 1.0.3(graphql@16.9.0)
+      '@nodelib/fs.walk':
+        specifier: ^2.0.0
+        version: 2.0.0
+      '@prisma/client':
+        specifier: 5.21.1
+        version: 5.21.1(prisma@5.21.1)
+      '@prisma/internals':
+        specifier: 5.21.1
+        version: 5.21.1
+      '@prisma/migrate':
+        specifier: 5.21.1
+        version: 5.21.1(@prisma/generator-helper@5.21.1)(@prisma/internals@5.21.1)
+      '@sindresorhus/slugify':
+        specifier: ^1.1.2
+        version: 1.1.2
+      chalk:
+        specifier: ^4.1.2
+        version: 4.1.2
+      ci-info:
+        specifier: ^4.0.0
+        version: 4.0.0
+      clipboard-copy:
+        specifier: ^4.0.1
+        version: 4.0.1
+      conf:
+        specifier: ^10.2.0
+        version: 10.2.0
+      decimal.js:
+        specifier: ^10.4.1
+        version: 10.4.3
+      esbuild:
+        specifier: ^0.24.0
+        version: 0.24.0
+      fast-deep-equal:
+        specifier: ^3.1.3
+        version: 3.1.3
+      file-type:
+        specifier: ^19.0.0
+        version: 19.6.0
+      fs-extra:
+        specifier: ^11.0.0
+        version: 11.2.0
+      image-size:
+        specifier: ^1.0.0
+        version: 1.1.1
+      inflection:
+        specifier: ^3.0.0
+        version: 3.0.0
+      intersection-observer:
+        specifier: ^0.12.0
+        version: 0.12.2
+      meow:
+        specifier: ^9.0.0
+        version: 9.0.0
+      next:
+        specifier: ^14.2.0
+        version: 14.2.15(@babel/core@7.25.8)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      pluralize:
+        specifier: ^8.0.0
+        version: 8.0.0
+      prisma:
+        specifier: 5.21.1
+        version: 5.21.1
+      prompts:
+        specifier: ^2.4.2
+        version: 2.4.2
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.3.1
+        version: 18.3.1(react@18.3.1)
+      resolve:
+        specifier: ^1.20.0
+        version: 1.22.8
+      uuid:
+        specifier: ^10.0.0
+        version: 10.0.0
+    devDependencies:
+      '@keystone-6/core':
+        specifier: workspace:^
+        version: link:../core
+
+  packages/cloudinary:
+    dependencies:
+      '@babel/runtime':
+        specifier: ^7.24.7
+        version: 7.25.7
+      '@keystone-ui/button':
+        specifier: workspace:^
+        version: link:../../design-system/packages/button
+      '@keystone-ui/core':
+        specifier: workspace:^
+        version: link:../../design-system/packages/core
+      '@keystone-ui/fields':
+        specifier: workspace:^
+        version: link:../../design-system/packages/fields
+      '@keystone-ui/pill':
+        specifier: workspace:^
+        version: link:../../design-system/packages/pill
+      cloudinary:
+        specifier: ^2.0.0
+        version: 2.5.1
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+    devDependencies:
+      '@keystone-6/core':
+        specifier: ^6.1.0
+        version: link:../core
+      '@types/express':
+        specifier: ^4.17.14
+        version: 4.17.21
+      '@types/react':
+        specifier: ^18.3.3
+        version: 18.3.11
+      graphql:
+        specifier: ^16.8.1
+        version: 16.9.0
+      graphql-upload:
+        specifier: ^15.0.2
+        version: 15.0.2(@types/express@4.17.21)(graphql@16.9.0)
+
+  packages/core:
+    dependencies:
+      '@babel/runtime':
+        specifier: ^7.24.7
+        version: 7.25.7
+      '@graphql-ts/extend':
+        specifier: ^1.0.0
+        version: 1.0.0(@graphql-ts/schema@0.6.0(graphql@16.9.0))(graphql@16.9.0)
+      '@graphql-ts/schema':
+        specifier: ^0.6.0
+        version: 0.6.0(graphql@16.9.0)
+      '@graphql-typed-document-node/core':
+        specifier: ^3.1.2
+        version: 3.2.0(graphql@16.9.0)
+      '@hapi/iron':
+        specifier: ^7.0.0
+        version: 7.0.1
+      '@nodelib/fs.walk':
+        specifier: ^2.0.0
+        version: 2.0.0
+      '@prisma/client':
+        specifier: 5.21.1
+        version: 5.21.1(prisma@5.21.1)
+      '@prisma/internals':
+        specifier: 5.21.1
+        version: 5.21.1
+      '@prisma/migrate':
+        specifier: 5.21.1
+        version: 5.21.1(@prisma/generator-helper@5.21.1)(@prisma/internals@5.21.1)
+      '@sindresorhus/slugify':
+        specifier: ^1.1.2
+        version: 1.1.2
+      bcryptjs:
+        specifier: ^2.4.3
+        version: 2.4.3
+      body-parser:
+        specifier: ^1.20.1
+        version: 1.20.3
+      bytes:
+        specifier: ^3.1.1
+        version: 3.1.2
+      ci-info:
+        specifier: ^4.0.0
+        version: 4.0.0
+      clipboard-copy:
+        specifier: ^4.0.1
+        version: 4.0.1
+      conf:
+        specifier: ^10.2.0
+        version: 10.2.0
+      dataloader:
+        specifier: ^2.1.0
+        version: 2.2.2
+      date-fns:
+        specifier: ^4.0.0
+        version: 4.1.0
+      decimal.js:
+        specifier: ^10.4.1
+        version: 10.4.3
+      esbuild:
+        specifier: ^0.24.0
+        version: 0.24.0
+      fast-deep-equal:
+        specifier: ^3.1.3
+        version: 3.1.3
+      file-type:
+        specifier: ^19.0.0
+        version: 19.6.0
+      fs-extra:
+        specifier: ^11.0.0
+        version: 11.2.0
+      graphql:
+        specifier: ^16.8.1
+        version: 16.9.0
+      image-size:
+        specifier: ^1.0.0
+        version: 1.1.1
+      inflection:
+        specifier: ^3.0.0
+        version: 3.0.0
+      intersection-observer:
+        specifier: ^0.12.0
+        version: 0.12.2
+      pluralize:
+        specifier: ^8.0.0
+        version: 8.0.0
+      resolve:
+        specifier: ^1.20.0
+        version: 1.22.8
+      uuid:
+        specifier: ^10.0.0
+        version: 10.0.0
+    devDependencies:
+      '@keystone-6/core':
+        specifier: workspace:^
+        version: 'link:'
+      '@types/bcryptjs':
+        specifier: ^2.4.2
+        version: 2.4.6
+      '@types/body-parser':
+        specifier: ^1.19.2
+        version: 1.19.5
+      '@types/bytes':
+        specifier: ^3.1.1
+        version: 3.1.4
+      '@types/cookie':
+        specifier: ^0.6.0
+        version: 0.6.0
+      '@types/cors':
+        specifier: ^2.8.13
+        version: 2.8.17
+      '@types/express':
+        specifier: ^4.17.14
+        version: 4.17.21
+      '@types/fs-extra':
+        specifier: ^11.0.0
+        version: 11.0.4
+      '@types/pluralize':
+        specifier: ^0.0.33
+        version: 0.0.33
+      '@types/prompts':
+        specifier: ^2.0.14
+        version: 2.4.9
+      '@types/react':
+        specifier: ^18.3.3
+        version: 18.3.11
+      '@types/resolve':
+        specifier: ^1.20.2
+        version: 1.20.6
+      '@types/uuid':
+        specifier: ^10.0.0
+        version: 10.0.0
+      prisma:
+        specifier: 5.21.1
+        version: 5.21.1
 
   packages/create:
     dependencies:
@@ -5037,6 +5264,15 @@ packages:
       prisma:
         optional: true
 
+  '@prisma/client@5.20.0':
+    resolution: {integrity: sha512-CLv55ZuMuUawMsxoqxGtLT3bEZoa2W8L3Qnp6rDIFWy+ZBrUcOFKdoeGPSnbBqxc3SkdxJrF+D1veN/WNynZYA==}
+    engines: {node: '>=16.13'}
+    peerDependencies:
+      prisma: '*'
+    peerDependenciesMeta:
+      prisma:
+        optional: true
+
   '@prisma/client@5.21.1':
     resolution: {integrity: sha512-3n+GgbAZYjaS/k0M03yQsQfR1APbr411r74foknnsGpmhNKBG49VuUkxIU6jORgvJPChoD4WC4PqoHImN1FP0w==}
     engines: {node: '>=16.13'}
@@ -5049,6 +5285,9 @@ packages:
   '@prisma/debug@5.19.0':
     resolution: {integrity: sha512-+b/G0ubAZlrS+JSiDhXnYV5DF/aTJ3pinktkiV/L4TtLRLZO6SVGyFELgxBsicCTWJ2ZMu5vEV/jTtYCdjFTRA==}
 
+  '@prisma/debug@5.20.0':
+    resolution: {integrity: sha512-oCx79MJ4HSujokA8S1g0xgZUGybD4SyIOydoHMngFYiwEwYDQ5tBQkK5XoEHuwOYDKUOKRn/J0MEymckc4IgsQ==}
+
   '@prisma/debug@5.21.0':
     resolution: {integrity: sha512-8gX68E36OKImh7LBz5fFIuTRLZgM1ObnDA8ukhC1kZvTK7k7Unti6pJe3ZiudzuFAxae06PV1rhq1u9DZbXVnQ==}
 
@@ -5057,6 +5296,9 @@ packages:
 
   '@prisma/engines-version@5.19.0-31.5fe21811a6ba0b952a3bc71400666511fe3b902f':
     resolution: {integrity: sha512-GimI9aZIFy/yvvR11KfXRn3pliFn1QAkdebVlsXlnoh5uk0YhLblVmeYiHfsu+wDA7BeKqYT4sFfzg8mutzuWw==}
+
+  '@prisma/engines-version@5.20.0-12.06fc58a368dc7be9fbbbe894adf8d445d208c284':
+    resolution: {integrity: sha512-Lg8AS5lpi0auZe2Mn4gjuCg081UZf88k3cn0RCwHgR+6cyHHpttPZBElJTHf83ZGsRNAmVCZCfUGA57WB4u4JA==}
 
   '@prisma/engines-version@5.21.0-36.08713a93b99d58f31485621c634b04983ae01d95':
     resolution: {integrity: sha512-hfq7c8MnkhcZTY0bGXG6bV5Cr7OsnHLERNy4xkZy6rbpWnhtfjuj3yUVM4u1GKXd6uWmFbg0+HDw8KXTgTVepQ==}
@@ -5067,6 +5309,9 @@ packages:
   '@prisma/engines@5.19.0':
     resolution: {integrity: sha512-UtW+0m4HYoRSSR3LoDGKF3Ud4BSMWYlLEt4slTnuP1mI+vrV3zaDoiAPmejdAT76vCN5UqnWURbkXxf66nSylQ==}
 
+  '@prisma/engines@5.20.0':
+    resolution: {integrity: sha512-DtqkP+hcZvPEbj8t8dK5df2b7d3B8GNauKqaddRRqQBBlgkbdhJkxhoJTrOowlS3vaRt2iMCkU0+CSNn0KhqAQ==}
+
   '@prisma/engines@5.21.0':
     resolution: {integrity: sha512-IBewQJiDnFiz39pl8kEIzmzV4RAoBPBD2DoLDntMMXObg1an90Dp+xeb1mmwrTgRDE3elu/LYxyVPEkKw9LZ7A==}
 
@@ -5076,11 +5321,17 @@ packages:
   '@prisma/fetch-engine@5.19.0':
     resolution: {integrity: sha512-oOiPNtmJX0cP/ebu7BBEouJvCw8T84/MFD/Hf2zlqjxkK4ojl38bB9i9J5LAxotL6WlYVThKdxc7HqoWnPOhqQ==}
 
+  '@prisma/fetch-engine@5.20.0':
+    resolution: {integrity: sha512-JVcaPXC940wOGpCOwuqQRTz6I9SaBK0c1BAyC1pcz9xBi+dzFgUu3G/p9GV1FhFs9OKpfSpIhQfUJE9y00zhqw==}
+
   '@prisma/fetch-engine@5.21.0':
     resolution: {integrity: sha512-nXKJrsxVKng6yjJzl7vBjrr3S34cOmWQ9SiGTo9xidVTmVSgg5GCTwDL4r2be8DE3RntqK5BW2LWQ1gF80eINw==}
 
   '@prisma/fetch-engine@5.21.1':
     resolution: {integrity: sha512-70S31vgpCGcp9J+mh/wHtLCkVezLUqe/fGWk3J3JWZIN7prdYSlr1C0niaWUyNK2VflLXYi8kMjAmSxUVq6WGQ==}
+
+  '@prisma/generator-helper@5.20.0':
+    resolution: {integrity: sha512-37Aibw0wVRQgQVtCdNAIN71YFnSQfvetok7vd95KKkYkQRbEx94gsvPDpyN9Mw7p3IwA3nFgPfLc3jBRztUkKw==}
 
   '@prisma/generator-helper@5.21.0':
     resolution: {integrity: sha512-+DnQBW6LwsDIpj6hDAPbWoQBwU5MP+qrDt/d5wFAhsMNqg56XgSj6ZbHEkaej58xIuae5Pg6XmzwRdBPg7f/jA==}
@@ -5091,17 +5342,29 @@ packages:
   '@prisma/get-platform@5.19.0':
     resolution: {integrity: sha512-s9DWkZKnuP4Y8uy6yZfvqQ/9X3/+2KYf3IZUVZz5OstJdGBJrBlbmIuMl81917wp5TuK/1k2TpHNCEdpYLPKmg==}
 
+  '@prisma/get-platform@5.20.0':
+    resolution: {integrity: sha512-8/+CehTZZNzJlvuryRgc77hZCWrUDYd/PmlZ7p2yNXtmf2Una4BWnTbak3us6WVdqoz5wmptk6IhsXdG2v5fmA==}
+
   '@prisma/get-platform@5.21.0':
     resolution: {integrity: sha512-NAyaAcHJhs0IysGYJtM6Fm3ccEs/LkCZqz/8riVkkJswFrRtFV93jAUIVKWO/wj1Ca1gO7HaMd/tr6e/9Xmvww==}
 
   '@prisma/get-platform@5.21.1':
     resolution: {integrity: sha512-sRxjL3Igst3ct+e8ya/x//cDXmpLbZQ5vfps2N4tWl4VGKQAmym77C/IG/psSMsQKszc8uFC/q1dgmKFLUgXZQ==}
 
+  '@prisma/internals@5.20.0':
+    resolution: {integrity: sha512-n8ceNIpQbrLHNDcqsfmxtktpGrGNDKaGe9WNSz5B8J5ayQqarC6K/l9C3jCMNBjj8ZRI8nGN/B2yczdvEugs0w==}
+
   '@prisma/internals@5.21.0':
     resolution: {integrity: sha512-sfMmfp9qke/imXNAL0z2gvHUZ7jPX19w7Nh4TVcvKqbTpgTk1iM1uIPQM8CIPOBEV09UwipHe3ln9yxWYqJ6gw==}
 
   '@prisma/internals@5.21.1':
     resolution: {integrity: sha512-XCjJUUDBwT0ioLrTfUKA/YsVs5gtWtMisxRssGS5tgqVaVzc8XEY01avtYIzyhz8RDLn7QlecTQGHW+5J9+w6Q==}
+
+  '@prisma/migrate@5.20.0':
+    resolution: {integrity: sha512-fz4CmNWeF0c0OFybiHdNaWzv5Rs/JQJMNBrvZdSWhBWTZNXuZPmBSC3uPUNacaxdQ8ChQke/FpJ/CPdYBseQgA==}
+    peerDependencies:
+      '@prisma/generator-helper': '*'
+      '@prisma/internals': '*'
 
   '@prisma/migrate@5.21.0':
     resolution: {integrity: sha512-H/X3ZOLcUl5ZiWTY0SQOy1Gc6gT09NbMb3DDL9y9z3484Zqdp6R1CF4XOUufIX2cKgnprUvd/lQLnq6I+awmQw==}
@@ -5115,11 +5378,17 @@ packages:
       '@prisma/generator-helper': '*'
       '@prisma/internals': '*'
 
+  '@prisma/prisma-schema-wasm@5.20.0-12.06fc58a368dc7be9fbbbe894adf8d445d208c284':
+    resolution: {integrity: sha512-tE5ZxPwI381Mrzgd1/GLJFusD1SfVXGzOWRU2P9c9zk25nlfa6GkyaqCtSTIaINexPAAy4npsCoAFt2Hc4rqYQ==}
+
   '@prisma/prisma-schema-wasm@5.21.0-36.08713a93b99d58f31485621c634b04983ae01d95':
     resolution: {integrity: sha512-JrZMlaWugM4JW6uiB4WirFmfMMnHnCN3LGWVTb32x2R23jPB2IBYDT61BnW8PlackUZE635IDBT8mrZ7bRy1KQ==}
 
   '@prisma/prisma-schema-wasm@5.21.1-1.bf0e5e8a04cada8225617067eaa03d041e2bba36':
     resolution: {integrity: sha512-JJnZ7A0CSW4SNFSWe2/GexJ/Z5s69+3UqbsBuGxJe7EQyVgw/hmskmhFmM4gccihh9PA2hlDip5kmraAfO7vSA==}
+
+  '@prisma/schema-files-loader@5.20.0':
+    resolution: {integrity: sha512-Mq4an/vxzdjL+e1GZIw93xTDaU6Gq+2RMuW6NEs+XHAhmiOaBrw9QARZhc+QURY3wwAdj2dUSpoy4xaWON9JTg==}
 
   '@prisma/schema-files-loader@5.21.0':
     resolution: {integrity: sha512-snwMUFvyC+ukJWGU6xp9aGK2mXQDu8Zn6N3CB/2O73+qYfTaTvN91z0/Pk7xrUV8tdKihRk6XCyzNEODs4YfhQ==}
@@ -7460,6 +7729,10 @@ packages:
 
   cookie@0.5.0:
     resolution: {integrity: sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==}
+    engines: {node: '>= 0.6'}
+
+  cookie@0.6.0:
+    resolution: {integrity: sha512-U71cyTamuh1CRNCfpGY6to28lxvNwPG4Guz/EVjgf3Jmzv0vlDp1atT9eS5dDjMYHucpHbWns6Lwf3BKz6svdw==}
     engines: {node: '>= 0.6'}
 
   cookie@0.7.1:
@@ -10681,6 +10954,11 @@ packages:
 
   prisma@5.19.0:
     resolution: {integrity: sha512-Pu7lUKpVyTx8cVwM26dYh8NdvMOkMnJXzE8L6cikFuR4JwyMU5NKofQkWyxJKlTT4fNjmcnibTvklV8oVMrn+g==}
+    engines: {node: '>=16.13'}
+    hasBin: true
+
+  prisma@5.20.0:
+    resolution: {integrity: sha512-6obb3ucKgAnsGS9x9gLOe8qa51XxvJ3vLQtmyf52CTey1Qcez3A6W6ROH5HIz5Q5bW+0VpmZb8WBohieMFGpig==}
     engines: {node: '>=16.13'}
     hasBin: true
 
@@ -14885,14 +15163,14 @@ snapshots:
   '@graphql-tools/optimize@1.4.0(graphql@16.9.0)':
     dependencies:
       graphql: 16.9.0
-      tslib: 2.4.1
+      tslib: 2.8.0
 
   '@graphql-tools/relay-operation-optimizer@6.5.18(graphql@16.9.0)':
     dependencies:
       '@ardatan/relay-compiler': 12.0.0(graphql@16.9.0)
       '@graphql-tools/utils': 9.2.1(graphql@16.9.0)
       graphql: 16.9.0
-      tslib: 2.4.1
+      tslib: 2.8.0
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -14908,7 +15186,7 @@ snapshots:
   '@graphql-tools/utils@8.13.1(graphql@16.9.0)':
     dependencies:
       graphql: 16.9.0
-      tslib: 2.4.1
+      tslib: 2.8.0
 
   '@graphql-tools/utils@9.2.1(graphql@16.9.0)':
     dependencies:
@@ -15684,17 +15962,25 @@ snapshots:
     optionalDependencies:
       prisma: 5.19.0
 
+  '@prisma/client@5.20.0(prisma@5.20.0)':
+    optionalDependencies:
+      prisma: 5.20.0
+
   '@prisma/client@5.21.1(prisma@5.21.1)':
     optionalDependencies:
       prisma: 5.21.1
 
   '@prisma/debug@5.19.0': {}
 
+  '@prisma/debug@5.20.0': {}
+
   '@prisma/debug@5.21.0': {}
 
   '@prisma/debug@5.21.1': {}
 
   '@prisma/engines-version@5.19.0-31.5fe21811a6ba0b952a3bc71400666511fe3b902f': {}
+
+  '@prisma/engines-version@5.20.0-12.06fc58a368dc7be9fbbbe894adf8d445d208c284': {}
 
   '@prisma/engines-version@5.21.0-36.08713a93b99d58f31485621c634b04983ae01d95': {}
 
@@ -15706,6 +15992,13 @@ snapshots:
       '@prisma/engines-version': 5.19.0-31.5fe21811a6ba0b952a3bc71400666511fe3b902f
       '@prisma/fetch-engine': 5.19.0
       '@prisma/get-platform': 5.19.0
+
+  '@prisma/engines@5.20.0':
+    dependencies:
+      '@prisma/debug': 5.20.0
+      '@prisma/engines-version': 5.20.0-12.06fc58a368dc7be9fbbbe894adf8d445d208c284
+      '@prisma/fetch-engine': 5.20.0
+      '@prisma/get-platform': 5.20.0
 
   '@prisma/engines@5.21.0':
     dependencies:
@@ -15727,6 +16020,12 @@ snapshots:
       '@prisma/engines-version': 5.19.0-31.5fe21811a6ba0b952a3bc71400666511fe3b902f
       '@prisma/get-platform': 5.19.0
 
+  '@prisma/fetch-engine@5.20.0':
+    dependencies:
+      '@prisma/debug': 5.20.0
+      '@prisma/engines-version': 5.20.0-12.06fc58a368dc7be9fbbbe894adf8d445d208c284
+      '@prisma/get-platform': 5.20.0
+
   '@prisma/fetch-engine@5.21.0':
     dependencies:
       '@prisma/debug': 5.21.0
@@ -15738,6 +16037,10 @@ snapshots:
       '@prisma/debug': 5.21.1
       '@prisma/engines-version': 5.21.1-1.bf0e5e8a04cada8225617067eaa03d041e2bba36
       '@prisma/get-platform': 5.21.1
+
+  '@prisma/generator-helper@5.20.0':
+    dependencies:
+      '@prisma/debug': 5.20.0
 
   '@prisma/generator-helper@5.21.0':
     dependencies:
@@ -15751,6 +16054,10 @@ snapshots:
     dependencies:
       '@prisma/debug': 5.19.0
 
+  '@prisma/get-platform@5.20.0':
+    dependencies:
+      '@prisma/debug': 5.20.0
+
   '@prisma/get-platform@5.21.0':
     dependencies:
       '@prisma/debug': 5.21.0
@@ -15758,6 +16065,18 @@ snapshots:
   '@prisma/get-platform@5.21.1':
     dependencies:
       '@prisma/debug': 5.21.1
+
+  '@prisma/internals@5.20.0':
+    dependencies:
+      '@prisma/debug': 5.20.0
+      '@prisma/engines': 5.20.0
+      '@prisma/fetch-engine': 5.20.0
+      '@prisma/generator-helper': 5.20.0
+      '@prisma/get-platform': 5.20.0
+      '@prisma/prisma-schema-wasm': 5.20.0-12.06fc58a368dc7be9fbbbe894adf8d445d208c284
+      '@prisma/schema-files-loader': 5.20.0
+      arg: 5.0.2
+      prompts: 2.4.2
 
   '@prisma/internals@5.21.0':
     dependencies:
@@ -15783,6 +16102,15 @@ snapshots:
       arg: 5.0.2
       prompts: 2.4.2
 
+  '@prisma/migrate@5.20.0(@prisma/generator-helper@5.21.1)(@prisma/internals@5.20.0)':
+    dependencies:
+      '@prisma/debug': 5.20.0
+      '@prisma/engines-version': 5.20.0-12.06fc58a368dc7be9fbbbe894adf8d445d208c284
+      '@prisma/generator-helper': 5.21.1
+      '@prisma/get-platform': 5.20.0
+      '@prisma/internals': 5.20.0
+      prompts: 2.4.2
+
   '@prisma/migrate@5.21.0(@prisma/generator-helper@5.21.1)(@prisma/internals@5.21.0)':
     dependencies:
       '@prisma/debug': 5.21.0
@@ -15801,9 +16129,16 @@ snapshots:
       '@prisma/internals': 5.21.1
       prompts: 2.4.2
 
+  '@prisma/prisma-schema-wasm@5.20.0-12.06fc58a368dc7be9fbbbe894adf8d445d208c284': {}
+
   '@prisma/prisma-schema-wasm@5.21.0-36.08713a93b99d58f31485621c634b04983ae01d95': {}
 
   '@prisma/prisma-schema-wasm@5.21.1-1.bf0e5e8a04cada8225617067eaa03d041e2bba36': {}
+
+  '@prisma/schema-files-loader@5.20.0':
+    dependencies:
+      '@prisma/prisma-schema-wasm': 5.20.0-12.06fc58a368dc7be9fbbbe894adf8d445d208c284
+      fs-extra: 11.1.1
 
   '@prisma/schema-files-loader@5.21.0':
     dependencies:
@@ -18815,7 +19150,7 @@ snapshots:
   camel-case@4.1.2:
     dependencies:
       pascal-case: 3.1.2
-      tslib: 2.4.1
+      tslib: 2.8.0
 
   camelcase-keys@6.2.2:
     dependencies:
@@ -18836,7 +19171,7 @@ snapshots:
   capital-case@1.0.4:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.4.1
+      tslib: 2.8.0
       upper-case-first: 2.0.2
 
   capture-exit@2.0.0:
@@ -18899,7 +19234,7 @@ snapshots:
       path-case: 3.0.4
       sentence-case: 3.0.4
       snake-case: 3.0.4
-      tslib: 2.4.1
+      tslib: 2.8.0
 
   char-regex@1.0.2: {}
 
@@ -19107,7 +19442,7 @@ snapshots:
   constant-case@3.0.4:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.4.1
+      tslib: 2.8.0
       upper-case: 2.0.2
 
   content-disposition@0.5.4:
@@ -19127,6 +19462,8 @@ snapshots:
   cookie@0.4.2: {}
 
   cookie@0.5.0: {}
+
+  cookie@0.6.0: {}
 
   cookie@0.7.1: {}
 
@@ -20601,7 +20938,7 @@ snapshots:
   header-case@2.0.4:
     dependencies:
       capital-case: 1.0.4
-      tslib: 2.4.1
+      tslib: 2.8.0
 
   hex-rgb@4.3.0: {}
 
@@ -20914,7 +21251,7 @@ snapshots:
 
   is-lower-case@2.0.2:
     dependencies:
-      tslib: 2.4.1
+      tslib: 2.8.0
 
   is-module@1.0.0: {}
 
@@ -20984,7 +21321,7 @@ snapshots:
 
   is-upper-case@2.0.2:
     dependencies:
-      tslib: 2.4.1
+      tslib: 2.8.0
 
   is-windows@1.0.2: {}
 
@@ -21645,7 +21982,7 @@ snapshots:
 
   lower-case-first@2.0.2:
     dependencies:
-      tslib: 2.4.1
+      tslib: 2.8.0
 
   lower-case@2.0.2:
     dependencies:
@@ -23054,7 +23391,7 @@ snapshots:
   param-case@3.0.4:
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.4.1
+      tslib: 2.8.0
 
   parent-module@1.0.1:
     dependencies:
@@ -23129,7 +23466,7 @@ snapshots:
   pascal-case@3.1.2:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.4.1
+      tslib: 2.8.0
 
   pascalcase@0.1.1: {}
 
@@ -23156,7 +23493,7 @@ snapshots:
   path-case@3.0.4:
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.4.1
+      tslib: 2.8.0
 
   path-exists@3.0.0: {}
 
@@ -23345,6 +23682,12 @@ snapshots:
   prisma@5.19.0:
     dependencies:
       '@prisma/engines': 5.19.0
+    optionalDependencies:
+      fsevents: 2.3.3
+
+  prisma@5.20.0:
+    dependencies:
+      '@prisma/engines': 5.20.0
     optionalDependencies:
       fsevents: 2.3.3
 
@@ -24089,7 +24432,7 @@ snapshots:
   sentence-case@3.0.4:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.4.1
+      tslib: 2.8.0
       upper-case-first: 2.0.2
 
   serve-static@1.16.2:
@@ -24376,7 +24719,7 @@ snapshots:
 
   sponge-case@1.0.1:
     dependencies:
-      tslib: 2.4.1
+      tslib: 2.8.0
 
   sprintf-js@1.0.3: {}
 
@@ -24547,7 +24890,7 @@ snapshots:
 
   swap-case@2.0.2:
     dependencies:
-      tslib: 2.4.1
+      tslib: 2.8.0
 
   symbol-observable@4.0.0: {}
 
@@ -24624,7 +24967,7 @@ snapshots:
 
   title-case@3.0.3:
     dependencies:
-      tslib: 2.4.1
+      tslib: 2.8.0
 
   tmp@0.0.33:
     dependencies:
@@ -24946,11 +25289,11 @@ snapshots:
 
   upper-case-first@2.0.2:
     dependencies:
-      tslib: 2.4.1
+      tslib: 2.8.0
 
   upper-case@2.0.2:
     dependencies:
-      tslib: 2.4.1
+      tslib: 2.8.0
 
   uri-js@4.4.1:
     dependencies:

@@ -1,4 +1,4 @@
-import { multiselect } from '@keystone-6/core/fields'
+import { multiselect } from '@opensaas/keystone-core/fields'
 
 type MatrixValue = (typeof testMatrix)[number]
 

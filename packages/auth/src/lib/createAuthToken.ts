@@ -1,5 +1,5 @@
 import { randomBytes } from 'crypto'
-import type { KeystoneDbAPI } from '@keystone-6/core/types'
+import type { KeystoneDbAPI } from '@opensaas/keystone-core/types'
 
 export async function createAuthToken (
   identityField: string,

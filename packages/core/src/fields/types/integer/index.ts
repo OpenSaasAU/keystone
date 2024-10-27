@@ -145,7 +145,7 @@ export function integer <ListTypeInfo extends BaseListTypeInfo> (config: Integer
       },
       output: graphql.field({ type: graphql.Int, }),
       __ksTelemetryFieldTypeName: '@keystone-6/integer',
-      views: '@keystone-6/core/fields/types/integer/views',
+      views: '@opensaas/keystone-core/fields/types/integer/views',
       getAdminMeta () {
         return {
           validation: {

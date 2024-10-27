@@ -1,6 +1,6 @@
-import { graphql, list } from '@keystone-6/core'
-import { allowAll } from '@keystone-6/core/access'
-import { text, virtual } from '@keystone-6/core/fields'
+import { graphql, list } from '@opensaas/keystone-core'
+import { allowAll } from '@opensaas/keystone-core/access'
+import { text, virtual } from '@opensaas/keystone-core/fields'
 
 import type { Lists } from '.keystone/types'
 

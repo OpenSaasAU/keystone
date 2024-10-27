@@ -1,9 +1,9 @@
-import { list } from '@keystone-6/core'
-import { allowAll } from '@keystone-6/core/access'
+import { list } from '@opensaas/keystone-core'
+import { allowAll } from '@opensaas/keystone-core/access'
 
 // see https://keystonejs.com/docs/fields/overview for the full list of fields
 //   this is a few common fields for an example
-import { text, relationship, timestamp } from '@keystone-6/core/fields'
+import { text, relationship, timestamp } from '@opensaas/keystone-core/fields'
 
 // the document field is a more complicated field, so it has it's own package
 import { document } from '@keystone-6/fields-document'

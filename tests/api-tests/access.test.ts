@@ -1,7 +1,7 @@
 import { setupTestSuite } from '@keystone-6/api-tests/test-runner'
-import { text } from '@keystone-6/core/fields'
-import { list } from '@keystone-6/core'
-import { allowAll, denyAll } from '@keystone-6/core/access'
+import { text } from '@opensaas/keystone-core/fields'
+import { list } from '@opensaas/keystone-core'
+import { allowAll, denyAll } from '@opensaas/keystone-core/access'
 import { dbProvider } from './utils'
 import ms from 'ms'
 

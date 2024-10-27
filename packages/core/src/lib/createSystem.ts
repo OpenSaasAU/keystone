@@ -9,7 +9,6 @@ import { GraphQLError } from 'graphql'
 
 import { allowAll } from '../access'
 import { resolveDefaults } from './defaults'
-import { createAdminMeta } from './create-admin-meta'
 import { createGraphQLSchema } from './createGraphQLSchema'
 import { createContext } from './context/createContext'
 import {
@@ -115,8 +114,7 @@ function getSudoGraphQLSchema (config: __ResolvedKeystoneConfig) {
   }
 
   const lists = initialiseLists(transformedConfig)
-  const adminMeta = createAdminMeta(transformedConfig, lists)
-  return createGraphQLSchema(transformedConfig, lists, adminMeta, true)
+  return createGraphQLSchema(transformedConfig, lists, true)
   // TODO: adminMeta not useful for sudo, remove in breaking change
   // return createGraphQLSchema(transformedConfig, lists, null, true);
 }
@@ -203,14 +201,12 @@ function formatUrl (provider: __ResolvedKeystoneConfig['db']['provider'], url: s
 export function createSystem (config_: KeystoneConfig) {
   const config = resolveDefaults(config_)
   const lists = initialiseLists(config)
-  const adminMeta = createAdminMeta(config, lists)
-  const graphQLSchema = createGraphQLSchema(config, lists, adminMeta, false)
+  const graphQLSchema = createGraphQLSchema(config, lists, false)
   const graphQLSchemaSudo = getSudoGraphQLSchema(config)
 
   return {
     config,
     graphQLSchema,
-    adminMeta,
     lists,
 
     getPaths: (cwd: string) => {

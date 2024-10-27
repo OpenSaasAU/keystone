@@ -1,8 +1,8 @@
-import { list } from '@keystone-6/core'
-//  import type { BaseListTypeInfo } from '@keystone-6/core/types';
-import type { FieldHooks } from '@keystone-6/core/types'
-import { allowAll, denyAll } from '@keystone-6/core/access'
-import { checkbox, text, timestamp } from '@keystone-6/core/fields'
+import { list } from '@opensaas/keystone-core'
+//  import type { BaseListTypeInfo } from '@opensaas/keystone-core/types';
+import type { FieldHooks } from '@opensaas/keystone-core/types'
+import { allowAll, denyAll } from '@opensaas/keystone-core/access'
+import { checkbox, text, timestamp } from '@opensaas/keystone-core/fields'
 
 import type { Lists, TypeInfo } from '.keystone/types'
 

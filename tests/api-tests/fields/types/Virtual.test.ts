@@ -1,7 +1,7 @@
-import { integer, relationship, text, virtual } from '@keystone-6/core/fields'
-import { type BaseFields, list, graphql } from '@keystone-6/core'
+import { integer, relationship, text, virtual } from '@opensaas/keystone-core/fields'
+import { type BaseFields, list, graphql } from '@opensaas/keystone-core'
 import { setupTestEnv, setupTestRunner } from '@keystone-6/api-tests/test-runner'
-import { allowAll } from '@keystone-6/core/access'
+import { allowAll } from '@opensaas/keystone-core/access'
 
 function makeRunner (fields: BaseFields<any>) {
   return setupTestRunner({

@@ -1,5 +1,5 @@
-import { type BaseItem, type KeystoneContext } from '@keystone-6/core/types'
-import { graphql } from '@keystone-6/core'
+import { type BaseItem, type KeystoneContext } from '@opensaas/keystone-core/types'
+import { graphql } from '@opensaas/keystone-core'
 import { assertInputObjectType, GraphQLInputObjectType, type GraphQLSchema } from 'graphql'
 
 import type { AuthGqlNames, InitFirstItemConfig } from '../types'

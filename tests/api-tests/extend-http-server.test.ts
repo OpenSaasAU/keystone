@@ -1,6 +1,6 @@
-import { list } from '@keystone-6/core'
-import { text } from '@keystone-6/core/fields'
-import { allowAll } from '@keystone-6/core/access'
+import { list } from '@opensaas/keystone-core'
+import { text } from '@opensaas/keystone-core/fields'
+import { allowAll } from '@opensaas/keystone-core/access'
 import supertest from 'supertest'
 
 import { setupTestRunner } from './test-runner'

@@ -1,8 +1,8 @@
 import path from 'path'
 import type { GraphQLSchema } from 'graphql'
-import { list } from '@keystone-6/core'
-import { allowAll } from '@keystone-6/core/access'
-import { select, relationship, text, timestamp } from '@keystone-6/core/fields'
+import { list } from '@opensaas/keystone-core'
+import { allowAll } from '@opensaas/keystone-core/access'
+import { select, relationship, text, timestamp } from '@opensaas/keystone-core/fields'
 import * as nexus from 'nexus'
 
 import type { Lists } from './keystone-types'

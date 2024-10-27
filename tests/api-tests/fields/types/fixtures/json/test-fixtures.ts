@@ -1,4 +1,4 @@
-import { json } from '@keystone-6/core/fields'
+import { json } from '@opensaas/keystone-core/fields'
 
 export const name = 'Json'
 export const typeFunction = json

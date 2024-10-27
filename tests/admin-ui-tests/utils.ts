@@ -110,7 +110,7 @@ export async function waitForIO (p: ExecaChildProcess | ChildProcessWithoutNullS
   })
 }
 
-const cliBinPath = require.resolve('@keystone-6/core/bin/cli.js')
+const cliBinPath = require.resolve('@opensaas/keystone-core/bin/cli.js')
 
 export async function spawnCommand3 (cwd: string, commands: string[], waitOn: string | null = null) {
   if (!fs.existsSync(cwd)) throw new Error(`No such file or directory ${cwd}`)

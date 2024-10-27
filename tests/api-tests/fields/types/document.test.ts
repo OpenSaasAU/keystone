@@ -1,8 +1,8 @@
-import { text } from '@keystone-6/core/fields'
+import { text } from '@opensaas/keystone-core/fields'
 import { document } from '@keystone-6/fields-document'
-import { list } from '@keystone-6/core'
+import { list } from '@opensaas/keystone-core'
 import { component, fields } from '@keystone-6/fields-document/component-blocks'
-import { allowAll } from '@keystone-6/core/access'
+import { allowAll } from '@opensaas/keystone-core/access'
 
 import { setupTestEnv, setupTestRunner } from '../../test-runner'
 import { type ContextFromRunner, expectInternalServerError } from '../../utils'

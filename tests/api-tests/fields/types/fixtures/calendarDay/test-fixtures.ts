@@ -1,4 +1,4 @@
-import { calendarDay } from '@keystone-6/core/fields'
+import { calendarDay } from '@opensaas/keystone-core/fields'
 
 export const name = 'calendarDay'
 export const typeFunction = calendarDay

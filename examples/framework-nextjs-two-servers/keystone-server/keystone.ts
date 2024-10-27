@@ -1,5 +1,5 @@
-import { config } from '@keystone-6/core'
-import type { KeystoneConfig } from '@keystone-6/core/types'
+import { config } from '@opensaas/keystone-core'
+import type { KeystoneConfig } from '@opensaas/keystone-core/types'
 import { seedDatabase } from './src/seed'
 import { lists } from './src/schema'
 import { type Context, type TypeInfo } from '.keystone/types'

@@ -1,5 +1,5 @@
-import { graphql } from '@keystone-6/core'
-import { type BaseItem, type FieldData, type GraphQLTypesForList, type KeystoneContext } from '@keystone-6/core/types'
+import { graphql } from '@opensaas/keystone-core'
+import { type BaseItem, type FieldData, type GraphQLTypesForList, type KeystoneContext } from '@opensaas/keystone-core/types'
 import { type GraphQLResolveInfo } from 'graphql'
 
 import { type ComponentSchemaForGraphQL } from './DocumentEditor/component-blocks/api'

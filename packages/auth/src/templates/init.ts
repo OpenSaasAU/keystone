@@ -1,4 +1,4 @@
-import type { BaseListTypeInfo } from '@keystone-6/core/types'
+import type { BaseListTypeInfo } from '@opensaas/keystone-core/types'
 import type { AuthConfig } from '../types'
 
 type InitTemplateArgs = {

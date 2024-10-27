@@ -5,7 +5,7 @@
 // Keystone imports the default export of this file, expecting a Keystone configuration object
 //   you can find out more at https://keystonejs.com/docs/apis/config
 
-import { config } from '@keystone-6/core'
+import { config } from '@opensaas/keystone-core'
 
 // to keep this file tidy, we define our schema in a different file
 import { lists } from './schema'

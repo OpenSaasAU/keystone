@@ -1,4 +1,4 @@
-import { type graphql } from '@keystone-6/core'
+import { type graphql } from '@opensaas/keystone-core'
 import {
   type ReactElement,
   type ReactNode,

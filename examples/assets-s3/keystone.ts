@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import { config } from '@keystone-6/core'
+import { config } from '@opensaas/keystone-core'
 import { lists } from './schema'
 import bytes from 'bytes'
 

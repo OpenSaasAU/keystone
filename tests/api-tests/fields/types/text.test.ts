@@ -1,4 +1,4 @@
-import { text } from '@keystone-6/core/fields'
+import { text } from '@opensaas/keystone-core/fields'
 import { dbProvider } from '../../utils'
 import { orderableFilterTests, filterTests, uniqueEqualityFilterTest } from './utils'
 

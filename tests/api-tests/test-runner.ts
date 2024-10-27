@@ -22,11 +22,11 @@ import {
   createSystem,
   generateArtifacts,
   withMigrate
-} from '@keystone-6/core/___internal-do-not-use-will-break-in-patch/artifacts'
+} from '@opensaas/keystone-core/___internal-do-not-use-will-break-in-patch/artifacts'
 
 import {
   type BaseKeystoneTypeInfo,
-} from '@keystone-6/core/types'
+} from '@opensaas/keystone-core/types'
 import { dbProvider, type FloatingConfig } from './utils'
 
 // prisma checks

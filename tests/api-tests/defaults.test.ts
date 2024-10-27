@@ -1,7 +1,7 @@
-import { text } from '@keystone-6/core/fields'
-import { list } from '@keystone-6/core'
-import { type BaseFields } from '@keystone-6/core/types'
-import { allowAll } from '@keystone-6/core/access'
+import { text } from '@opensaas/keystone-core/fields'
+import { list } from '@opensaas/keystone-core'
+import { type BaseFields } from '@opensaas/keystone-core/types'
+import { allowAll } from '@opensaas/keystone-core/access'
 
 import { setupTestRunner } from './test-runner'
 

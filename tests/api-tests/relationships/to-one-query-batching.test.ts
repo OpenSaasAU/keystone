@@ -1,7 +1,7 @@
 import { isDeepStrictEqual } from 'util'
-import { list } from '@keystone-6/core'
-import { allowAll } from '@keystone-6/core/access'
-import { relationship, text } from '@keystone-6/core/fields'
+import { list } from '@opensaas/keystone-core'
+import { allowAll } from '@opensaas/keystone-core/access'
+import { relationship, text } from '@opensaas/keystone-core/fields'
 import { setupTestRunner } from '../test-runner'
 import { dbProvider } from '../utils'
 

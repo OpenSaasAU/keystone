@@ -2,10 +2,10 @@ import fs from 'node:fs'
 import path from 'node:path'
 import os from 'node:os'
 import globby from 'globby'
-import { list } from '@keystone-6/core'
-import { text } from '@keystone-6/core/fields'
+import { list } from '@opensaas/keystone-core'
+import { text } from '@opensaas/keystone-core/fields'
 import { setupTestEnv, setupTestRunner } from '@keystone-6/api-tests/test-runner'
-import { allowAll } from '@keystone-6/core/access'
+import { allowAll } from '@opensaas/keystone-core/access'
 import { dbProvider } from '../utils'
 
 const testModules = globby.sync(`tests/api-tests/fields/types/fixtures/**/test-fixtures.{js,ts}`, {

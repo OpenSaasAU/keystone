@@ -1,7 +1,7 @@
-import { list } from '@keystone-6/core'
-import { allowAll } from '@keystone-6/core/access'
-import { getContext } from '@keystone-6/core/context'
-import { integer, relationship, text } from '@keystone-6/core/fields'
+import { list } from '@opensaas/keystone-core'
+import { allowAll } from '@opensaas/keystone-core/access'
+import { getContext } from '@opensaas/keystone-core/context'
+import { integer, relationship, text } from '@opensaas/keystone-core/fields'
 
 const Thing = list({
   access: allowAll,

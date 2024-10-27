@@ -1,5 +1,5 @@
-import { timestamp } from '@keystone-6/core/fields'
-import { type StorageConfig } from '@keystone-6/core/types'
+import { timestamp } from '@opensaas/keystone-core/fields'
+import { type StorageConfig } from '@opensaas/keystone-core/types'
 
 export const localStorageConfig: Record<string, StorageConfig> = {
   images: {

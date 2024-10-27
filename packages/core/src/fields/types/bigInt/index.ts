@@ -148,7 +148,7 @@ export function bigInt <ListTypeInfo extends BaseListTypeInfo> (config: BigIntFi
       },
       output: graphql.field({ type: graphql.BigInt, }),
       __ksTelemetryFieldTypeName: '@keystone-6/bigInt',
-      views: '@keystone-6/core/fields/types/bigInt/views',
+      views: '@opensaas/keystone-core/fields/types/bigInt/views',
       getAdminMeta () {
         return {
           validation: {

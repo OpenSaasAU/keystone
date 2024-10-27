@@ -1,7 +1,7 @@
-import { list } from '@keystone-6/core'
-import { bigInt, checkbox, relationship, text, timestamp } from '@keystone-6/core/fields'
-import { select } from '@keystone-6/core/fields'
-import { allowAll } from '@keystone-6/core/access'
+import { list } from '@opensaas/keystone-core'
+import { bigInt, checkbox, relationship, text, timestamp } from '@opensaas/keystone-core/fields'
+import { select } from '@opensaas/keystone-core/fields'
+import { allowAll } from '@opensaas/keystone-core/access'
 import type { Lists } from '.keystone/types'
 
 export const lists = {

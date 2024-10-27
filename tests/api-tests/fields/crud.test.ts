@@ -1,9 +1,9 @@
 import globby from 'globby'
-import { list } from '@keystone-6/core'
-import { text } from '@keystone-6/core/fields'
-import { type KeystoneContext } from '@keystone-6/core/types'
+import { list } from '@opensaas/keystone-core'
+import { text } from '@opensaas/keystone-core/fields'
+import { type KeystoneContext } from '@opensaas/keystone-core/types'
 import { setupTestRunner } from '@keystone-6/api-tests/test-runner'
-import { allowAll } from '@keystone-6/core/access'
+import { allowAll } from '@opensaas/keystone-core/access'
 import {
   dbProvider,
   expectSingleResolverError,

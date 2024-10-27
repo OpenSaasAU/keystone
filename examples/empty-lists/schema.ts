@@ -1,6 +1,6 @@
-import { list } from '@keystone-6/core'
-import { allowAll, denyAll } from '@keystone-6/core/access'
-import { relationship, text, timestamp } from '@keystone-6/core/fields'
+import { list } from '@opensaas/keystone-core'
+import { allowAll, denyAll } from '@opensaas/keystone-core/access'
+import { relationship, text, timestamp } from '@opensaas/keystone-core/fields'
 import type { Lists } from '.keystone/types'
 
 export const lists = {

@@ -1,4 +1,4 @@
-import type { KeystoneDbAPI } from '@keystone-6/core/types'
+import type { KeystoneDbAPI } from '@opensaas/keystone-core/types'
 import { type AuthTokenRedemptionErrorCode, type SecretFieldImpl } from '../types'
 import { validateSecret } from './validateSecret'
 

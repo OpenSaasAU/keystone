@@ -1,4 +1,4 @@
-import { password } from '@keystone-6/core/fields'
+import { password } from '@opensaas/keystone-core/fields'
 import { filterTests } from './utils'
 
 // note that while password fields can be non-nullable

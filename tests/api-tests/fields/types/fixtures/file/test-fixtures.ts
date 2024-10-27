@@ -4,8 +4,8 @@ import fs from 'fs-extra'
 // @ts-expect-error
 import Upload from 'graphql-upload/Upload.js'
 import mime from 'mime'
-import { file } from '@keystone-6/core/fields'
-import { type KeystoneConfig } from '@keystone-6/core/types'
+import { file } from '@opensaas/keystone-core/fields'
+import { type KeystoneConfig } from '@opensaas/keystone-core/types'
 
 export const prepareFile = (_filePath: string) => {
   const filePath = path.resolve(`${__dirname}/test-files/${_filePath}`)

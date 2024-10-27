@@ -1,7 +1,7 @@
-import { list } from '@keystone-6/core'
-import { text } from '@keystone-6/core/fields'
-import { allowAll } from '@keystone-6/core/access'
-import { type KeystoneContext } from '@keystone-6/core/types'
+import { list } from '@opensaas/keystone-core'
+import { text } from '@opensaas/keystone-core/fields'
+import { allowAll } from '@opensaas/keystone-core/access'
+import { type KeystoneContext } from '@opensaas/keystone-core/types'
 import { setupTestSuite } from '@keystone-6/api-tests/test-runner'
 
 function yn (x: boolean) {

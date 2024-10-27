@@ -1,10 +1,10 @@
 import { assertInputObjectType, printType, assertObjectType, parse } from 'graphql'
-import { type KeystoneConfig } from '@keystone-6/core/types'
+import { type KeystoneConfig } from '@opensaas/keystone-core/types'
 
-import { config, list } from '@keystone-6/core'
-import { text, relationship } from '@keystone-6/core/fields'
-import { allowAll } from '@keystone-6/core/access'
-import { createSystem } from '@keystone-6/core/___internal-do-not-use-will-break-in-patch/artifacts'
+import { config, list } from '@opensaas/keystone-core'
+import { text, relationship } from '@opensaas/keystone-core/fields'
+import { allowAll } from '@opensaas/keystone-core/access'
+import { createSystem } from '@opensaas/keystone-core/___internal-do-not-use-will-break-in-patch/artifacts'
 
 const fieldKey = 'foo'
 

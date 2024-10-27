@@ -1,4 +1,4 @@
-import { config } from '@keystone-6/core'
+import { config } from '@opensaas/keystone-core'
 import { lists } from './schema'
 import type { TypeInfo } from '.keystone/types'
 

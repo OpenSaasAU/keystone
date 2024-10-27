@@ -1,0 +1,4 @@
+{
+  "main": "dist/keystone-6-admin-ui-admin-ui-components.cjs.js",
+  "module": "dist/keystone-6-admin-ui-admin-ui-components.esm.js"
+}

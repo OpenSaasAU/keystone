@@ -1,6 +1,6 @@
-import { config, list } from '@keystone-6/core'
-import { allowAll } from '@keystone-6/core/access'
-import { text, timestamp } from '@keystone-6/core/fields'
+import { config, list } from '@opensaas/keystone-core'
+import { allowAll } from '@opensaas/keystone-core/access'
+import { text, timestamp } from '@opensaas/keystone-core/fields'
 import { type TypeInfo } from '.keystone/types'
 
 export default config<TypeInfo>({

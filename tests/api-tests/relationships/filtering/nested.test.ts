@@ -1,7 +1,7 @@
-import { text, relationship } from '@keystone-6/core/fields'
+import { text, relationship } from '@opensaas/keystone-core/fields'
 import { setupTestRunner } from '@keystone-6/api-tests/test-runner'
-import { list } from '@keystone-6/core'
-import { allowAll } from '@keystone-6/core/access'
+import { list } from '@opensaas/keystone-core'
+import { allowAll } from '@opensaas/keystone-core/access'
 
 type IdType = any
 

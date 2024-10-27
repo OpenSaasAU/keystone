@@ -165,7 +165,7 @@ export function image <ListTypeInfo extends BaseListTypeInfo> (config: ImageFiel
         },
       }),
       __ksTelemetryFieldTypeName: '@keystone-6/image',
-      views: '@keystone-6/core/fields/types/image/views',
+      views: '@opensaas/keystone-core/fields/types/image/views',
     })
   }
 }

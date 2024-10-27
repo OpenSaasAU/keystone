@@ -8,11 +8,11 @@ import fastGlob from 'fast-glob'
 import chalk from 'chalk'
 import ms from 'ms'
 
-import { cli } from '@keystone-6/core/scripts/cli'
+import { cli } from '@opensaas/keystone-core/scripts/cli'
 
 jest.setTimeout(ms('30 seconds'))
 
-export const cliBinPath = require.resolve('@keystone-6/core/bin/cli.js')
+export const cliBinPath = require.resolve('@opensaas/keystone-core/bin/cli.js')
 
 export const basicKeystoneConfig = fs.readFileSync(
   `${__dirname}/fixtures/basic-project/keystone.ts`,
@@ -41,7 +41,7 @@ export function recordConsole () {
 
 export const symlinkKeystoneDeps = Object.fromEntries(
   [
-    '@keystone-6/core',
+    '@opensaas/keystone-core',
     '@prisma/engines',
     '@prisma/client',
     'typescript',

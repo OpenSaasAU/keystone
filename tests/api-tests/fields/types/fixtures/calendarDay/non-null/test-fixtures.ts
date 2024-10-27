@@ -1,4 +1,4 @@
-import { calendarDay } from '@keystone-6/core/fields'
+import { calendarDay } from '@opensaas/keystone-core/fields'
 
 export const name = 'calendarDay with isNullable: false'
 export const typeFunction = (x: any) => calendarDay({ ...x, db: { ...x?.db, isNullable: false } })

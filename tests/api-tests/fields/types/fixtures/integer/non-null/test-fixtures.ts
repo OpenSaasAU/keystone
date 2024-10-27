@@ -1,4 +1,4 @@
-import { integer } from '@keystone-6/core/fields'
+import { integer } from '@opensaas/keystone-core/fields'
 
 export const name = 'Integer with isNullable: false'
 export const typeFunction = (x: any) => integer({ ...x, db: { ...x?.db, isNullable: false } })

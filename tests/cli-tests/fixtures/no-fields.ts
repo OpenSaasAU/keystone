@@ -1,5 +1,5 @@
-import { list, config } from '@keystone-6/core'
-import { allowAll } from '@keystone-6/core/access'
+import { list, config } from '@opensaas/keystone-core'
+import { allowAll } from '@opensaas/keystone-core/access'
 
 export default config({
   db: {

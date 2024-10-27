@@ -2,11 +2,11 @@ import fs from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
 
-import { list } from '@keystone-6/core'
-import { integer } from '@keystone-6/core/fields'
+import { list } from '@opensaas/keystone-core'
+import { integer } from '@opensaas/keystone-core/fields'
 import { setupTestRunner } from '@keystone-6/api-tests/test-runner'
-import { type FieldTypeFunc, type BaseListTypeInfo } from '@keystone-6/core/types'
-import { allowAll } from '@keystone-6/core/access'
+import { type FieldTypeFunc, type BaseListTypeInfo } from '@opensaas/keystone-core/types'
+import { allowAll } from '@opensaas/keystone-core/access'
 
 function filterTestRunner (field: FieldTypeFunc<BaseListTypeInfo>) {
   return setupTestRunner({

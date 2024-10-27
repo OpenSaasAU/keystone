@@ -4,8 +4,6 @@ import { graphql } from '../types/schema'
 import {
   type __ResolvedKeystoneConfig
 } from '../types'
-import { KeystoneMeta } from './resolve-admin-meta'
-import type { AdminMetaRootVal } from './create-admin-meta'
 import type { InitialisedList } from './core/initialise-lists'
 
 import { getQueriesForList } from './core/queries'
@@ -100,7 +98,6 @@ function collectTypes (
 export function createGraphQLSchema (
   config: __ResolvedKeystoneConfig,
   lists: Record<string, InitialisedList>,
-  adminMeta: AdminMetaRootVal | null,
   sudo: boolean
 ) {
   const graphQLSchema = getGraphQLSchema(
@@ -117,14 +114,7 @@ export function createGraphQLSchema (
             }),
           }
         : {},
-      query: adminMeta
-        ? {
-            keystone: graphql.field({
-              type: graphql.nonNull(KeystoneMeta),
-              resolve: () => ({ adminMeta }),
-            }),
-          }
-        : {},
+      query: {},
     },
     sudo
   )

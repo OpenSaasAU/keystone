@@ -1,6 +1,6 @@
-import { list } from '@keystone-6/core'
-import { allowAll } from '@keystone-6/core/access'
-import { relationship } from '@keystone-6/core/fields'
+import { list } from '@opensaas/keystone-core'
+import { allowAll } from '@opensaas/keystone-core/access'
+import { relationship } from '@opensaas/keystone-core/fields'
 import { dbProvider, getPrismaSchema } from '../utils'
 
 test('when not specifying foreignKey in a one to one relationship, the side is picked based on the list key + field key ordering', async () => {

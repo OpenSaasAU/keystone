@@ -83,7 +83,7 @@ export function virtual <ListTypeInfo extends BaseListTypeInfo> ({
         },
       }),
       __ksTelemetryFieldTypeName: '@keystone-6/virtual',
-      views: '@keystone-6/core/fields/types/virtual/views',
+      views: '@opensaas/keystone-core/fields/types/virtual/views',
       getAdminMeta: () => ({
         query: config.ui?.query || ''
       }),

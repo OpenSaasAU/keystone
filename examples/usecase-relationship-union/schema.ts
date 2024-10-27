@@ -1,6 +1,6 @@
-import { list, group, graphql } from '@keystone-6/core'
-import { allowAll } from '@keystone-6/core/access'
-import { text, relationship, virtual } from '@keystone-6/core/fields'
+import { list, group, graphql } from '@opensaas/keystone-core'
+import { allowAll } from '@opensaas/keystone-core/access'
+import { text, relationship, virtual } from '@opensaas/keystone-core/fields'
 import { type Lists } from '.keystone/types'
 
 function ifUnsetHideUI (field: string) {

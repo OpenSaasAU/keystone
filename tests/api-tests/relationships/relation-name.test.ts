@@ -1,6 +1,6 @@
-import { list } from '@keystone-6/core'
-import { allowAll } from '@keystone-6/core/access'
-import { relationship } from '@keystone-6/core/fields'
+import { list } from '@opensaas/keystone-core'
+import { allowAll } from '@opensaas/keystone-core/access'
+import { relationship } from '@opensaas/keystone-core/fields'
 import { getPrismaSchema, dbProvider } from '../utils'
 
 test('when not specifying relationName in a many to many relationship, the name is picked based on the lexicographic list key + field key ordering', async () => {

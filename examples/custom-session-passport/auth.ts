@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import { statelessSessions } from '@keystone-6/core/session'
-import { type KeystoneContext } from '@keystone-6/core/types'
+import { statelessSessions } from '@opensaas/keystone-core/session'
+import { type KeystoneContext } from '@opensaas/keystone-core/types'
 
 import { Passport } from 'passport'
 import { type VerifyCallback } from 'passport-oauth2'

@@ -1,6 +1,6 @@
-import { list } from '@keystone-6/core'
-import { allowAll, unfiltered } from '@keystone-6/core/access'
-import { checkbox, text } from '@keystone-6/core/fields'
+import { list } from '@opensaas/keystone-core'
+import { allowAll, unfiltered } from '@opensaas/keystone-core/access'
+import { checkbox, text } from '@opensaas/keystone-core/fields'
 import type { Lists } from '.keystone/types'
 
 export type Session = {

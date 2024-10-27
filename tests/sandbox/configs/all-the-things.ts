@@ -1,5 +1,5 @@
-import { list, graphql, config, group } from '@keystone-6/core'
-import { allowAll } from '@keystone-6/core/access'
+import { list, graphql, config, group } from '@opensaas/keystone-core'
+import { allowAll } from '@opensaas/keystone-core/access'
 import {
   bigInt,
   calendarDay,
@@ -17,7 +17,7 @@ import {
   text,
   timestamp,
   virtual,
-} from '@keystone-6/core/fields'
+} from '@opensaas/keystone-core/fields'
 import { document, structure } from '@keystone-6/fields-document'
 import { componentBlocks } from '../component-blocks'
 import { schema as structureSchema } from '../structure'

@@ -1,4 +1,4 @@
-import { bigInt } from '@keystone-6/core/fields'
+import { bigInt } from '@opensaas/keystone-core/fields'
 import { orderableFilterTests, filterTests, uniqueEqualityFilterTest } from './utils'
 
 for (const isNullable of [true, false]) {

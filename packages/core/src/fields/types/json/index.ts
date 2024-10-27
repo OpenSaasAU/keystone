@@ -38,7 +38,7 @@ export const json =
           update: { arg: graphql.arg({ type: graphql.JSON }) },
         },
         output: graphql.field({ type: graphql.JSON }),
-        views: '@keystone-6/core/fields/types/json/views',
+        views: '@opensaas/keystone-core/fields/types/json/views',
         getAdminMeta: () => ({ defaultValue }),
       },
       {

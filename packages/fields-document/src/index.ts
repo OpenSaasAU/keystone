@@ -6,8 +6,8 @@ import {
   type FieldTypeFunc,
   type JSONValue,
   jsonFieldTypePolyfilledForSQLite,
-} from '@keystone-6/core/types'
-import { graphql } from '@keystone-6/core'
+} from '@opensaas/keystone-core/types'
+import { graphql } from '@opensaas/keystone-core'
 import { type Relationships } from './DocumentEditor/relationship-shared'
 import { type ComponentBlock } from './DocumentEditor/component-blocks/api-shared'
 import { validateAndNormalizeDocument } from './validation'

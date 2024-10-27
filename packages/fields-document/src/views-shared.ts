@@ -1,7 +1,7 @@
 import {
   type FieldController,
   type FieldControllerConfig,
-} from '@keystone-6/core/types'
+} from '@opensaas/keystone-core/types'
 import {
   type Descendant,
   type Node,

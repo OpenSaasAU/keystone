@@ -2,8 +2,8 @@ import path from 'node:path'
 import { test, beforeEach } from 'node:test'
 import assert from 'node:assert/strict'
 
-import { resetDatabase } from '@keystone-6/core/testing'
-import { getContext } from '@keystone-6/core/context'
+import { resetDatabase } from '@opensaas/keystone-core/testing'
+import { getContext } from '@opensaas/keystone-core/context'
 import config from './keystone'
 import * as PrismaModule from 'myprisma'
 

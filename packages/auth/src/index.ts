@@ -5,8 +5,8 @@ import type {
   KeystoneContext,
   SessionStrategy,
   BaseKeystoneTypeInfo,
-} from '@keystone-6/core/types'
-import { password, timestamp } from '@keystone-6/core/fields'
+} from '@opensaas/keystone-core/types'
+import { password, timestamp } from '@opensaas/keystone-core/fields'
 
 import type { AuthConfig, AuthGqlNames } from './types'
 import { getSchemaExtension } from './schema'

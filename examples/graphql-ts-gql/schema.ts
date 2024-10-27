@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/consistent-type-imports */
-import { list, graphql } from '@keystone-6/core'
-import { select, relationship, text, timestamp, virtual } from '@keystone-6/core/fields'
-import { allowAll } from '@keystone-6/core/access'
+import { list, graphql } from '@opensaas/keystone-core'
+import { select, relationship, text, timestamp, virtual } from '@opensaas/keystone-core/fields'
+import { allowAll } from '@opensaas/keystone-core/access'
 import { gql } from '@ts-gql/tag/no-transform'
 
 import type { Lists } from '.keystone/types'

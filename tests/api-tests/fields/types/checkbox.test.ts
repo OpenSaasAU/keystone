@@ -1,4 +1,4 @@
-import { checkbox } from '@keystone-6/core/fields'
+import { checkbox } from '@opensaas/keystone-core/fields'
 import { filterTests } from './utils'
 
 filterTests(checkbox(), match => {

@@ -178,7 +178,7 @@ export function decimal <ListTypeInfo extends BaseListTypeInfo> (config: Decimal
         },
       }),
       __ksTelemetryFieldTypeName: '@keystone-6/decimal',
-      views: '@keystone-6/core/fields/types/decimal/views',
+      views: '@opensaas/keystone-core/fields/types/decimal/views',
       getAdminMeta: (): DecimalFieldMeta => ({
         defaultValue: defaultValue ?? null,
         precision,

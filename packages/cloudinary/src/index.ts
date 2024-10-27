@@ -1,7 +1,7 @@
 import { randomBytes } from 'node:crypto'
-import type { CommonFieldConfig, BaseListTypeInfo, FieldTypeFunc } from '@keystone-6/core/types'
-import { jsonFieldTypePolyfilledForSQLite } from '@keystone-6/core/types'
-import { graphql } from '@keystone-6/core'
+import type { CommonFieldConfig, BaseListTypeInfo, FieldTypeFunc } from '@opensaas/keystone-core/types'
+import { jsonFieldTypePolyfilledForSQLite } from '@opensaas/keystone-core/types'
+import { graphql } from '@opensaas/keystone-core'
 import cloudinary from 'cloudinary'
 
 type StoredFile = {

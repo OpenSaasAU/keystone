@@ -1,4 +1,4 @@
-import type { BaseListTypeInfo, KeystoneContext } from '@keystone-6/core/types'
+import type { BaseListTypeInfo, KeystoneContext } from '@opensaas/keystone-core/types'
 
 export type AuthGqlNames = {
   CreateInitialInput: string

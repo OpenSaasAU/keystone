@@ -117,7 +117,7 @@ export function file <ListTypeInfo extends BaseListTypeInfo> (config: FileFieldC
         },
       }),
       __ksTelemetryFieldTypeName: '@keystone-6/file',
-      views: '@keystone-6/core/fields/types/file/views',
+      views: '@opensaas/keystone-core/fields/types/file/views',
     })
   }
 }

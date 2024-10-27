@@ -1,4 +1,4 @@
-import { ExitError } from '@keystone-6/core/___internal-do-not-use-will-break-in-patch/artifacts'
+import { ExitError } from '@opensaas/keystone-core/___internal-do-not-use-will-break-in-patch/artifacts'
 
 import {
   basicKeystoneConfig,

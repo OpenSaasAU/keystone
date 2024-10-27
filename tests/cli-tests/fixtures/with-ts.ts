@@ -1,6 +1,6 @@
-import { config, list } from '@keystone-6/core'
-import { text } from '@keystone-6/core/fields'
-import { allowAll } from '@keystone-6/core/access'
+import { config, list } from '@opensaas/keystone-core'
+import { text } from '@opensaas/keystone-core/fields'
+import { allowAll } from '@opensaas/keystone-core/access'
 
 export type something = string
 

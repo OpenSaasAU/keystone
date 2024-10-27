@@ -1,4 +1,4 @@
-import { type KeystoneContext } from '@keystone-6/core/types'
+import { type KeystoneContext } from '@opensaas/keystone-core/types'
 import { type Descendant } from 'slate'
 import {
   type ExecutionResult,

@@ -65,7 +65,7 @@ export function checkbox <ListTypeInfo extends BaseListTypeInfo> (
       },
       output: graphql.field({ type: graphql.Boolean, }),
       __ksTelemetryFieldTypeName: '@keystone-6/checkbox',
-      views: '@keystone-6/core/fields/types/checkbox/views',
+      views: '@opensaas/keystone-core/fields/types/checkbox/views',
       getAdminMeta: () => ({ defaultValue }),
     })
   }

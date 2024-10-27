@@ -1,6 +1,6 @@
-import { list, config } from '@keystone-6/core'
-import { allowAll } from '@keystone-6/core/access'
-import { relationship, text } from '@keystone-6/core/fields'
+import { list, config } from '@opensaas/keystone-core'
+import { allowAll } from '@opensaas/keystone-core/access'
+import { relationship, text } from '@opensaas/keystone-core/fields'
 import { dbConfig } from '../utils'
 
 export const lists = {

@@ -3,8 +3,8 @@ import {
   fieldType,
   type FieldTypeFunc,
   type CommonFieldConfig,
-} from '@keystone-6/core/types'
-import { graphql } from '@keystone-6/core'
+} from '@opensaas/keystone-core/types'
+import { graphql } from '@opensaas/keystone-core'
 
 type PairFieldConfig<ListTypeInfo extends BaseListTypeInfo> = CommonFieldConfig<ListTypeInfo>
 
