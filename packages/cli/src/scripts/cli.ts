@@ -1,11 +1,8 @@
 import meow from 'meow'
 import { ExitError } from './utils'
 import { build } from './build'
-import { dev } from './dev'
 import { prisma } from './prisma'
-import { start } from './start'
 import { migrateCreate, migrateApply } from './migrate'
-import { telemetry } from './telemetry'
 
 export type Flags = {
   dbPush: boolean
@@ -47,14 +44,11 @@ export async function cli (cwd: string, argv: string[]) {
       $ keystone [command] [options]
 
     Commands
-        dev             start the project in development mode (default)
         migrate create  build the project for development and create a migration from the Prisma diff
         migrate apply   build the project for development and apply any pending migrations
         postinstall     build the project for development
         build           build the project (required by \`keystone start\` and \`keystone prisma\`)
-        telemetry       sets telemetry preference (enable/disable/status)
 
-        start           start the project
         prisma          use prisma commands in a Keystone context
 
     Options
@@ -84,11 +78,7 @@ export async function cli (cwd: string, argv: string[]) {
     }
   )
 
-  const command = input.join(' ') || 'dev'
-
-  if (command === 'dev') {
-    return dev(cwd, defaultFlags(flags, { dbPush: true, prisma: true, server: true, ui: true }))
-  }
+  const command = input.join(' ') || 'build'
 
   if (command === 'migrate create') {
     return migrateCreate(cwd, defaultFlags(flags, { ui: false }))
@@ -102,16 +92,8 @@ export async function cli (cwd: string, argv: string[]) {
     return build(cwd, defaultFlags(flags, { frozen: false, prisma: true, ui: true }))
   }
 
-  if (command === 'start') {
-    return start(cwd, defaultFlags(flags, { server: true, ui: true, withMigrations: false }))
-  }
-
   if (command.startsWith('prisma')) {
     return prisma(cwd, argv.slice(1), Boolean(flags.frozen))
-  }
-
-  if (command.startsWith('telemetry')) {
-    return telemetry(cwd, argv[1])
   }
 
   // WARNING: postinstall is an alias for `build --frozen --no-ui`

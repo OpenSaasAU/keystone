@@ -1,3 +1,4 @@
+import  type { InitialisedList } from '@opensaas/keystone-core/lib'
 import {
   type GraphQLNamedType,
   type GraphQLSchema,
@@ -9,7 +10,6 @@ import {
   GraphQLScalarType,
   introspectionTypes,
 } from 'graphql'
-import type { InitialisedList } from './core/initialise-lists'
 
 const introspectionTypesSet = new Set(introspectionTypes)
 

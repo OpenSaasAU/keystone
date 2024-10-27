@@ -1,4 +1,4 @@
 {
-  "main": "dist/keystone-6-admin-ui-admin-ui-router.cjs.js",
-  "module": "dist/keystone-6-admin-ui-admin-ui-router.esm.js"
+  "main": "dist/opensaas-keystone-admin-ui-admin-ui-router.cjs.js",
+  "module": "dist/opensaas-keystone-admin-ui-admin-ui-router.esm.js"
 }

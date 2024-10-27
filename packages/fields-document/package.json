@@ -1,30 +1,30 @@
 {
-  "name": "@keystone-6/fields-document",
+  "name": "@opensaas/keystone-fields-document",
   "description": "KeystoneJS Document Field Type",
   "version": "9.1.0",
   "license": "MIT",
-  "main": "dist/keystone-6-fields-document.cjs.js",
-  "module": "dist/keystone-6-fields-document.esm.js",
+  "main": "dist/opensaas-keystone-fields-document.cjs.js",
+  "module": "dist/opensaas-keystone-fields-document.esm.js",
   "exports": {
     ".": {
-      "module": "./dist/keystone-6-fields-document.esm.js",
-      "default": "./dist/keystone-6-fields-document.cjs.js"
+      "module": "./dist/opensaas-keystone-fields-document.esm.js",
+      "default": "./dist/opensaas-keystone-fields-document.cjs.js"
     },
     "./views": {
-      "module": "./views/dist/keystone-6-fields-document-views.esm.js",
-      "default": "./views/dist/keystone-6-fields-document-views.cjs.js"
+      "module": "./views/dist/opensaas-keystone-fields-document-views.esm.js",
+      "default": "./views/dist/opensaas-keystone-fields-document-views.cjs.js"
     },
     "./primitives": {
-      "module": "./primitives/dist/keystone-6-fields-document-primitives.esm.js",
-      "default": "./primitives/dist/keystone-6-fields-document-primitives.cjs.js"
+      "module": "./primitives/dist/opensaas-keystone-fields-document-primitives.esm.js",
+      "default": "./primitives/dist/opensaas-keystone-fields-document-primitives.cjs.js"
     },
     "./structure-views": {
-      "module": "./structure-views/dist/keystone-6-fields-document-structure-views.esm.js",
-      "default": "./structure-views/dist/keystone-6-fields-document-structure-views.cjs.js"
+      "module": "./structure-views/dist/opensaas-keystone-fields-document-structure-views.esm.js",
+      "default": "./structure-views/dist/opensaas-keystone-fields-document-structure-views.cjs.js"
     },
     "./component-blocks": {
-      "module": "./component-blocks/dist/keystone-6-fields-document-component-blocks.esm.js",
-      "default": "./component-blocks/dist/keystone-6-fields-document-component-blocks.cjs.js"
+      "module": "./component-blocks/dist/opensaas-keystone-fields-document-component-blocks.esm.js",
+      "default": "./component-blocks/dist/opensaas-keystone-fields-document-component-blocks.cjs.js"
     },
     "./package.json": "./package.json"
   },
@@ -52,7 +52,7 @@
     "@dnd-kit/modifiers": "^7.0.0",
     "@dnd-kit/sortable": "^8.0.0",
     "@emotion/weak-memoize": "^0.4.0",
-    "@keystone-6/document-renderer": "workspace:^",
+    "@opensaas/keystone-document-renderer": "workspace:^",
     "@keystone-ui/button": "workspace:^",
     "@keystone-ui/core": "workspace:^",
     "@keystone-ui/fields": "workspace:^",
@@ -79,7 +79,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@keystone-6/core": "workspace:^",
+    "@opensaas/keystone-core": "workspace:^",
     "@testing-library/react": "^16.0.0",
     "@types/is-hotkey": "^0.1.7",
     "jest-diff": "^29.0.0",
@@ -87,6 +87,6 @@
     "slate-hyperscript": "^0.100.0"
   },
   "peerDependencies": {
-    "@keystone-6/core": "^6.0.0"
+    "@opensaas/keystone-core": "^6.0.0"
   }
 }

@@ -1,0 +1,4 @@
+{
+  "main": "dist/opensaas-keystone-core-lib-createSystem.cjs.js",
+  "module": "dist/opensaas-keystone-core-lib-createSystem.esm.js"
+}

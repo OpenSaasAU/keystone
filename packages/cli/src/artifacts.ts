@@ -5,14 +5,10 @@ import { type ChildProcess } from 'node:child_process'
 import { printSchema } from 'graphql'
 import { getGenerators, formatSchema } from '@prisma/internals'
 import { ExitError } from './scripts/utils'
-import { type __ResolvedKeystoneConfig } from './types'
-import { initialiseLists } from './lib/core/initialise-lists'
-import {
-  type System,
-  getSystemPaths
-} from './lib/createSystem'
-import { printPrismaSchema } from './lib/core/prisma-schema-printer'
+import { printPrismaSchema } from './lib/prisma-schema-printer'
 import { printGeneratedTypes } from './lib/typescript-schema-printer'
+import { getSystemPaths, type System } from '@opensaas/keystone-core/lib'
+import { initialiseLists } from '@opensaas/keystone-core/lib'
 
 export function getFormattedGraphQLSchema (schema: string) {
   return (

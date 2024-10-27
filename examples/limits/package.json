@@ -1,5 +1,5 @@
 {
-  "name": "@keystone-6/example-limits",
+  "name": "@opensaas/keystone-example-limits",
   "version": null,
   "private": true,
   "license": "MIT",
@@ -11,7 +11,7 @@
     "seed-data": "tsx seed-data.ts"
   },
   "dependencies": {
-    "@keystone-6/core": "^6.3.0",
+    "@opensaas/keystone-core": "^0.0.1",
     "@prisma/client": "5.19.0"
   },
   "devDependencies": {

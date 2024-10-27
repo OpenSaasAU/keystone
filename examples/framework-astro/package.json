@@ -1,5 +1,5 @@
 {
-  "name": "@keystone-6/example-framework-astro",
+  "name": "@opensaas/keystone-example-framework-astro",
   "version": null,
   "private": true,
   "license": "MIT",
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@astrojs/node": "^8.3.2",
-    "@keystone-6/core": "^6.3.0",
+    "@opensaas/keystone-core": "^0.0.1",
     "@prisma/client": "5.19.0",
     "astro": "^4.12.3"
   },

@@ -1,4 +1,4 @@
 {
-  "main": "dist/keystone-6-admin-ui-fields-types-json-views.cjs.js",
-  "module": "dist/keystone-6-admin-ui-fields-types-json-views.esm.js"
+  "main": "dist/opensaas-keystone-admin-ui-fields-types-json-views.cjs.js",
+  "module": "dist/opensaas-keystone-admin-ui-fields-types-json-views.esm.js"
 }

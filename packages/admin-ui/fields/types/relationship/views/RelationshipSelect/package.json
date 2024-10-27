@@ -1,4 +1,4 @@
 {
-  "main": "dist/keystone-6-admin-ui-fields-types-relationship-views-RelationshipSelect.cjs.js",
-  "module": "dist/keystone-6-admin-ui-fields-types-relationship-views-RelationshipSelect.esm.js"
+  "main": "dist/opensaas-keystone-admin-ui-fields-types-relationship-views-RelationshipSelect.cjs.js",
+  "module": "dist/opensaas-keystone-admin-ui-fields-types-relationship-views-RelationshipSelect.esm.js"
 }

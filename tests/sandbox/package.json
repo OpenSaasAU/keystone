@@ -1,5 +1,5 @@
 {
-  "name": "@keystone-6/sandbox",
+  "name": "@opensaas/keystone-sandbox",
   "version": "1.0.0",
   "private": true,
   "license": "MIT",
@@ -9,9 +9,8 @@
     "postinstall": "keystone postinstall"
   },
   "dependencies": {
-    "@keystone-6/auth": "workspace:^",
-    "@keystone-6/core": "workspace:^",
-    "@keystone-6/fields-document": "workspace:^",
+    "@opensaas/keystone-core": "workspace:^",
+    "@opensaas/keystone-fields-document": "workspace:^",
     "@keystone-ui/button": "workspace:^",
     "@keystone-ui/core": "workspace:^",
     "@keystone-ui/fields": "workspace:^",

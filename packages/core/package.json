@@ -5,6 +5,7 @@
   "license": "MIT",
   "main": "dist/opensaas-keystone-core.cjs.js",
   "module": "dist/opensaas-keystone-core.esm.js",
+  "types": "dist/opensaas-keystone-core.d.ts",
   "exports": {
     ".": {
       "module": "./dist/opensaas-keystone-core.esm.js",
@@ -17,6 +18,10 @@
     "./context": {
       "module": "./context/dist/opensaas-keystone-core-context.esm.js",
       "default": "./context/dist/opensaas-keystone-core-context.cjs.js"
+    },
+    "./lib": {
+      "module": "./lib/dist/opensaas-keystone-core-lib.esm.js",
+      "default": "./lib/dist/opensaas-keystone-core-lib.cjs.js"
     },
     "./types": {
       "module": "./types/dist/opensaas-keystone-core-types.esm.js",
@@ -77,6 +82,7 @@
       "index.ts",
       "access.ts",
       "context.ts",
+      "lib/index.ts",
       "fields/index.ts",
       "types/index.ts"
     ]

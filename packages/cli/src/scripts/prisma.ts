@@ -1,11 +1,11 @@
 import { spawn } from 'node:child_process'
 
-import { createSystem } from '../lib/createSystem'
 import { validateArtifacts } from '../artifacts'
 import {
   ExitError,
   importBuiltKeystoneConfiguration,
 } from './utils'
+import { createSystem } from '@opensaas/keystone-core/lib'
 
 async function spawnPrisma3 (cwd: string, system: {
   config: {

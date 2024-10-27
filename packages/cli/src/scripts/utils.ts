@@ -1,4 +1,4 @@
-import { getBuiltKeystoneConfigurationPath } from '../lib/createSystem'
+import { getBuiltKeystoneConfigurationPath } from '@opensaas/keystone-core/lib'
 import fs from 'node:fs/promises'
 
 export class ExitError extends Error {

@@ -1,5 +1,5 @@
 {
-  "name": "@keystone-6/cli-tests",
+  "name": "@opensaas/keystone-cli-tests",
   "description": "A set of tests for running against the KeystoneJS CLI.",
   "private": true,
   "version": "0.0.3",
@@ -10,9 +10,8 @@
   "devDependencies": {
     "@apollo/cache-control-types": "^1.0.2",
     "@hapi/iron": "^7.0.0",
-    "@keystone-6/auth": "workspace:^",
-    "@keystone-6/core": "workspace:^",
-    "@keystone-6/fields-document": "workspace:^",
+    "@opensaas/keystone-core": "workspace:^",
+    "@opensaas/keystone-fields-document": "workspace:^",
     "@prisma/client": "5.19.0",
     "@prisma/internals": "^5.0.0",
     "@prisma/migrate": "^5.0.0",

@@ -1,13 +1,13 @@
 import {
   type ScalarDBField,
   type ScalarDBFieldDefault
-} from '../../types'
-import { type ResolvedDBField } from './resolve-relationships'
-import { type InitialisedList } from './initialise-lists'
+} from '@opensaas/keystone-core/types'
 import {
   type __ResolvedKeystoneConfig
-} from '../../types'
+} from '@opensaas/keystone-core/types'
 import { areArraysEqual, getDBFieldKeyForFieldOnMultiField } from './utils'
+import type { ResolvedDBField } from '@opensaas/keystone-core/lib'
+import type { InitialisedList } from '@opensaas/keystone-core/lib'
 
 const modifiers = {
   required: '',

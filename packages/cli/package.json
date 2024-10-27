@@ -1,71 +1,71 @@
 {
-    "name": "@keystone-6/cli",
-    "version": "6.3.0",
-    "repository": "https://github.com/keystonejs/keystone/tree/main/packages/cli",
-    "license": "MIT",
-    "main": "dist/keystone-6-cli.cjs.js",
-    "module": "dist/keystone-6-cli.esm.js",
+  "name": "@opensaas/keystone-cli",
+  "version": "0.0.1",
+  "repository": "https://github.com/keystonejs/keystone/tree/main/packages/cli",
+  "license": "MIT",
+  "main": "dist/keystone-6-cli.cjs.js",
+  "module": "dist/keystone-6-cli.esm.js",
+  "exports": {
+    "./scripts/cli": {
+      "module": "./scripts/cli/dist/opensaas-keystone-cli-scripts-cli.esm.js",
+      "default": "./scripts/cli/dist/opensaas-keystone-cli-scripts-cli.cjs.js"
+    },
+    "./scripts": {
+      "module": "./scripts/dist/opensaas-keystone-cli-scripts.esm.js",
+      "default": "./scripts/dist/opensaas-keystone-cli-scripts.cjs.js"
+    },
+    "./package.json": "./package.json",
+    "./bin/cli.js": "./bin/cli.js"
+  },
+  "bin": {
+    "keystone": "bin/cli.js"
+  },
+  "dependencies": {
+    "@apollo/cache-control-types": "^1.0.3",
+    "@nodelib/fs.walk": "^2.0.0",
+    "@prisma/client": "5.21.1",
+    "@prisma/internals": "5.21.1",
+    "@prisma/migrate": "5.21.1",
+    "@sindresorhus/slugify": "^1.1.2",
+    "chalk": "^4.1.2",
+    "ci-info": "^4.0.0",
+    "clipboard-copy": "^4.0.1",
+    "conf": "^10.2.0",
+    "decimal.js": "^10.4.1",
+    "esbuild": "^0.24.0",
+    "fast-deep-equal": "^3.1.3",
+    "file-type": "^19.0.0",
+    "fs-extra": "^11.2.0",
+    "graphql": "^16.9.0",
+    "image-size": "^1.0.0",
+    "inflection": "^3.0.0",
+    "intersection-observer": "^0.12.0",
+    "meow": "^9.0.0",
+    "next": "^14.2.0",
+    "pluralize": "^8.0.0",
+    "prisma": "5.21.1",
+    "prompts": "^2.4.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "resolve": "^1.20.0",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@opensaas/keystone-core": "workspace:^",
+    "@types/prompts": "^2.0.14"
+  },
+  "peerDependencies": {
+    "@opensaas/keystone-core": "workspace:^"
+  },
+  "preconstruct": {
+    "entrypoints": [
+      "scripts/index.ts",
+      "scripts/cli.ts"
+    ],
     "exports": {
-      "./scripts/cli": {
-        "module": "./scripts/cli/dist/keystone-6-cli-scripts-cli.esm.js",
-        "default": "./scripts/cli/dist/keystone-6-cli-scripts-cli.cjs.js"
-      },
-      "./scripts": {
-        "module": "./scripts/dist/keystone-6-cli-scripts.esm.js",
-        "default": "./scripts/dist/keystone-6-cli-scripts.cjs.js"
-      },
-     
-      "./package.json": "./package.json",
-      "./bin/cli.js": "./bin/cli.js"
-    },
-    "bin": {
-      "keystone": "bin/cli.js"
-    },
-    "dependencies": {
-      "@apollo/cache-control-types": "^1.0.3",
-      "@nodelib/fs.walk": "^2.0.0",
-      "@prisma/client": "5.21.1",
-      "@prisma/internals": "5.21.1",
-      "@prisma/migrate": "5.21.1",
-      "@sindresorhus/slugify": "^1.1.2",
-      "chalk": "^4.1.2",
-      "ci-info": "^4.0.0",
-      "clipboard-copy": "^4.0.1",
-      "conf": "^10.2.0",
-      "decimal.js": "^10.4.1",
-      "esbuild": "^0.24.0",
-      "fast-deep-equal": "^3.1.3",
-      "file-type": "^19.0.0",
-      "fs-extra": "^11.0.0",
-      "image-size": "^1.0.0",
-      "inflection": "^3.0.0",
-      "intersection-observer": "^0.12.0",
-      "meow": "^9.0.0",
-      "next": "^14.2.0",
-      "pluralize": "^8.0.0",
-      "prisma": "5.21.1",
-      "prompts": "^2.4.2",
-      "react": "^18.3.1",
-      "react-dom": "^18.3.1",
-      "resolve": "^1.20.0",
-      "uuid": "^10.0.0"
-    },
-    "devDependencies": {
-      "@keystone-6/core": "workspace:^"
-    },
-    "peerDependencies": {
-      "@keystone-6/core": "workspace:^"
-    },
-    "preconstruct": {
-      "entrypoints": [
-        "scripts/index.ts",
-        "scripts/cli.ts"
-      ],
-      "exports": {
-        "extra": {
-          "./bin/cli.js": "./bin/cli.js"
-        }
+      "extra": {
+        "./bin/cli.js": "./bin/cli.js"
       }
     }
   }
-  
+}

@@ -1,5 +1,5 @@
 {
-  "name": "@keystone-6/test-projects-basic",
+  "name": "@opensaas/keystone-test-projects-basic",
   "version": "0.0.6",
   "private": true,
   "license": "MIT",
@@ -10,7 +10,7 @@
     "postinstall": "keystone postinstall"
   },
   "dependencies": {
-    "@keystone-6/core": "workspace:^",
+    "@opensaas/keystone-core": "workspace:^",
     "@prisma/client": "5.19.0"
   },
   "devDependencies": {

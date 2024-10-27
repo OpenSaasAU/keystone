@@ -1,9 +1,5 @@
 import esbuild from 'esbuild'
 import nextBuild from 'next/dist/build'
-import { generateAdminUI } from '../admin-ui/system'
-import {
-  createSystem,
-} from '../lib/createSystem'
 import {
   generateArtifacts,
   generatePrismaClient,
@@ -13,6 +9,7 @@ import {
 import { getEsbuildConfig } from './esbuild'
 import type { Flags } from './cli'
 import { importBuiltKeystoneConfiguration } from './utils'
+import { createSystem } from '@opensaas/keystone-core/lib'
 
 export async function build (
   cwd: string,
@@ -39,7 +36,6 @@ export async function build (
 
   console.log('✨ Generating Admin UI code')
   const paths = system.getPaths(cwd)
-  await generateAdminUI(system.config, system.graphQLSchema, system.adminMeta, paths.admin, false)
 
   console.log('✨ Building Admin UI')
   await nextBuild(

@@ -1,5 +1,5 @@
 {
-  "name": "@keystone-6/example-extend-prisma-schema",
+  "name": "@opensaas/keystone-example-extend-prisma-schema",
   "version": null,
   "private": true,
   "license": "MIT",
@@ -10,8 +10,8 @@
     "postinstall": "keystone postinstall"
   },
   "dependencies": {
-    "@keystone-6/core": "^6.3.0",
-    "@keystone-6/fields-document": "^9.1.0",
+    "@opensaas/keystone-core": "^0.0.1",
+    "@opensaas/keystone-fields-document": "^9.1.0",
     "@prisma/client": "5.19.0"
   },
   "devDependencies": {

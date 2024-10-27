@@ -1,5 +1,5 @@
 {
-  "name": "@keystone-6/example-document-field",
+  "name": "@opensaas/keystone-example-document-field",
   "version": null,
   "private": true,
   "license": "MIT",
@@ -11,9 +11,9 @@
     "postinstall": "keystone postinstall"
   },
   "dependencies": {
-    "@keystone-6/core": "^6.3.0",
-    "@keystone-6/document-renderer": "^1.1.2",
-    "@keystone-6/fields-document": "^9.1.0",
+    "@opensaas/keystone-core": "^0.0.1",
+    "@opensaas/keystone-document-renderer": "^1.1.2",
+    "@opensaas/keystone-fields-document": "^9.1.0",
     "@preconstruct/next": "^4.0.0",
     "@prisma/client": "5.19.0",
     "next": "^14.2.0",

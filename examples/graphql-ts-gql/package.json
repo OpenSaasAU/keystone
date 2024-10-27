@@ -1,5 +1,5 @@
 {
-  "name": "@keystone-6/example-graphql-ts-gql",
+  "name": "@opensaas/keystone-example-graphql-ts-gql",
   "version": null,
   "private": true,
   "license": "MIT",
@@ -11,7 +11,7 @@
     "postinstall": "keystone postinstall && ts-gql build"
   },
   "dependencies": {
-    "@keystone-6/core": "^6.3.0",
+    "@opensaas/keystone-core": "^0.0.1",
     "@prisma/client": "5.19.0",
     "graphql": "^16.8.1"
   },

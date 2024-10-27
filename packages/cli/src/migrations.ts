@@ -1,9 +1,8 @@
+import type { System } from '@opensaas/keystone-core/lib'
 import { toSchemasContainer } from '@prisma/internals'
 
 // @ts-expect-error
 import { Migrate } from '@prisma/migrate'
-
-import { type System } from './lib/createSystem'
 
 function setOrRemoveEnvVariable (name: string, value: string | undefined) {
   if (value === undefined) {

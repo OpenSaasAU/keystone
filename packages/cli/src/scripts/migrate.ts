@@ -4,10 +4,7 @@ import { spawn } from 'node:child_process'
 import chalk from 'chalk'
 import esbuild from 'esbuild'
 import fse from 'fs-extra'
-
-import { createSystem } from '../lib/createSystem'
 import { getEsbuildConfig } from './esbuild'
-import { withMigrate } from '../lib/migrations'
 import {
   confirmPrompt,
   textPrompt
@@ -24,6 +21,8 @@ import {
   ExitError,
   importBuiltKeystoneConfiguration,
 } from './utils'
+import { createSystem } from '@opensaas/keystone-core/lib'
+import { withMigrate } from '../migrations'
 
 export async function spawnPrisma (cwd: string, system: {
   config: {

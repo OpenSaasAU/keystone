@@ -1,5 +1,5 @@
 {
-  "name": "@keystone-6/example-empty-lists",
+  "name": "@opensaas/keystone-example-empty-lists",
   "version": null,
   "private": true,
   "license": "MIT",
@@ -10,7 +10,7 @@
     "postinstall": "keystone postinstall"
   },
   "dependencies": {
-    "@keystone-6/core": "^6.3.0",
+    "@opensaas/keystone-core": "^0.0.1",
     "@prisma/client": "5.19.0"
   },
   "devDependencies": {

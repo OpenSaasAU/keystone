@@ -1,4 +1,4 @@
 {
-  "main": "dist/keystone-6-cli-scripts-cli.cjs.js",
-  "module": "dist/keystone-6-cli-scripts-cli.esm.js"
+  "main": "dist/opensaas-keystone-cli-scripts-cli.cjs.js",
+  "module": "dist/opensaas-keystone-cli-scripts-cli.esm.js"
 }

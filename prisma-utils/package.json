@@ -1,5 +1,5 @@
 {
-  "name": "@keystone-6/prisma-utils",
+  "name": "@opensaas/keystone-prisma-utils",
   "version": "0.0.2",
   "private": true,
   "devDependencies": {
