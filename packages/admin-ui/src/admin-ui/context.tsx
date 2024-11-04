@@ -1,39 +1,25 @@
-import React, { type ReactNode, createContext, useContext, useMemo } from 'react'
-import { Center } from '@keystone-ui/core'
+"use client"
+import React, { type ReactNode, createContext, useContext } from 'react'
 import { ToastProvider } from '@keystone-ui/toast'
-import { LoadingDots } from '@keystone-ui/loading'
 import { DrawerProvider } from '@keystone-ui/modals'
-import { createUploadLink } from 'apollo-upload-client'
 import {
   type AdminConfig,
   type AdminMeta,
   type FieldViews
 } from '../types'
-import { useAdminMeta } from './utils/useAdminMeta'
-import {
-  type ApolloError,
-  type DocumentNode,
-  ApolloProvider,
-  ApolloClient,
-  InMemoryCache,
-} from './apollo'
 import {
   type AuthenticatedItem,
   type CreateViewFieldModes,
   type VisibleLists,
-  useLazyMetadata,
 } from './utils/useLazyMetadata'
 
 type KeystoneContextType = {
   adminConfig: AdminConfig
-  adminMeta:
-    | { state: 'loaded', value: AdminMeta }
-    | { state: 'error', error: ApolloError, refetch: () => Promise<void> }
+  adminMeta: AdminMeta
   fieldViews: FieldViews
   authenticatedItem: AuthenticatedItem
   visibleLists: VisibleLists
   createViewFieldModes: CreateViewFieldModes
-  reinitContext: () => Promise<void>
   apiPath: string
 }
 
@@ -42,35 +28,25 @@ const KeystoneContext = createContext<KeystoneContextType | undefined>(undefined
 type KeystoneProviderProps = {
   children: ReactNode
   adminConfig: AdminConfig
-  adminMetaHash: string
+  adminMeta: AdminMeta
+  authenticatedItem: AuthenticatedItem
+  visibleLists: VisibleLists
+  createViewFieldModes: CreateViewFieldModes
   fieldViews: FieldViews
-  lazyMetadataQuery: DocumentNode
   apiPath: string
 }
 
 function InternalKeystoneProvider ({
   adminConfig,
   fieldViews,
-  adminMetaHash,
+  adminMeta,
   children,
-  lazyMetadataQuery,
   apiPath,
+  authenticatedItem,
+  visibleLists,
+  createViewFieldModes,
 }: KeystoneProviderProps) {
-  const adminMeta = useAdminMeta(adminMetaHash, fieldViews)
-  const { authenticatedItem, visibleLists, createViewFieldModes, refetch } =
-    useLazyMetadata(lazyMetadataQuery)
-  const reinitContext = async () => {
-    await adminMeta?.refetch?.()
-    await refetch()
-  }
 
-  if (adminMeta.state === 'loading') {
-    return (
-      <Center fillView>
-        <LoadingDots label="Loading Admin Metadata" size="large" />
-      </Center>
-    )
-  }
   return (
     <ToastProvider>
       <DrawerProvider>
@@ -80,7 +56,6 @@ function InternalKeystoneProvider ({
             adminMeta,
             fieldViews,
             authenticatedItem,
-            reinitContext,
             visibleLists,
             createViewFieldModes,
             apiPath,
@@ -94,22 +69,8 @@ function InternalKeystoneProvider ({
 }
 
 export function KeystoneProvider (props: KeystoneProviderProps) {
-  const apolloClient = useMemo(
-    () =>
-      new ApolloClient({
-        cache: new InMemoryCache(),
-        link: createUploadLink({
-          uri: props.apiPath,
-          headers: { 'Apollo-Require-Preflight': 'true' },
-        }),
-      }),
-    [props.apiPath]
-  )
-
   return (
-    <ApolloProvider client={apolloClient}>
       <InternalKeystoneProvider {...props} />
-    </ApolloProvider>
   )
 }
 
@@ -123,22 +84,15 @@ export function useKeystone (): {
 } {
   const value = useContext(KeystoneContext)
   if (!value) throw new Error('useKeystone must be called inside a KeystoneProvider component')
-  if (value.adminMeta.state === 'error') throw new Error('An error occurred when loading Admin Metadata')
 
   return {
     adminConfig: value.adminConfig,
-    adminMeta: value.adminMeta.value,
+    adminMeta: value.adminMeta,
     authenticatedItem: value.authenticatedItem,
     visibleLists: value.visibleLists,
     createViewFieldModes: value.createViewFieldModes,
     apiPath: value.apiPath,
   }
-}
-
-export function useReinitContext () {
-  const value = useContext(KeystoneContext)
-  if (value) return value.reinitContext
-  throw new Error('useReinitContext must be called inside a KeystoneProvider component')
 }
 
 export function useRawKeystone () {

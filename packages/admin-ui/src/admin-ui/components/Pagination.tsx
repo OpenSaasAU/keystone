@@ -1,5 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
+"use client"
 import { useEffect } from 'react'
 import { jsx, Stack, useTheme } from '@keystone-ui/core'
 import { Select } from '@keystone-ui/fields'

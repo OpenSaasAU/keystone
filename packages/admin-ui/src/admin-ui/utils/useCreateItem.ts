@@ -1,7 +1,6 @@
 import { useToasts } from '@keystone-ui/toast'
 import { type ComponentProps, useState, useMemo, useRef, useEffect, useCallback } from 'react'
 import isDeepEqual from 'fast-deep-equal'
-import { useMutation, gql, type ApolloError } from '../apollo'
 import { useKeystone } from '..'
 import type { ListMeta } from '../../types'
 import { usePreventNavigation } from './usePreventNavigation'

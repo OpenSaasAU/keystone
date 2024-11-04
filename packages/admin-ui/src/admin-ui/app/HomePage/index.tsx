@@ -1,25 +1,24 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-
-import { useMemo } from 'react'
-
+"use client"
 import { Center, Inline, Heading, VisuallyHidden, jsx, useTheme } from '@keystone-ui/core'
 import { PlusIcon } from '@keystone-ui/icons/icons/PlusIcon'
 import { LoadingDots } from '@keystone-ui/loading'
 
-import { makeDataGetter } from '../../../../admin-ui/utils'
-import { PageContainer, HEADER_HEIGHT } from '../../../../admin-ui/components/PageContainer'
-import { gql, useQuery } from '../../../../admin-ui/apollo'
-import { useKeystone, useList } from '../../../../admin-ui/context'
+import { PageContainer, HEADER_HEIGHT } from '../../../admin-ui/components/PageContainer'
 import { Link, type LinkProps } from '../../../../admin-ui/router'
+import type { ListMeta, VisibleLists } from '../../../types'
+import type { KeystoneContext } from '@opensaas/keystone-core/types'
 
 function ListCard ({
   listKey,
   count,
-  hideCreate
+  hideCreate,
+  list
 }: {
   listKey: string
   hideCreate: boolean
+  list: ListMeta
   count:
     | { type: 'success', count: number }
     | { type: 'no-access' }
@@ -27,7 +26,6 @@ function ListCard ({
     | { type: 'loading' }
 }) {
   const { colors, palette, radii, spacing } = useTheme()
-  const list = useList(listKey)
   return (
     <div css={{ position: 'relative' }}>
       <Link
@@ -104,40 +102,11 @@ function CreateButton (props: LinkProps) {
   )
 }
 
-export function HomePage () {
-  const {
-    adminMeta: { lists },
-    visibleLists,
-  } = useKeystone()
-  const query = useMemo(
-    () => gql`
-    query {
-      keystone {
-        adminMeta {
-          lists {
-            key
-            hideCreate
-          }
-        }
-      }
-      ${Object.values(lists)
-        .filter(list => !list.isSingleton)
-        .map(list => `${list.key}: ${list.gqlNames.listQueryCountName}`)
-        .join('\n')}
-    }`,
-    [lists]
-  )
-  const { data, error } = useQuery(query, { errorPolicy: 'all' })
-
-  const dataGetter = makeDataGetter(data, error?.graphQLErrors)
+export function HomePage ({lists, visibleLists} : {lists: {[list: string]: ListMeta}[], visibleLists: VisibleLists, context: KeystoneContext}) {
 
   return (
     <PageContainer header={<Heading type="h3">Dashboard</Heading>}>
-      {visibleLists.state === 'loading' ? (
-        <Center css={{ height: `calc(100vh - ${HEADER_HEIGHT}px)` }}>
-          <LoadingDots label="Loading lists" size="large" tone="passive" />
-        </Center>
-      ) : (
+    
         <Inline
           as="ul"
           gap="large"
@@ -148,32 +117,22 @@ export function HomePage () {
           }}
         >
           {(() => {
-            if (visibleLists.state === 'error') {
-              return (
-                <span css={{ color: 'red' }}>
-                  {visibleLists.error instanceof Error
-                    ? visibleLists.error.message
-                    : visibleLists.error[0].message}
-                </span>
-              )
-            }
             return Object.keys(lists).map(key => {
-              if (!visibleLists.lists.has(key)) {
-                return null
-              }
-              const result = dataGetter.get(key)
               return (
                 <ListCard
+                list={lists[key]}
                   count={
-                    data
-                      ? result.errors
-                        ? { type: 'error', message: result.errors[0].message }
-                        : { type: 'success', count: data[key] }
-                      : { type: 'loading' }
+                    // data
+                    //   ? result.errors
+                    //     ? { type: 'error', message: result.errors[0].message }
+                    //     : { type: 'success', count: data[key] }
+                    //   : { type: 'loading' }
+                    { type: 'success', count: 5 }
                   }
                   hideCreate={
-                    data?.keystone.adminMeta.lists.find((list: any) => list.key === key)
-                      ?.hideCreate ?? false
+                    // data?.keystone.adminMeta.lists.find((list: any) => list.key === key)
+                    //   ?.hideCreate ?? false
+                    false
                   }
                   key={key}
                   listKey={key}
@@ -182,7 +141,6 @@ export function HomePage () {
             })
           })()}
         </Inline>
-      )}
     </PageContainer>
   )
 }

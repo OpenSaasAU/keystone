@@ -1,5 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
+"use client"
 
 import { type AllHTMLAttributes, type ReactNode, Fragment } from 'react'
 import { useRouter } from 'next/router'

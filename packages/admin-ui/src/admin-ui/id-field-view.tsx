@@ -10,7 +10,7 @@ import type {
   FieldControllerConfig,
   IdFieldConfig,
 } from '../../types'
-import { CellLink, CellContainer } from '../../admin-ui/components'
+import { CellLink, CellContainer } from './components'
 
 export function Field () {
   return null

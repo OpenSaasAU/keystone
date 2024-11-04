@@ -1,5 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
+"use client"
 
 import { jsx, Box } from '@keystone-ui/core'
 import { Drawer } from '@keystone-ui/modals'
@@ -8,7 +9,6 @@ import { LoadingDots } from '@keystone-ui/loading'
 import { useKeystone, useList } from '../context'
 
 import { Fields } from '../utils/Fields'
-import { useCreateItem } from '../utils/useCreateItem'
 import { GraphQLErrorNotice } from './GraphQLErrorNotice'
 
 export function CreateItemDrawer ({
@@ -22,7 +22,6 @@ export function CreateItemDrawer ({
 }) {
   const { createViewFieldModes } = useKeystone()
   const list = useList(listKey)
-  const createItemState = useCreateItem(list)
 
   return (
     <Drawer
@@ -31,9 +30,9 @@ export function CreateItemDrawer ({
       actions={{
         confirm: {
           label: `Create ${list.singular}`,
-          loading: createItemState.state === 'loading',
+          loading: createItemState?.state === 'loading',
           action: async () => {
-            const item = await createItemState.create()
+            const item = await createItemState?.create()
             if (item) {
               onCreate({ id: item.id, label: item.label || item.id })
             }
@@ -43,7 +42,7 @@ export function CreateItemDrawer ({
           label: 'Cancel',
           action: () => {
             if (
-              !createItemState.shouldPreventNavigation ||
+              !createItemState?.shouldPreventNavigation ||
               window.confirm('There are unsaved changes, are you sure you want to exit?')
             ) {
               onClose()
@@ -63,14 +62,14 @@ export function CreateItemDrawer ({
         />
       )}
       {createViewFieldModes.state === 'loading' && <LoadingDots label="Loading create form" />}
-      {createItemState.error && (
+      {createItemState?.error && (
         <GraphQLErrorNotice
-          networkError={createItemState.error?.networkError}
-          errors={createItemState.error?.graphQLErrors}
+          networkError={createItemState?.error?.networkError}
+          errors={createItemState?.error?.graphQLErrors}
         />
       )}
       <Box paddingY="xlarge">
-        <Fields {...createItemState.props} />
+        <Fields {...createItemState?.props} />
       </Box>
     </Drawer>
   )

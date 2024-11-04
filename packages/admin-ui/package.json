@@ -3,16 +3,16 @@
   "version": "0.0.1",
   "repository": "https://github.com/keystonejs/keystone/tree/main/packages/admin-ui",
   "license": "MIT",
-  "main": "dist/keystone-6-admin-ui.cjs.js",
-  "module": "dist/keystone-6-admin-ui.esm.js",
+  "main": "dist/opensaas-keystone-admin-ui.cjs.js",
+  "module": "dist/opensaas-keystone-admin-ui.esm.js",
   "exports": {
+    ".": {
+      "module": "./dist/opensaas-keystone-admin-ui.esm.js",
+      "default": "./dist/opensaas-keystone-admin-ui.cjs.js"
+    },
     "./admin-ui/image": {
       "module": "./admin-ui/image/dist/opensaas-keystone-admin-ui-admin-ui-image.esm.js",
       "default": "./admin-ui/image/dist/opensaas-keystone-admin-ui-admin-ui-image.cjs.js"
-    },
-    "./admin-ui/apollo": {
-      "module": "./admin-ui/apollo/dist/opensaas-keystone-admin-ui-admin-ui-apollo.esm.js",
-      "default": "./admin-ui/apollo/dist/opensaas-keystone-admin-ui-admin-ui-apollo.cjs.js"
     },
     "./admin-ui/router": {
       "module": "./admin-ui/router/dist/opensaas-keystone-admin-ui-admin-ui-router.esm.js",
@@ -90,47 +90,10 @@
       "module": "./fields/types/relationship/views/RelationshipSelect/dist/opensaas-keystone-admin-ui-fields-types-relationship-views-RelationshipSelect.esm.js",
       "default": "./fields/types/relationship/views/RelationshipSelect/dist/opensaas-keystone-admin-ui-fields-types-relationship-views-RelationshipSelect.cjs.js"
     },
-    "./___internal-do-not-use-will-break-in-patch/admin-ui/id-field-view": {
-      "module": "./___internal-do-not-use-will-break-in-patch/admin-ui/id-field-view/dist/opensaas-keystone-admin-ui-___internal-do-not-use-will-break-in-patch-admin-ui-id-field-view.esm.js",
-      "default": "./___internal-do-not-use-will-break-in-patch/admin-ui/id-field-view/dist/opensaas-keystone-admin-ui-___internal-do-not-use-will-break-in-patch-admin-ui-id-field-view.cjs.js"
-    },
-    "./___internal-do-not-use-will-break-in-patch/admin-ui/pages/App": {
-      "module": "./___internal-do-not-use-will-break-in-patch/admin-ui/pages/App/dist/opensaas-keystone-admin-ui-___internal-do-not-use-will-break-in-patch-admin-ui-pages-App.esm.js",
-      "default": "./___internal-do-not-use-will-break-in-patch/admin-ui/pages/App/dist/opensaas-keystone-admin-ui-___internal-do-not-use-will-break-in-patch-admin-ui-pages-App.cjs.js"
-    },
-    "./___internal-do-not-use-will-break-in-patch/admin-ui/pages/HomePage": {
-      "module": "./___internal-do-not-use-will-break-in-patch/admin-ui/pages/HomePage/dist/opensaas-keystone-admin-ui-___internal-do-not-use-will-break-in-patch-admin-ui-pages-HomePage.esm.js",
-      "default": "./___internal-do-not-use-will-break-in-patch/admin-ui/pages/HomePage/dist/opensaas-keystone-admin-ui-___internal-do-not-use-will-break-in-patch-admin-ui-pages-HomePage.cjs.js"
-    },
-    "./___internal-do-not-use-will-break-in-patch/admin-ui/pages/ItemPage": {
-      "module": "./___internal-do-not-use-will-break-in-patch/admin-ui/pages/ItemPage/dist/opensaas-keystone-admin-ui-___internal-do-not-use-will-break-in-patch-admin-ui-pages-ItemPage.esm.js",
-      "default": "./___internal-do-not-use-will-break-in-patch/admin-ui/pages/ItemPage/dist/opensaas-keystone-admin-ui-___internal-do-not-use-will-break-in-patch-admin-ui-pages-ItemPage.cjs.js"
-    },
-    "./___internal-do-not-use-will-break-in-patch/admin-ui/pages/ListPage": {
-      "module": "./___internal-do-not-use-will-break-in-patch/admin-ui/pages/ListPage/dist/opensaas-keystone-admin-ui-___internal-do-not-use-will-break-in-patch-admin-ui-pages-ListPage.esm.js",
-      "default": "./___internal-do-not-use-will-break-in-patch/admin-ui/pages/ListPage/dist/opensaas-keystone-admin-ui-___internal-do-not-use-will-break-in-patch-admin-ui-pages-ListPage.cjs.js"
-    },
-    "./___internal-do-not-use-will-break-in-patch/admin-ui/pages/NoAccessPage": {
-      "module": "./___internal-do-not-use-will-break-in-patch/admin-ui/pages/NoAccessPage/dist/opensaas-keystone-admin-ui-___internal-do-not-use-will-break-in-patch-admin-ui-pages-NoAccessPage.esm.js",
-      "default": "./___internal-do-not-use-will-break-in-patch/admin-ui/pages/NoAccessPage/dist/opensaas-keystone-admin-ui-___internal-do-not-use-will-break-in-patch-admin-ui-pages-NoAccessPage.cjs.js"
-    },
-    "./___internal-do-not-use-will-break-in-patch/admin-ui/pages/CreateItemPage": {
-      "module": "./___internal-do-not-use-will-break-in-patch/admin-ui/pages/CreateItemPage/dist/opensaas-keystone-admin-ui-___internal-do-not-use-will-break-in-patch-admin-ui-pages-CreateItemPage.esm.js",
-      "default": "./___internal-do-not-use-will-break-in-patch/admin-ui/pages/CreateItemPage/dist/opensaas-keystone-admin-ui-___internal-do-not-use-will-break-in-patch-admin-ui-pages-CreateItemPage.cjs.js"
-    },
     "./package.json": "./package.json",
     "./bin/cli.js": "./bin/cli.js"
   },
   "dependencies": {
-    "@apollo/cache-control-types": "^1.0.3",
-    "@apollo/client": "^3.9.2",
-    "@apollo/server": "^4.10.0",
-    "@aws-sdk/client-s3": "^3.83.0",
-    "@aws-sdk/lib-storage": "^3.83.0",
-    "@aws-sdk/s3-request-presigner": "^3.83.0",
-    "@babel/runtime": "^7.24.7",
-    "@emotion/hash": "^0.9.0",
-    "@emotion/weak-memoize": "^0.4.0",
     "@graphql-ts/extend": "^1.0.0",
     "@graphql-ts/schema": "^0.6.0",
     "@graphql-typed-document-node/core": "^3.1.2",
@@ -149,15 +112,11 @@
     "@keystone-ui/toast": "latest",
     "@keystone-ui/tooltip": "latest",
     "@nodelib/fs.walk": "^2.0.0",
-    "@prisma/client": "5.20.0",
-    "@prisma/internals": "5.20.0",
-    "@prisma/migrate": "5.20.0",
+    "@opensaas/keystone-core": "workspace:^",
     "@sindresorhus/slugify": "^1.1.2",
-    "apollo-upload-client": "^17.0.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.1",
     "bytes": "^3.1.1",
-    "chalk": "^4.1.2",
     "ci-info": "^4.0.0",
     "clipboard-copy": "^4.0.1",
     "conf": "^10.2.0",
@@ -166,21 +125,16 @@
     "dataloader": "^2.1.0",
     "date-fns": "^4.0.0",
     "decimal.js": "^10.4.1",
-    "dumb-passwords": "^0.2.1",
-    "esbuild": "^0.24.0",
     "express": "^4.19.2",
     "fast-deep-equal": "^3.1.3",
     "file-type": "^19.0.0",
     "fs-extra": "^11.0.0",
     "graphql": "^16.8.1",
-    "graphql-upload": "^15.0.2",
     "image-size": "^1.0.0",
     "inflection": "^3.0.0",
     "intersection-observer": "^0.12.0",
     "meow": "^9.0.0",
-    "next": "^14.2.0",
-    "pluralize": "^8.0.0",
-    "prisma": "5.20.0",
+    "next": "^15.0.2",
     "prompts": "^2.4.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -208,10 +162,8 @@
   },
   "preconstruct": {
     "entrypoints": [
-      "___internal-do-not-use-will-break-in-patch/admin-ui/pages/*/index.tsx",
-      "___internal-do-not-use-will-break-in-patch/admin-ui/id-field-view.tsx",
+      "index.tsx",
       "admin-ui/components/index.ts",
-      "admin-ui/apollo.tsx",
       "admin-ui/context.tsx",
       "admin-ui/router.tsx",
       "admin-ui/image.tsx",

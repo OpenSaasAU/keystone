@@ -1,5 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
+"use client"
 
 import { Component, type ReactNode } from 'react'
 import { Button } from '@keystone-ui/button'

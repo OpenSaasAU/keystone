@@ -1,5 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
+"use client"
 
 import { jsx, useTheme, H3 } from '@keystone-ui/core'
 import Link from 'next/link'

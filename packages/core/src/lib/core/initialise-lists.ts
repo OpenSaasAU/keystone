@@ -93,6 +93,7 @@ export type InitialisedField = {
 >
 
 export type InitialisedList = {
+  key: any
   listKey: string
 
   access: ResolvedListAccessControl

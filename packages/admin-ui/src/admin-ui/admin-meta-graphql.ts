@@ -2,7 +2,6 @@ import {
   type GraphQLNames,
   type JSONValue,
 } from '../types/utils'
-import { gql } from './apollo'
 
 export const staticAdminMetaQuery = gql`
   query StaticAdminMeta {

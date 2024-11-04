@@ -4,11 +4,6 @@ import {
   type AdminMeta,
   type FieldViews
 } from '../../types'
-import { useLazyQuery } from '../apollo'
-import {
-  type StaticAdminMetaQuery,
-  staticAdminMetaQuery
-} from '../admin-meta-graphql'
 
 const expectedExports = new Set(['Cell', 'Field', 'controller', 'CardValue'])
 const adminMetaLocalStorageKey = 'keystone.adminMeta'
@@ -71,7 +66,6 @@ export function useAdminMeta (adminMetaHash: string, fieldViews: FieldViews) {
     for (const list of adminMeta.lists) {
       runtimeAdminMeta.lists[list.key] = {
         ...list,
-        gqlNames: list.graphql.names,
         groups: [],
         fields: {},
       }

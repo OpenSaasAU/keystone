@@ -87,21 +87,6 @@ export function resolveDefaults <TypeInfo extends BaseKeystoneTypeInfo> (config:
   config.db.url ??= 'postgres://'
 
   const defaultIdField = config.db.idField ?? { kind: 'cuid' }
-  const cors =
-    config.server?.cors === true
-      ? { origin: true, credentials: true }
-      : config.server?.cors === false
-        ? null
-        : config.server?.cors ?? null
-
-  const httpOptions: ListenOptions = { port: 3000 }
-  if (config?.server && 'port' in config.server) {
-    httpOptions.port = config.server.port
-  }
-
-  if (config?.server && 'options' in config.server && config.server.options) {
-    Object.assign(httpOptions, config.server.options)
-  }
 
   return {
     types: {
@@ -124,19 +109,10 @@ export function resolveDefaults <TypeInfo extends BaseKeystoneTypeInfo> (config:
     graphql: {
       ...config.graphql,
       path: config.graphql?.path ?? '/api/graphql',
-      playground: config.graphql?.playground ?? process.env.NODE_ENV !== 'production',
       schemaPath: config.graphql?.schemaPath ?? 'schema.graphql',
       extendGraphqlSchema: config.graphql?.extendGraphqlSchema ?? ((s) => s),
     },
     lists: injectDefaults(config, defaultIdField),
-    server: {
-      ...config.server,
-      maxFileSize: config.server?.maxFileSize ?? (200 * 1024 * 1024), // 200 MiB
-      extendExpressApp: config.server?.extendExpressApp ?? noop,
-      extendHttpServer: config.server?.extendHttpServer ?? noop,
-      cors,
-      options: httpOptions,
-    },
     session: config.session,
     storage: {
       ...config.storage

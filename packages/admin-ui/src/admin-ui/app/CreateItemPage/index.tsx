@@ -6,33 +6,25 @@ import { LoadingDots } from '@keystone-ui/loading'
 import { Button } from '@keystone-ui/button'
 import { useRouter } from 'next/router'
 import { Fields } from '../../../../admin-ui/utils'
-import { PageContainer } from '../../../../admin-ui/components/PageContainer'
-import { useKeystone, useList } from '../../../../admin-ui'
+import { PageContainer } from '../../../admin-ui/components/PageContainer'
+import { useKeystone, useList } from '../../../admin-ui'
 import { GraphQLErrorNotice } from '../../../../admin-ui/components'
-import { type ListMeta } from '../../../../types'
-import { useCreateItem } from '../../../../admin-ui/utils/useCreateItem'
 import { BaseToolbar, ColumnLayout, ItemPageHeader } from '../ItemPage/common'
+import type { ListMeta } from '../../../types'
 
 function CreatePageForm (props: { list: ListMeta }) {
-  const createItem = useCreateItem(props.list)
   const router = useRouter()
   return (
     <Box paddingTop="xlarge">
-      {createItem.error && (
-        <GraphQLErrorNotice
-          networkError={createItem.error?.networkError}
-          errors={createItem.error?.graphQLErrors}
-        />
-      )}
 
-      <Fields {...createItem.props} />
+      <Fields {...createItem?.props} />
       <BaseToolbar>
         <Button
-          isLoading={createItem.state === 'loading'}
+          isLoading={createItem?.state === 'loading'}
           weight="bold"
           tone="active"
           onClick={async () => {
-            const item = await createItem.create()
+            const item = await createItem?.create()
             if (item) {
               router.push(`/${props.list.path}/${item.id}`)
             }
