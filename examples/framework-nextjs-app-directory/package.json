@@ -14,6 +14,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@opensaas/keystone-admin-ui": "workspace:^",
     "@opensaas/keystone-core": "workspace:^",
     "@opensaas/keystone-document-renderer": "^0.0.1",
     "@opensaas/keystone-fields-document": "^0.0.1",
