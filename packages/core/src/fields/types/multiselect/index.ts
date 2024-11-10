@@ -109,7 +109,7 @@ export function multiselect <ListTypeInfo extends BaseListTypeInfo> (
         ...config,
         __ksTelemetryFieldTypeName: '@keystone-6/multiselect',
         hooks: mergeFieldHooks({ validate }, config.hooks),
-        views: '@opensaas/keystone-core/fields/types/multiselect/views',
+        views: '@opensaas/keystone-admin-ui/fields/types/multiselect/views',
         getAdminMeta: () => ({
           options: transformedConfig.options,
           type: config.type ?? 'string',

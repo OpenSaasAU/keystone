@@ -103,7 +103,7 @@ export function timestamp <ListTypeInfo extends BaseListTypeInfo> (
       },
       output: graphql.field({ type: graphql.DateTime }),
       __ksTelemetryFieldTypeName: '@keystone-6/timestamp',
-      views: '@opensaas/keystone-core/fields/types/timestamp/views',
+      views: '@opensaas/keystone-admin-ui/fields/types/timestamp/views',
       getAdminMeta (): TimestampFieldMeta {
         return {
           defaultValue: defaultValue ?? null,

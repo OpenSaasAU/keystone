@@ -97,7 +97,7 @@ export function select <ListTypeInfo extends BaseListTypeInfo> (config: SelectFi
       ui,
       hooks: mergeFieldHooks({ validate }, config.hooks),
       __ksTelemetryFieldTypeName: '@keystone-6/select',
-      views: '@opensaas/keystone-core/fields/types/select/views',
+      views: '@opensaas/keystone-admin-ui/fields/types/select/views',
       getAdminMeta: () => ({
         options,
         type: config.type ?? 'string',

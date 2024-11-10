@@ -1,4 +1,3 @@
-"use client"
 import { Stack } from '@keystone-ui/core'
 import { Notice } from '@keystone-ui/notice'
 import type { GraphQLFormattedError } from 'graphql'

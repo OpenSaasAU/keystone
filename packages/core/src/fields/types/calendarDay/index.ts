@@ -116,7 +116,7 @@ export function calendarDay <ListTypeInfo extends BaseListTypeInfo> (config: Cal
         },
       }),
       __ksTelemetryFieldTypeName: '@keystone-6/calendarDay',
-      views: '@opensaas/keystone-core/fields/types/calendarDay/views',
+      views: '@opensaas/keystone-admin-ui/fields/types/calendarDay/views',
       getAdminMeta (): CalendarDayFieldMeta {
         return {
           defaultValue: defaultValue ?? null,

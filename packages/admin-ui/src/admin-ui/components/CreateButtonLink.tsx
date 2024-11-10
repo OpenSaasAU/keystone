@@ -1,6 +1,5 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-"use client"
 import { Button } from '@keystone-ui/button'
 import { jsx } from '@keystone-ui/core'
 import type { ListMeta } from '../../types'

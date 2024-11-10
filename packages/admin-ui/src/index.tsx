@@ -1,72 +1,31 @@
-import type { KeystoneConfig, KeystoneContext } from '@opensaas/keystone-core/types'
-import { createSystem } from '@opensaas/keystone-core/lib'
-import { HomePage } from './admin-ui/app/HomePage'
-import type { AdminConfig, ListMeta } from './types'
-import { getApp } from './admin-ui/app/App'
+import { CreateItemPage, ItemPage, ListPage, HomePage } from './client'
 import React from 'react'
 
+// TODO: this shuold come from config
+function normaliseListName (route: string) {
+  // urls are kebab-case and plural, lists are PascalCase and singular
+    const pascalCase = route.split('-').map(word => word[0].toUpperCase() + word.slice(1)).join('')
+    const singular = pascalCase.slice(0, -1)
+    return singular
+}
 
-export function buildAdminUI (_config: KeystoneConfig) {
-    const {config, lists} = createSystem(_config)
-    return {
-        page: async ({ params }: {
-            params: Promise<{ adminUI?: string[] }>
-          }, context: KeystoneContext) => {
-            
-            const App = getApp({
-                adminConfig: {
-                    components: {},
-                },
-                adminMeta: {
-                    lists: {},
-                },
-                fieldViews: {},
-                apiPath: '',
-                authenticatedItem: {
-                    state: 'unauthenticated'
-                },
-                visibleLists: {
-                    state: 'loaded',
-                    lists: new Set('User')
-                },
-                createViewFieldModes: {
-                    state: 'loaded',
-                    lists: {
-                        User: {}
-                    }
-                },
-            })
-            const { adminUI } = await params
-            if (!adminUI) {
-                const listsMetadata: {
-                    [list: string]: ListMeta
-                }[] = []
-                Object.values(lists).forEach(list => {
-                    listsMetadata.push = {
-                        key: list.key,
-                        label: list.ui.labels.singular
-                    }
-                })
-                return (
-                <App>
-                <HomePage lists={listsMetadata} />
-                </App>
-                )
-            }
-            return (
-                <div>
-                    <h1>Admin UI: {JSON.stringify(adminUI)}</h1>
-                    <p>config: {JSON.stringify(config)}</p>
-                    {/* <p>context: {JSON.stringify(context)}</p> */}
-                    <p>thing: {JSON.stringify(thing)}</p>
-                </div>
-            )
-        },
-        generateStaticParams: async () => {
-            const pages: {adminUI?: string[] }[] = [{ adminUI: undefined}]
-            Object.values(lists).forEach(listKey => pages.push({ adminUI: [listKey.ui.labels.path] }, { adminUI: [listKey.ui.labels.path, 'create'] }))
-            return pages
-        }
-    }
-  
+export async function Page ({
+  params,
+}: {
+  params: Promise<{ adminUI: string }>
+}) {
+  const { adminUI } = await params
+  console.log('admin', adminUI)
+  if (!adminUI) {
+    return <HomePage />
+  }
+  const listKey = normaliseListName(adminUI[0])
+  console.log('listKey', listKey)
+  if (adminUI.length === 1) {
+    return <ListPage listKey={normaliseListName(adminUI[0]) } />
+  }
+  if (adminUI[1] === 'create') {
+    return <CreateItemPage listKey={normaliseListName(adminUI[0]) } />
+  }
+  return <ItemPage listKey={normaliseListName(adminUI[0]) } />
 }

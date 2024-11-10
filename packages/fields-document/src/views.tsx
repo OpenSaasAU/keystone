@@ -12,7 +12,7 @@ import {
   type CellComponent,
   type FieldProps,
 } from '@keystone-6/core/types'
-import { CellContainer, CellLink } from '@keystone-6/core/admin-ui/components'
+import { CellContainer, CellLink } from '@opensaas/keystone-admin-ui/admin-ui/components'
 
 import { DocumentEditor } from './DocumentEditor'
 import { ForceValidationProvider } from './DocumentEditor/utils-hooks'

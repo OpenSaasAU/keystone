@@ -152,7 +152,7 @@ export function document <ListTypeInfo extends BaseListTypeInfo> ({
             return { document: value }
           },
         }),
-        views: '@keystone-6/fields-document/views',
+        views: '@opensaas/keystone-fields-document/views',
         getAdminMeta (): Parameters<typeof controller>[0]['fieldMeta'] {
           return {
             relationships,

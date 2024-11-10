@@ -1,6 +1,5 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-"use client"
 
 import { type ComponentPropsWithoutRef } from 'react'
 import { jsx } from '@keystone-ui/core'

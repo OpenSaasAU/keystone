@@ -5,3 +5,5 @@ export {
   useRawKeystone,
   useReinitContext,
 } from './context'
+
+export { Core } from '@keystone-ui/core'

@@ -9,6 +9,7 @@ import { getEsbuildConfig } from './esbuild'
 import type { Flags } from './cli'
 import { importBuiltKeystoneConfiguration } from './utils'
 import { createSystem } from '@opensaas/keystone-core/lib'
+import { generateAdminUI } from '../lib/admin-ui-files-printer'
 
 export async function build (
   cwd: string,
@@ -32,4 +33,8 @@ export async function build (
   }
 
   if (system.config.ui?.isDisabled || !ui) return
+
+  const paths = system.getPaths(cwd)
+  console.log('✨ Generated AdminUI') // TODO: generating?
+  await generateAdminUI(system.config, system.graphQLSchema, system.adminMeta, paths.admin, false)
 }

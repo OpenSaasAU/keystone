@@ -1,0 +1,4 @@
+{
+  "main": "dist/opensaas-keystone-admin-ui-admin-ui-admin-meta-graphql.cjs.js",
+  "module": "dist/opensaas-keystone-admin-ui-admin-ui-admin-meta-graphql.esm.js"
+}

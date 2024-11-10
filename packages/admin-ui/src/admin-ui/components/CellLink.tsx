@@ -1,6 +1,5 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-"use client"
 
 import { jsx, useTheme } from '@keystone-ui/core'
 

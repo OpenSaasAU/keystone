@@ -1,6 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { PageContainer } from '@keystone-6/core/admin-ui/components'
+import { PageContainer } from '@opensaas/keystone-admin-ui/admin-ui/components'
 import { jsx, Heading } from '@keystone-ui/core'
 import {
   ApolloClient,

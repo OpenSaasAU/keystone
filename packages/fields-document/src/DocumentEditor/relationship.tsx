@@ -7,8 +7,8 @@ import { Transforms } from 'slate'
 import { useSlateStatic as useStaticEditor } from 'slate-react'
 
 import { jsx } from '@keystone-ui/core'
-import { useList } from '@keystone-6/core/admin-ui/context'
-import { RelationshipSelect } from '@keystone-6/core/fields/types/relationship/views/RelationshipSelect'
+import { useList } from '@opensaas/keystone-admin-ui/admin-ui/context'
+import { RelationshipSelect } from '@opensaas/keystone-admin-ui/fields/types/relationship/views/RelationshipSelect'
 
 import { ToolbarButton } from './primitives'
 import { useToolbarState } from './toolbar-state'

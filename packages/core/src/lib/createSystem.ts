@@ -15,6 +15,7 @@ import {
   type InitialisedList,
   initialiseLists,
 } from './core/initialise-lists'
+import { createAdminMeta } from './create-admin-meta'
 
 // TODO: this cannot be changed for now, circular dependency with getSystemPaths, getEsbuildConfig
 export function getBuiltKeystoneConfigurationPath (cwd: string) {
@@ -50,7 +51,7 @@ export function getSystemPaths (cwd: string, config: KeystoneConfig | __Resolved
 
   return {
     config: getBuiltKeystoneConfigurationPath(cwd),
-    admin: path.join(cwd, '.keystone/admin'),
+    admin: path.join(cwd, 'node_modules/.keystone/ui'),
     prisma: prismaClientPath ?? '@prisma/client',
     types: {
       relativePrismaPath,
@@ -114,7 +115,8 @@ function getSudoGraphQLSchema (config: __ResolvedKeystoneConfig) {
   }
 
   const lists = initialiseLists(transformedConfig)
-  return createGraphQLSchema(transformedConfig, lists, true)
+  const adminMeta = createAdminMeta(config, lists)
+  return createGraphQLSchema(transformedConfig, lists, adminMeta, true)
 }
 
 function injectNewDefaults (prismaClient: unknown, lists: Record<string, InitialisedList>) {
@@ -199,13 +201,15 @@ function formatUrl (provider: __ResolvedKeystoneConfig['db']['provider'], url: s
 export function createSystem (config_: KeystoneConfig) {
   const config = resolveDefaults(config_)
   const lists = initialiseLists(config)
-  const graphQLSchema = createGraphQLSchema(config, lists, false)
+  const adminMeta = createAdminMeta(config, lists)
+  const graphQLSchema = createGraphQLSchema(config, lists, adminMeta, false)
   const graphQLSchemaSudo = getSudoGraphQLSchema(config)
 
   return {
     config,
     graphQLSchema,
     lists,
+    adminMeta,
 
     getPaths: (cwd: string) => {
       return getSystemPaths(cwd, config)

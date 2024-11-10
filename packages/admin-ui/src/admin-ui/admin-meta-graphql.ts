@@ -1,7 +1,6 @@
-import {
-  type GraphQLNames,
-  type JSONValue,
-} from '../types/utils'
+
+import type { GraphQLNames, JSONValue } from '@opensaas/keystone-core/types'
+import { gql } from './apollo'
 
 export const staticAdminMetaQuery = gql`
   query StaticAdminMeta {

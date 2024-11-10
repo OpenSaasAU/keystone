@@ -1,5 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
+"use client"
 import { jsx, Stack, useTheme } from '@keystone-ui/core'
 import {
   Checkbox,

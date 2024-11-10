@@ -756,14 +756,14 @@ importers:
         specifier: ^3.1.0
         version: 3.9.1(graphql@16.9.0)
       next:
-        specifier: ^14.2.0
-        version: 14.2.15(@babel/core@7.25.8)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^15.0.2
+        version: 15.0.2(@babel/core@7.25.8)(babel-plugin-macros@3.1.0)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)
       react:
-        specifier: ^18.3.1
-        version: 18.3.1
+        specifier: 19.0.0-rc-4d577fd2-20241104
+        version: 19.0.0-rc-4d577fd2-20241104
       react-dom:
-        specifier: ^18.3.1
-        version: 18.3.1(react@18.3.1)
+        specifier: 19.0.0-rc-4d577fd2-20241104
+        version: 19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104)
     devDependencies:
       '@opensaas/keystone-cli':
         specifier: workspace:^
@@ -1086,6 +1086,9 @@ importers:
 
   packages/admin-ui:
     dependencies:
+      '@apollo/client':
+        specifier: ^3.7.0
+        version: 3.11.8(@types/react@18.3.11)(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)
       '@graphql-ts/extend':
         specifier: ^1.0.0
         version: 1.0.0(@graphql-ts/schema@0.6.0(graphql@16.9.0))(graphql@16.9.0)
@@ -1100,43 +1103,43 @@ importers:
         version: 7.0.1
       '@keystone-ui/button':
         specifier: latest
-        version: 7.0.2(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))
+        version: 7.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))
       '@keystone-ui/core':
         specifier: latest
-        version: 5.0.2(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 5.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)
       '@keystone-ui/fields':
         specifier: latest
         version: 7.2.0(@types/react@18.3.11)
       '@keystone-ui/icons':
         specifier: latest
-        version: 6.0.2(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 6.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)
       '@keystone-ui/loading':
         specifier: latest
-        version: 6.0.2(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))
+        version: 6.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))
       '@keystone-ui/modals':
         specifier: latest
-        version: 6.0.3(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))
+        version: 6.0.3(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))
       '@keystone-ui/notice':
         specifier: latest
-        version: 6.0.2(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))
+        version: 6.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))
       '@keystone-ui/options':
         specifier: latest
-        version: 6.0.2(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 6.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)
       '@keystone-ui/pill':
         specifier: latest
-        version: 7.0.2(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 7.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)
       '@keystone-ui/popover':
         specifier: latest
-        version: 6.0.2(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 6.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)
       '@keystone-ui/segmented-control':
         specifier: latest
-        version: 7.0.3(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 7.0.3(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)
       '@keystone-ui/toast':
         specifier: latest
-        version: 6.0.2(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 6.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)
       '@keystone-ui/tooltip':
         specifier: latest
-        version: 6.0.2(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 6.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)
       '@nodelib/fs.walk':
         specifier: ^2.0.0
         version: 2.0.0
@@ -1149,6 +1152,9 @@ importers:
       '@sindresorhus/slugify':
         specifier: ^1.1.2
         version: 1.1.2
+      apollo-upload-client:
+        specifier: ^18.0.1
+        version: 18.0.1(@apollo/client@3.11.8(@types/react@18.3.11)(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104))(graphql@16.9.0)
       bcryptjs:
         specifier: ^2.4.3
         version: 2.4.3
@@ -1211,16 +1217,16 @@ importers:
         version: 9.0.0
       next:
         specifier: ^15.0.2
-        version: 15.0.2(@babel/core@7.25.8)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 15.0.2(@babel/core@7.25.8)(babel-plugin-macros@3.1.0)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)
       prompts:
         specifier: ^2.4.2
         version: 2.4.2
       react:
-        specifier: ^18.3.1
-        version: 18.3.1
+        specifier: 19.0.0-rc-4d577fd2-20241104
+        version: 19.0.0-rc-4d577fd2-20241104
       react-dom:
-        specifier: ^18.3.1
-        version: 18.3.1(react@18.3.1)
+        specifier: 19.0.0-rc-4d577fd2-20241104
+        version: 19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104)
       resolve:
         specifier: ^1.20.0
         version: 1.22.8
@@ -1230,7 +1236,7 @@ importers:
     devDependencies:
       '@types/apollo-upload-client':
         specifier: 17.0.5
-        version: 17.0.5(@types/react@18.3.11)(graphql-ws@5.16.0(graphql@16.9.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 17.0.5(@types/react@18.3.11)(graphql-ws@5.16.0(graphql@16.9.0))(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)
       '@types/bcryptjs':
         specifier: ^2.4.2
         version: 2.4.6
@@ -1270,6 +1276,9 @@ importers:
 
   packages/cli:
     dependencies:
+      '@emotion/hash':
+        specifier: ^0.9.2
+        version: 0.9.2
       '@nodelib/fs.walk':
         specifier: ^2.0.0
         version: 2.0.0
@@ -1300,13 +1309,25 @@ importers:
       prompts:
         specifier: ^2.4.2
         version: 2.4.2
+      resolve:
+        specifier: ^1.20.0
+        version: 1.22.8
     devDependencies:
+      '@opensaas/keystone-admin-ui':
+        specifier: workspace:^
+        version: link:../admin-ui
       '@opensaas/keystone-core':
         specifier: workspace:^
         version: link:../core
+      '@types/fs-extra':
+        specifier: ^11.0.0
+        version: 11.0.4
       '@types/prompts':
         specifier: ^2.0.14
         version: 2.4.9
+      '@types/resolve':
+        specifier: ^1.20.2
+        version: 1.20.6
 
   packages/core:
     dependencies:
@@ -1401,6 +1422,9 @@ importers:
       '@keystone-ui/tooltip':
         specifier: latest
         version: 6.0.2(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@opensaas/keystone-admin-ui':
+        specifier: workspace:^
+        version: link:../admin-ui
       '@opensaas/keystone-document-renderer':
         specifier: workspace:^
         version: link:../document-renderer
@@ -4789,6 +4813,13 @@ packages:
     resolution: {integrity: sha512-KMReFUr0B4t+D+OBkjR3KYqvocp2XaSzO55UcB6mgQMd3KbcE+mWTyvVV7D/zsdEbNnV6acZUutkiHQXvTr1Rw==}
     engines: {node: '>= 8'}
 
+  apollo-upload-client@18.0.1:
+    resolution: {integrity: sha512-OQvZg1rK05VNI79D658FUmMdoI2oB/KJKb6QGMa2Si25QXOaAvLMBFUEwJct7wf+19U8vk9ILhidBOU1ZWv6QA==}
+    engines: {node: ^18.15.0 || >=20.4.0}
+    peerDependencies:
+      '@apollo/client': ^3.8.0
+      graphql: 14 - 16
+
   apply-ref@1.0.0:
     resolution: {integrity: sha512-InKjUB8TMcIiSVV/9hqmMpIXkpIjCIbRiB3qdPu4/kU9AagF2uRAdAfFgt9+ykw5xQYyqAmcIKNsgy4tqKPquQ==}
 
@@ -5948,6 +5979,10 @@ packages:
   extglob@2.0.4:
     resolution: {integrity: sha512-Nmb6QXkELsuBr24CJSkilo6UHHgbekK5UiZgfE6UHD3Eb27YC6oD+bhcT+tJ6cl8dmsgdQxnWlcry8ksBIBLpw==}
     engines: {node: '>=0.10.0'}
+
+  extract-files@13.0.0:
+    resolution: {integrity: sha512-FXD+2Tsr8Iqtm3QZy1Zmwscca7Jx3mMC5Crr+sEP1I303Jy1CYMuYCm7hRTplFNg3XdUavErkxnTzpaqdSoi6g==}
+    engines: {node: ^14.17.0 || ^16.0.0 || >= 18.0.0}
 
   extract-files@9.0.0:
     resolution: {integrity: sha512-CvdFfHkC95B4bBBk36hcEmvdR2awOdhhVUYH6S/zrVj3477zven/fJMYg7121h4T1xHZC+tetUpubpAhxwI7hQ==}
@@ -8471,6 +8506,11 @@ packages:
     peerDependencies:
       react: ^18.3.1
 
+  react-dom@19.0.0-rc-4d577fd2-20241104:
+    resolution: {integrity: sha512-vHEFhw0Kh7ota2oXq+ADZpA6BhfhWCcLuKD5x6TCsnjHcxKecHQxhhFMbc5sZpj2hpfMLhjf3H4LaJr+nPsRew==}
+    peerDependencies:
+      react: 19.0.0-rc-4d577fd2-20241104
+
   react-dom@19.0.0-rc-603e6108-20241029:
     resolution: {integrity: sha512-1jaWZcv3V6R39ZnDU3FtGSXtEm/z/lCRFnWmvbp019wPffFGKoXDv+i5KoyQ5yUBpwumImFrKTWXYQluOnm7Jw==}
     peerDependencies:
@@ -8565,6 +8605,10 @@ packages:
 
   react@18.3.1:
     resolution: {integrity: sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==}
+    engines: {node: '>=0.10.0'}
+
+  react@19.0.0-rc-4d577fd2-20241104:
+    resolution: {integrity: sha512-BhjfcQuRTz5hvkDLuTA1/EbL+UtzrgPnvoktcPmv3orunARU8BZQvlMhYOahWPeQN7Ul3aYsQgWXO8yEzGOyIw==}
     engines: {node: '>=0.10.0'}
 
   react@19.0.0-rc-603e6108-20241029:
@@ -8845,6 +8889,9 @@ packages:
 
   scheduler@0.23.2:
     resolution: {integrity: sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ==}
+
+  scheduler@0.25.0-rc-4d577fd2-20241104:
+    resolution: {integrity: sha512-UbR+PIjSGIDPwZxhGm6rcAZPfsLjtdPiAmXDYNKjsJz6WPPQw1sgFcsyFS/2Xkhw+/3DLuGgrxpqiltdEDAm3Q==}
 
   scheduler@0.25.0-rc-603e6108-20241029:
     resolution: {integrity: sha512-pFwF6H1XrSdYYNLfOcGlM28/j8CGLu8IvdrxqhjWULe2bPcKiKW4CV+OWqR/9fT52mywx65l7ysNkjLKBda7eA==}
@@ -9975,7 +10022,7 @@ snapshots:
     dependencies:
       graphql: 16.9.0
 
-  '@apollo/client@3.11.8(@types/react@18.3.11)(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@apollo/client@3.11.8(@types/react@18.3.11)(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)':
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.9.0)
       '@wry/caches': 1.0.1
@@ -9986,7 +10033,7 @@ snapshots:
       hoist-non-react-statics: 3.3.2
       optimism: 0.18.0
       prop-types: 15.8.1
-      rehackt: 0.1.0(@types/react@18.3.11)(react@18.3.1)
+      rehackt: 0.1.0(@types/react@18.3.11)(react@19.0.0-rc-4d577fd2-20241104)
       response-iterator: 0.2.6
       symbol-observable: 4.0.0
       ts-invariant: 0.10.3
@@ -9994,8 +10041,8 @@ snapshots:
       zen-observable-ts: 1.2.5
     optionalDependencies:
       graphql-ws: 5.16.0(graphql@16.9.0)
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
+      react: 19.0.0-rc-4d577fd2-20241104
+      react-dom: 19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104)
     transitivePeerDependencies:
       - '@types/react'
 
@@ -11195,6 +11242,22 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@emotion/react@11.13.3(@types/react@18.3.11)(react@19.0.0-rc-4d577fd2-20241104)':
+    dependencies:
+      '@babel/runtime': 7.25.7
+      '@emotion/babel-plugin': 11.12.0
+      '@emotion/cache': 11.13.1
+      '@emotion/serialize': 1.3.2
+      '@emotion/use-insertion-effect-with-fallbacks': 1.1.0(react@19.0.0-rc-4d577fd2-20241104)
+      '@emotion/utils': 1.4.1
+      '@emotion/weak-memoize': 0.4.0
+      hoist-non-react-statics: 3.3.2
+      react: 19.0.0-rc-4d577fd2-20241104
+    optionalDependencies:
+      '@types/react': 18.3.11
+    transitivePeerDependencies:
+      - supports-color
+
   '@emotion/serialize@1.3.2':
     dependencies:
       '@emotion/hash': 0.9.2
@@ -11210,6 +11273,10 @@ snapshots:
   '@emotion/use-insertion-effect-with-fallbacks@1.1.0(react@18.3.1)':
     dependencies:
       react: 18.3.1
+
+  '@emotion/use-insertion-effect-with-fallbacks@1.1.0(react@19.0.0-rc-4d577fd2-20241104)':
+    dependencies:
+      react: 19.0.0-rc-4d577fd2-20241104
 
   '@emotion/utils@1.4.1': {}
 
@@ -12090,6 +12157,18 @@ snapshots:
       - react-dom
       - supports-color
 
+  '@keystone-ui/button@7.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))':
+    dependencies:
+      '@babel/runtime': 7.25.7
+      '@keystone-ui/core': 5.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@18.3.1)
+      '@keystone-ui/icons': 6.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@18.3.1)
+      '@keystone-ui/loading': 6.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))
+      react: 18.3.1
+    transitivePeerDependencies:
+      - '@types/react'
+      - react-dom
+      - supports-color
+
   '@keystone-ui/button@7.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-603e6108-20241029(react@18.3.1))':
     dependencies:
       '@babel/runtime': 7.25.7
@@ -12110,6 +12189,30 @@ snapshots:
       facepaint: 1.2.1
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
+    transitivePeerDependencies:
+      - '@types/react'
+      - supports-color
+
+  '@keystone-ui/core@5.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@18.3.1)':
+    dependencies:
+      '@babel/runtime': 7.25.7
+      '@emotion/react': 11.13.3(@types/react@18.3.11)(react@18.3.1)
+      '@types/facepaint': 1.2.5
+      facepaint: 1.2.1
+      react: 18.3.1
+      react-dom: 19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104)
+    transitivePeerDependencies:
+      - '@types/react'
+      - supports-color
+
+  '@keystone-ui/core@5.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)':
+    dependencies:
+      '@babel/runtime': 7.25.7
+      '@emotion/react': 11.13.3(@types/react@18.3.11)(react@19.0.0-rc-4d577fd2-20241104)
+      '@types/facepaint': 1.2.5
+      facepaint: 1.2.1
+      react: 19.0.0-rc-4d577fd2-20241104
+      react-dom: 19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104)
     transitivePeerDependencies:
       - '@types/react'
       - supports-color
@@ -12152,6 +12255,26 @@ snapshots:
       - react-dom
       - supports-color
 
+  '@keystone-ui/icons@6.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@18.3.1)':
+    dependencies:
+      '@babel/runtime': 7.25.7
+      '@keystone-ui/core': 5.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@18.3.1)
+      react: 18.3.1
+    transitivePeerDependencies:
+      - '@types/react'
+      - react-dom
+      - supports-color
+
+  '@keystone-ui/icons@6.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)':
+    dependencies:
+      '@babel/runtime': 7.25.7
+      '@keystone-ui/core': 5.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)
+      react: 19.0.0-rc-4d577fd2-20241104
+    transitivePeerDependencies:
+      - '@types/react'
+      - react-dom
+      - supports-color
+
   '@keystone-ui/icons@6.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-603e6108-20241029(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.25.7
@@ -12166,6 +12289,16 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.25.7
       '@keystone-ui/core': 5.0.2(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react: 18.3.1
+    transitivePeerDependencies:
+      - '@types/react'
+      - react-dom
+      - supports-color
+
+  '@keystone-ui/loading@6.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))':
+    dependencies:
+      '@babel/runtime': 7.25.7
+      '@keystone-ui/core': 5.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@18.3.1)
       react: 18.3.1
     transitivePeerDependencies:
       - '@types/react'
@@ -12196,37 +12329,51 @@ snapshots:
       - react-dom
       - supports-color
 
-  '@keystone-ui/notice@6.0.2(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))':
+  '@keystone-ui/modals@6.0.3(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))':
     dependencies:
       '@babel/runtime': 7.25.7
-      '@keystone-ui/button': 7.0.2(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))
-      '@keystone-ui/core': 5.0.2(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@keystone-ui/icons': 6.0.2(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@keystone-ui/button': 7.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))
+      '@keystone-ui/core': 5.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@18.3.1)
+      react: 18.3.1
+      react-focus-lock: 2.13.2(@types/react@18.3.11)(react@18.3.1)
+      react-remove-scroll: 2.6.0(@types/react@18.3.11)(react@18.3.1)
+      react-transition-group: 4.4.5(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@18.3.1)
+    transitivePeerDependencies:
+      - '@types/react'
+      - react-dom
+      - supports-color
+
+  '@keystone-ui/notice@6.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))':
+    dependencies:
+      '@babel/runtime': 7.25.7
+      '@keystone-ui/button': 7.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))
+      '@keystone-ui/core': 5.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@18.3.1)
+      '@keystone-ui/icons': 6.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@18.3.1)
       react: 18.3.1
     transitivePeerDependencies:
       - '@types/react'
       - react-dom
       - supports-color
 
-  '@keystone-ui/options@6.0.2(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@keystone-ui/options@6.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)':
     dependencies:
       '@babel/runtime': 7.25.7
-      '@keystone-ui/core': 5.0.2(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@keystone-ui/core': 5.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)
       '@keystone-ui/fields': 7.2.0(@types/react@18.3.11)
-      '@keystone-ui/icons': 6.0.2(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react: 18.3.1
-      react-select: 5.8.1(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@keystone-ui/icons': 6.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)
+      react: 19.0.0-rc-4d577fd2-20241104
+      react-select: 5.8.1(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)
     transitivePeerDependencies:
       - '@types/react'
       - react-dom
       - supports-color
 
-  '@keystone-ui/pill@7.0.2(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@keystone-ui/pill@7.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)':
     dependencies:
       '@babel/runtime': 7.25.7
-      '@keystone-ui/core': 5.0.2(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@keystone-ui/icons': 6.0.2(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react: 18.3.1
+      '@keystone-ui/core': 5.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)
+      '@keystone-ui/icons': 6.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)
+      react: 19.0.0-rc-4d577fd2-20241104
     transitivePeerDependencies:
       - '@types/react'
       - react-dom
@@ -12245,6 +12392,19 @@ snapshots:
       - '@types/react'
       - supports-color
 
+  '@keystone-ui/popover@6.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)':
+    dependencies:
+      '@babel/runtime': 7.25.7
+      '@keystone-ui/core': 5.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)
+      '@popperjs/core': 2.11.8
+      focus-trap: 7.6.0
+      react: 19.0.0-rc-4d577fd2-20241104
+      react-dom: 19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104)
+      react-popper: 2.3.0(@popperjs/core@2.11.8)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)
+    transitivePeerDependencies:
+      - '@types/react'
+      - supports-color
+
   '@keystone-ui/popover@6.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-603e6108-20241029(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.25.7
@@ -12258,22 +12418,22 @@ snapshots:
       - '@types/react'
       - supports-color
 
-  '@keystone-ui/segmented-control@7.0.3(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@keystone-ui/segmented-control@7.0.3(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)':
     dependencies:
       '@babel/runtime': 7.25.7
-      '@keystone-ui/core': 5.0.2(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react: 18.3.1
+      '@keystone-ui/core': 5.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)
+      react: 19.0.0-rc-4d577fd2-20241104
     transitivePeerDependencies:
       - '@types/react'
       - react-dom
       - supports-color
 
-  '@keystone-ui/toast@6.0.2(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@keystone-ui/toast@6.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)':
     dependencies:
       '@babel/runtime': 7.25.7
-      '@keystone-ui/core': 5.0.2(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@keystone-ui/icons': 6.0.2(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react: 18.3.1
+      '@keystone-ui/core': 5.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)
+      '@keystone-ui/icons': 6.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)
+      react: 19.0.0-rc-4d577fd2-20241104
     transitivePeerDependencies:
       - '@types/react'
       - react-dom
@@ -12287,6 +12447,18 @@ snapshots:
       apply-ref: 1.0.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
+    transitivePeerDependencies:
+      - '@types/react'
+      - supports-color
+
+  '@keystone-ui/tooltip@6.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)':
+    dependencies:
+      '@babel/runtime': 7.25.7
+      '@keystone-ui/core': 5.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)
+      '@keystone-ui/popover': 6.0.2(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)
+      apply-ref: 1.0.0
+      react: 19.0.0-rc-4d577fd2-20241104
+      react-dom: 19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104)
     transitivePeerDependencies:
       - '@types/react'
       - supports-color
@@ -13091,9 +13263,9 @@ snapshots:
     dependencies:
       '@types/estree': 1.0.6
 
-  '@types/apollo-upload-client@17.0.5(@types/react@18.3.11)(graphql-ws@5.16.0(graphql@16.9.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@types/apollo-upload-client@17.0.5(@types/react@18.3.11)(graphql-ws@5.16.0(graphql@16.9.0))(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)':
     dependencies:
-      '@apollo/client': 3.11.8(@types/react@18.3.11)(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@apollo/client': 3.11.8(@types/react@18.3.11)(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)
       '@types/extract-files': 13.0.1
       graphql: 16.9.0
     transitivePeerDependencies:
@@ -13736,6 +13908,12 @@ snapshots:
     dependencies:
       normalize-path: 3.0.0
       picomatch: 2.3.1
+
+  apollo-upload-client@18.0.1(@apollo/client@3.11.8(@types/react@18.3.11)(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104))(graphql@16.9.0):
+    dependencies:
+      '@apollo/client': 3.11.8(@types/react@18.3.11)(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)
+      extract-files: 13.0.0
+      graphql: 16.9.0
 
   apply-ref@1.0.0: {}
 
@@ -15262,6 +15440,10 @@ snapshots:
       to-regex: 3.0.2
     transitivePeerDependencies:
       - supports-color
+
+  extract-files@13.0.0:
+    dependencies:
+      is-plain-obj: 4.1.0
 
   extract-files@9.0.0: {}
 
@@ -17853,7 +18035,7 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  next@15.0.2(@babel/core@7.25.8)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  next@15.0.2(@babel/core@7.25.8)(babel-plugin-macros@3.1.0)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104):
     dependencies:
       '@next/env': 15.0.2
       '@swc/counter': 0.1.3
@@ -17861,9 +18043,9 @@ snapshots:
       busboy: 1.6.0
       caniuse-lite: 1.0.30001669
       postcss: 8.4.31
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-      styled-jsx: 5.1.6(@babel/core@7.25.8)(babel-plugin-macros@3.1.0)(react@18.3.1)
+      react: 19.0.0-rc-4d577fd2-20241104
+      react-dom: 19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104)
+      styled-jsx: 5.1.6(@babel/core@7.25.8)(babel-plugin-macros@3.1.0)(react@19.0.0-rc-4d577fd2-20241104)
     optionalDependencies:
       '@next/swc-darwin-arm64': 15.0.2
       '@next/swc-darwin-x64': 15.0.2
@@ -18556,6 +18738,11 @@ snapshots:
       react: 18.3.1
       scheduler: 0.23.2
 
+  react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104):
+    dependencies:
+      react: 19.0.0-rc-4d577fd2-20241104
+      scheduler: 0.25.0-rc-4d577fd2-20241104
+
   react-dom@19.0.0-rc-603e6108-20241029(react@18.3.1):
     dependencies:
       react: 18.3.1
@@ -18591,6 +18778,14 @@ snapshots:
       '@popperjs/core': 2.11.8
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
+      react-fast-compare: 3.2.2
+      warning: 4.0.3
+
+  react-popper@2.3.0(@popperjs/core@2.11.8)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104):
+    dependencies:
+      '@popperjs/core': 2.11.8
+      react: 19.0.0-rc-4d577fd2-20241104
+      react-dom: 19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104)
       react-fast-compare: 3.2.2
       warning: 4.0.3
 
@@ -18652,6 +18847,23 @@ snapshots:
       - '@types/react'
       - supports-color
 
+  react-select@5.8.1(@types/react@18.3.11)(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104):
+    dependencies:
+      '@babel/runtime': 7.25.7
+      '@emotion/cache': 11.13.1
+      '@emotion/react': 11.13.3(@types/react@18.3.11)(react@19.0.0-rc-4d577fd2-20241104)
+      '@floating-ui/dom': 1.6.11
+      '@types/react-transition-group': 4.4.11
+      memoize-one: 6.0.0
+      prop-types: 15.8.1
+      react: 19.0.0-rc-4d577fd2-20241104
+      react-dom: 19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104)
+      react-transition-group: 4.4.5(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104)
+      use-isomorphic-layout-effect: 1.1.2(@types/react@18.3.11)(react@19.0.0-rc-4d577fd2-20241104)
+    transitivePeerDependencies:
+      - '@types/react'
+      - supports-color
+
   react-style-singleton@2.2.1(@types/react@18.3.11)(react@18.3.1):
     dependencies:
       get-nonce: 1.0.1
@@ -18670,9 +18882,29 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
+  react-transition-group@4.4.5(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@18.3.1):
+    dependencies:
+      '@babel/runtime': 7.25.7
+      dom-helpers: 5.2.1
+      loose-envify: 1.4.0
+      prop-types: 15.8.1
+      react: 18.3.1
+      react-dom: 19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104)
+
+  react-transition-group@4.4.5(react-dom@19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104))(react@19.0.0-rc-4d577fd2-20241104):
+    dependencies:
+      '@babel/runtime': 7.25.7
+      dom-helpers: 5.2.1
+      loose-envify: 1.4.0
+      prop-types: 15.8.1
+      react: 19.0.0-rc-4d577fd2-20241104
+      react-dom: 19.0.0-rc-4d577fd2-20241104(react@19.0.0-rc-4d577fd2-20241104)
+
   react@18.3.1:
     dependencies:
       loose-envify: 1.4.0
+
+  react@19.0.0-rc-4d577fd2-20241104: {}
 
   react@19.0.0-rc-603e6108-20241029: {}
 
@@ -18766,6 +18998,11 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.3.11
       react: 18.3.1
+
+  rehackt@0.1.0(@types/react@18.3.11)(react@19.0.0-rc-4d577fd2-20241104):
+    optionalDependencies:
+      '@types/react': 18.3.11
+      react: 19.0.0-rc-4d577fd2-20241104
 
   rehype-parse@9.0.1:
     dependencies:
@@ -19034,6 +19271,8 @@ snapshots:
   scheduler@0.23.2:
     dependencies:
       loose-envify: 1.4.0
+
+  scheduler@0.25.0-rc-4d577fd2-20241104: {}
 
   scheduler@0.25.0-rc-603e6108-20241029: {}
 
@@ -19441,10 +19680,10 @@ snapshots:
       '@babel/core': 7.25.8
       babel-plugin-macros: 3.1.0
 
-  styled-jsx@5.1.6(@babel/core@7.25.8)(babel-plugin-macros@3.1.0)(react@18.3.1):
+  styled-jsx@5.1.6(@babel/core@7.25.8)(babel-plugin-macros@3.1.0)(react@19.0.0-rc-4d577fd2-20241104):
     dependencies:
       client-only: 0.0.1
-      react: 18.3.1
+      react: 19.0.0-rc-4d577fd2-20241104
     optionalDependencies:
       '@babel/core': 7.25.8
       babel-plugin-macros: 3.1.0
@@ -19895,6 +20134,12 @@ snapshots:
   use-isomorphic-layout-effect@1.1.2(@types/react@18.3.11)(react@18.3.1):
     dependencies:
       react: 18.3.1
+    optionalDependencies:
+      '@types/react': 18.3.11
+
+  use-isomorphic-layout-effect@1.1.2(@types/react@18.3.11)(react@19.0.0-rc-4d577fd2-20241104):
+    dependencies:
+      react: 19.0.0-rc-4d577fd2-20241104
     optionalDependencies:
       '@types/react': 18.3.11
 

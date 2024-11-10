@@ -1,0 +1,4 @@
+{
+  "main": "dist/opensaas-keystone-core-graphql.cjs.js",
+  "module": "dist/opensaas-keystone-core-graphql.esm.js"
+}

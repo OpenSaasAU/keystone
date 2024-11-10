@@ -10,9 +10,17 @@
       "module": "./dist/opensaas-keystone-admin-ui.esm.js",
       "default": "./dist/opensaas-keystone-admin-ui.cjs.js"
     },
+    "./app/artifacts": {
+      "module": "./app/artifacts/dist/opensaas-keystone-admin-ui-app-artifacts.esm.js",
+      "default": "./app/artifacts/dist/opensaas-keystone-admin-ui-app-artifacts.cjs.js"
+    },
     "./admin-ui/image": {
       "module": "./admin-ui/image/dist/opensaas-keystone-admin-ui-admin-ui-image.esm.js",
       "default": "./admin-ui/image/dist/opensaas-keystone-admin-ui-admin-ui-image.cjs.js"
+    },
+    "./admin-ui": {
+      "module": "./admin-ui/dist/opensaas-keystone-admin-ui-admin-ui.esm.js",
+      "default": "./admin-ui/dist/opensaas-keystone-admin-ui-admin-ui.cjs.js"
     },
     "./admin-ui/router": {
       "module": "./admin-ui/router/dist/opensaas-keystone-admin-ui-admin-ui-router.esm.js",
@@ -22,13 +30,21 @@
       "module": "./admin-ui/context/dist/opensaas-keystone-admin-ui-admin-ui-context.esm.js",
       "default": "./admin-ui/context/dist/opensaas-keystone-admin-ui-admin-ui-context.cjs.js"
     },
-    "./admin-ui/utils": {
-      "module": "./admin-ui/utils/dist/opensaas-keystone-admin-ui-admin-ui-utils.esm.js",
-      "default": "./admin-ui/utils/dist/opensaas-keystone-admin-ui-admin-ui-utils.cjs.js"
-    },
     "./admin-ui/components": {
       "module": "./admin-ui/components/dist/opensaas-keystone-admin-ui-admin-ui-components.esm.js",
       "default": "./admin-ui/components/dist/opensaas-keystone-admin-ui-admin-ui-components.cjs.js"
+    },
+    "./admin-ui/admin-meta-graphql": {
+      "module": "./admin-ui/admin-meta-graphql/dist/opensaas-keystone-admin-ui-admin-ui-admin-meta-graphql.esm.js",
+      "default": "./admin-ui/admin-meta-graphql/dist/opensaas-keystone-admin-ui-admin-ui-admin-meta-graphql.cjs.js"
+    },
+    "./app/admin-ui/id-field-view": {
+      "module": "./app/admin-ui/id-field-view/dist/opensaas-keystone-admin-ui-app-admin-ui-id-field-view.esm.js",
+      "default": "./app/admin-ui/id-field-view/dist/opensaas-keystone-admin-ui-app-admin-ui-id-field-view.cjs.js"
+    },
+    "./app/admin-ui/pages/App": {
+      "module": "./app/admin-ui/pages/App/dist/opensaas-keystone-admin-ui-app-admin-ui-pages-App.esm.js",
+      "default": "./app/admin-ui/pages/App/dist/opensaas-keystone-admin-ui-app-admin-ui-pages-App.cjs.js"
     },
     "./fields/types/json/views": {
       "module": "./fields/types/json/views/dist/opensaas-keystone-admin-ui-fields-types-json-views.esm.js",
@@ -62,6 +78,18 @@
       "module": "./fields/types/virtual/views/dist/opensaas-keystone-admin-ui-fields-types-virtual-views.esm.js",
       "default": "./fields/types/virtual/views/dist/opensaas-keystone-admin-ui-fields-types-virtual-views.cjs.js"
     },
+    "./app/admin-ui/pages/HomePage": {
+      "module": "./app/admin-ui/pages/HomePage/dist/opensaas-keystone-admin-ui-app-admin-ui-pages-HomePage.esm.js",
+      "default": "./app/admin-ui/pages/HomePage/dist/opensaas-keystone-admin-ui-app-admin-ui-pages-HomePage.cjs.js"
+    },
+    "./app/admin-ui/pages/ItemPage": {
+      "module": "./app/admin-ui/pages/ItemPage/dist/opensaas-keystone-admin-ui-app-admin-ui-pages-ItemPage.esm.js",
+      "default": "./app/admin-ui/pages/ItemPage/dist/opensaas-keystone-admin-ui-app-admin-ui-pages-ItemPage.cjs.js"
+    },
+    "./app/admin-ui/pages/ListPage": {
+      "module": "./app/admin-ui/pages/ListPage/dist/opensaas-keystone-admin-ui-app-admin-ui-pages-ListPage.esm.js",
+      "default": "./app/admin-ui/pages/ListPage/dist/opensaas-keystone-admin-ui-app-admin-ui-pages-ListPage.cjs.js"
+    },
     "./fields/types/checkbox/views": {
       "module": "./fields/types/checkbox/views/dist/opensaas-keystone-admin-ui-fields-types-checkbox-views.esm.js",
       "default": "./fields/types/checkbox/views/dist/opensaas-keystone-admin-ui-fields-types-checkbox-views.cjs.js"
@@ -82,9 +110,17 @@
       "module": "./fields/types/multiselect/views/dist/opensaas-keystone-admin-ui-fields-types-multiselect-views.esm.js",
       "default": "./fields/types/multiselect/views/dist/opensaas-keystone-admin-ui-fields-types-multiselect-views.cjs.js"
     },
+    "./app/admin-ui/pages/NoAccessPage": {
+      "module": "./app/admin-ui/pages/NoAccessPage/dist/opensaas-keystone-admin-ui-app-admin-ui-pages-NoAccessPage.esm.js",
+      "default": "./app/admin-ui/pages/NoAccessPage/dist/opensaas-keystone-admin-ui-app-admin-ui-pages-NoAccessPage.cjs.js"
+    },
     "./fields/types/relationship/views": {
       "module": "./fields/types/relationship/views/dist/opensaas-keystone-admin-ui-fields-types-relationship-views.esm.js",
       "default": "./fields/types/relationship/views/dist/opensaas-keystone-admin-ui-fields-types-relationship-views.cjs.js"
+    },
+    "./app/admin-ui/pages/CreateItemPage": {
+      "module": "./app/admin-ui/pages/CreateItemPage/dist/opensaas-keystone-admin-ui-app-admin-ui-pages-CreateItemPage.esm.js",
+      "default": "./app/admin-ui/pages/CreateItemPage/dist/opensaas-keystone-admin-ui-app-admin-ui-pages-CreateItemPage.cjs.js"
     },
     "./fields/types/relationship/views/RelationshipSelect": {
       "module": "./fields/types/relationship/views/RelationshipSelect/dist/opensaas-keystone-admin-ui-fields-types-relationship-views-RelationshipSelect.esm.js",
@@ -94,6 +130,7 @@
     "./bin/cli.js": "./bin/cli.js"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.0",
     "@graphql-ts/extend": "^1.0.0",
     "@graphql-ts/schema": "^0.6.0",
     "@graphql-typed-document-node/core": "^3.1.2",
@@ -114,6 +151,7 @@
     "@nodelib/fs.walk": "^2.0.0",
     "@opensaas/keystone-core": "workspace:^",
     "@sindresorhus/slugify": "^1.1.2",
+    "apollo-upload-client": "^18.0.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.1",
     "bytes": "^3.1.1",
@@ -136,8 +174,8 @@
     "meow": "^9.0.0",
     "next": "^15.0.2",
     "prompts": "^2.4.2",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "19.0.0-rc-4d577fd2-20241104",
+    "react-dom": "19.0.0-rc-4d577fd2-20241104",
     "resolve": "^1.20.0",
     "uuid": "^10.0.0"
   },
@@ -163,11 +201,15 @@
   "preconstruct": {
     "entrypoints": [
       "index.tsx",
+      "app/artifacts.ts",
+      "app/admin-ui/pages/*/index.tsx",
+      "app/admin-ui/id-field-view.tsx",
       "admin-ui/components/index.ts",
       "admin-ui/context.tsx",
       "admin-ui/router.tsx",
       "admin-ui/image.tsx",
-      "admin-ui/utils/index.ts",
+      "admin-ui/index.tsx",
+      "admin-ui/admin-meta-graphql.ts",
       "fields/types/*/views/index.tsx",
       "fields/types/relationship/views/RelationshipSelect.tsx",
       "fields/types/{image,file}/utils.ts"

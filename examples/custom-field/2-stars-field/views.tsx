@@ -1,6 +1,6 @@
 import React from 'react'
 import { FieldContainer, FieldDescription, FieldLabel } from '@keystone-ui/fields'
-import { CellLink, CellContainer } from '@keystone-6/core/admin-ui/components'
+import { CellLink, CellContainer } from '@opensaas/keystone-admin-ui/admin-ui/components'
 
 import {
   type CardValueComponent,

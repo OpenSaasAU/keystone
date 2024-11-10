@@ -1,0 +1,4 @@
+{
+  "main": "dist/opensaas-keystone-admin-ui-app-admin-ui-pages-CreateItemPage.cjs.js",
+  "module": "dist/opensaas-keystone-admin-ui-app-admin-ui-pages-CreateItemPage.esm.js"
+}

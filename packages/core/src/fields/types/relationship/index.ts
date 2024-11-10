@@ -101,7 +101,7 @@ export const relationship =
     const commonConfig = {
       ...config,
       __ksTelemetryFieldTypeName: '@keystone-6/relationship',
-      views: '@opensaas/keystone-core/fields/types/relationship/views',
+      views: '@opensaas/keystone-admin-ui/fields/types/relationship/views',
       getAdminMeta: () => {
         return {}
       },

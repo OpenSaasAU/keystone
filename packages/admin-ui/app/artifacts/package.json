@@ -1,0 +1,4 @@
+{
+  "main": "dist/opensaas-keystone-admin-ui-app-artifacts.cjs.js",
+  "module": "dist/opensaas-keystone-admin-ui-app-artifacts.esm.js"
+}

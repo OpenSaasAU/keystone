@@ -14,6 +14,7 @@ import type { BaseFields } from './fields'
 import type { ListAccessControl, FieldAccessControl } from './access-control'
 import type { ListHooks, FieldHooks } from './hooks'
 
+export type { AdminMetaRootVal }  from '../../lib/create-admin-meta'
 type FileOrImage =
   // is given full file name, returns file name that will be used at
   | { type: 'file', transformName?: (filename: string) => MaybePromise<string> }

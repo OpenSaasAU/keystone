@@ -1,5 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
+"use client"
 import { useState } from 'react'
 
 import { jsx, Inline, Stack, VisuallyHidden, Text } from '@keystone-ui/core'

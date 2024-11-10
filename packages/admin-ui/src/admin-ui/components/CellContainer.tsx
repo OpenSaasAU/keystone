@@ -1,6 +1,5 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-"use client"
 
 import type { ReactNode } from 'react'
 import { jsx, useTheme } from '@keystone-ui/core'

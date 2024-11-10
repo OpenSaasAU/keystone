@@ -23,16 +23,16 @@
     "graphql": "^16.8.1",
     "graphql-request": "^5.0.0",
     "graphql-yoga": "^3.1.0",
-    "next": "^14.2.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "next": "^15.0.2",
+    "react": "19.0.0-rc-4d577fd2-20241104",
+    "react-dom": "19.0.0-rc-4d577fd2-20241104"
   },
   "devDependencies": {
     "@opensaas/keystone-cli": "workspace:^",
     "@types/node": "^20.14.10",
-    "react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
     "prisma": "5.19.0",
+    "react": "^18.3.1",
     "typescript": "^5.5.0"
   }
 }

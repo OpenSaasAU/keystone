@@ -5,12 +5,18 @@ import {
   type __ResolvedKeystoneConfig
 } from '../types'
 import type { InitialisedList } from './core/initialise-lists'
+import { KeystoneMeta } from './resolve-admin-meta'
 
 import { getQueriesForList } from './core/queries'
 import { getMutationsForList } from './core/mutations'
+import type { AdminMetaRootVal } from './create-admin-meta'
 
 function getGraphQLSchema (
   lists: Record<string, InitialisedList>,
+  extraFields: {
+    query: Record<string, graphql.Field<unknown, any, graphql.OutputType, string>>
+    mutation: Record<string, graphql.Field<unknown, any, graphql.OutputType, string>>
+  },
   sudo: boolean
 ) {
   const query = graphql.object()({
@@ -18,6 +24,7 @@ function getGraphQLSchema (
     fields: Object.assign(
       {},
       ...Object.values(lists).map(list => getQueriesForList(list)),
+      extraFields.query
     ),
   })
 
@@ -92,10 +99,32 @@ function collectTypes (
 export function createGraphQLSchema (
   config: __ResolvedKeystoneConfig,
   lists: Record<string, InitialisedList>,
+  adminMeta: AdminMetaRootVal | null,
   sudo: boolean
 ) {
   const graphQLSchema = getGraphQLSchema(
     lists,
+    {
+      mutation: config.session
+        ? {
+            endSession: graphql.field({
+              type: graphql.nonNull(graphql.Boolean),
+              async resolve (rootVal, args, context) {
+                await context.sessionStrategy?.end({ context })
+                return true
+              },
+            }),
+          }
+        : {},
+      query: adminMeta
+        ? {
+            keystone: graphql.field({
+              type: graphql.nonNull(KeystoneMeta),
+              resolve: () => ({ adminMeta }),
+            }),
+          }
+        : {},
+    },
     sudo
   )
 

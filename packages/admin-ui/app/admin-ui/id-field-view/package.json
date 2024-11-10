@@ -1,0 +1,4 @@
+{
+  "main": "dist/opensaas-keystone-admin-ui-app-admin-ui-id-field-view.cjs.js",
+  "module": "dist/opensaas-keystone-admin-ui-app-admin-ui-id-field-view.esm.js"
+}

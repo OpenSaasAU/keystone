@@ -168,7 +168,7 @@ export function text <ListTypeInfo extends BaseListTypeInfo> (
         type: graphql.String,
       }),
       __ksTelemetryFieldTypeName: '@keystone-6/text',
-      views: '@opensaas/keystone-core/fields/types/text/views',
+      views: '@opensaas/keystone-admin-ui/fields/types/text/views',
       getAdminMeta (): TextFieldMeta {
         return {
           displayMode: config.ui?.displayMode ?? 'input',

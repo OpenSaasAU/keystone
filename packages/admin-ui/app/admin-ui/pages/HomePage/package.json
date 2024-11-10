@@ -1,0 +1,4 @@
+{
+  "main": "dist/opensaas-keystone-admin-ui-app-admin-ui-pages-HomePage.cjs.js",
+  "module": "dist/opensaas-keystone-admin-ui-app-admin-ui-pages-HomePage.esm.js"
+}

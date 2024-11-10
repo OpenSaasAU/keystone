@@ -165,7 +165,7 @@ export function password <ListTypeInfo extends BaseListTypeInfo> (config: Passwo
         },
       },
       __ksTelemetryFieldTypeName: '@keystone-6/password',
-      views: '@opensaas/keystone-core/fields/types/password/views',
+      views: '@opensaas/keystone-admin-ui/fields/types/password/views',
       getAdminMeta: () => ({
         isNullable: mode === 'optional',
         validation: {

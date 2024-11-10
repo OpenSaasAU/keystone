@@ -18,6 +18,10 @@
       "module": "./context/dist/opensaas-keystone-core-context.esm.js",
       "default": "./context/dist/opensaas-keystone-core-context.cjs.js"
     },
+    "./graphql": {
+      "module": "./graphql/dist/opensaas-keystone-core-graphql.esm.js",
+      "default": "./graphql/dist/opensaas-keystone-core-graphql.cjs.js"
+    },
     "./lib": {
       "module": "./lib/dist/opensaas-keystone-core-lib.esm.js",
       "default": "./lib/dist/opensaas-keystone-core-lib.cjs.js"
@@ -57,7 +61,8 @@
       "context.ts",
       "lib/index.ts",
       "fields/index.ts",
-      "types/index.ts"
+      "types/index.ts",
+      "graphql.ts"
     ]
   }
 }
