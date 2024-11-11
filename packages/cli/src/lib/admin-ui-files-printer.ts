@@ -102,7 +102,7 @@ export async function generateAdminUI (
       { configFileExists },
       config.graphql?.path || '/api/graphql'
     ),
-    outputPath: 'index.tsx',
+    outputPath: 'index.ts',
   }]
   for (const { path } of userPagesEntries) {
     const outputFilename = Path.relative(adminConfigDir, path)

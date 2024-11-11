@@ -46,7 +46,10 @@ export function appTemplate (
     return JSON.stringify(viewRelativeToAppFile)
   })
   // -- TEMPLATE START
-  return `import React from 'react'
+  return `
+'use client'
+  
+import React from 'react'
 import { KeystoneProvider, Core } from "@opensaas/keystone-admin-ui/admin-ui";
 import { ErrorBoundary } from "@opensaas/keystone-admin-ui/admin-ui/components";
 ${allViews.map((views, i) => `import * as view${i} from ${views};`).join('\n')}
@@ -64,15 +67,17 @@ const config = {
   apiPath: "${apiPath}",
 }
 
-export default function Layout({children}) {
-return (
-  <Core>
-    <KeystoneProvider {...config}>
-      <ErrorBoundary>{children}</ErrorBoundary>
-    </KeystoneProvider>
-  </Core>
-)
-};
+export default function Layout({ children }) {
+  return React.createElement(
+    Core,
+    null,
+    React.createElement(
+      KeystoneProvider,
+      config,
+      React.createElement(ErrorBoundary, null, children)
+    )
+  );
+}
 `
   // -- TEMPLATE END
 }

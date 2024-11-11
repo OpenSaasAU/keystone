@@ -1,4 +1,4 @@
-import Layout from '../../../../../.keystone/ui'
+import Layout from '.keystone/ui'
 
 export default function RootLayout({
   children,
